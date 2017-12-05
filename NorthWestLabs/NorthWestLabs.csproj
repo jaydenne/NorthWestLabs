@@ -156,6 +156,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageClientsController.cs" />
     <Compile Include="Controllers\ProtocolNotebooksController.cs" />
     <Compile Include="Controllers\SeattleController.cs" />
     <Compile Include="Global.asax.cs">
@@ -482,6 +483,11 @@
     <Content Include="Views\ProtocolNotebooks\Details.cshtml" />
     <Content Include="Views\ProtocolNotebooks\Edit.cshtml" />
     <Content Include="Views\ProtocolNotebooks\Index.cshtml" />
+    <Content Include="Views\ManageClients\Create.cshtml" />
+    <Content Include="Views\ManageClients\Delete.cshtml" />
+    <Content Include="Views\ManageClients\Details.cshtml" />
+    <Content Include="Views\ManageClients\Edit.cshtml" />
+    <Content Include="Views\ManageClients\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
