@@ -57,7 +57,9 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
-    <Reference Include="System.Data" />
+    <Reference Include="System.Data">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -65,7 +67,9 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
+    <Reference Include="System.Core">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
@@ -293,15 +297,57 @@
     <Compile Include="Models\WorkOrderComment.cs">
       <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\agency.css" />
+    <Content Include="css\agency.min.css" />
+    <Content Include="css\myStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="gulpfile.js" />
+    <Content Include="img\about\1.jpg" />
+    <Content Include="img\about\2.jpg" />
+    <Content Include="img\about\3.jpg" />
+    <Content Include="img\about\4.jpg" />
+    <Content Include="img\header-bg.jpg" />
+    <Content Include="img\logos\creative-market.jpg" />
+    <Content Include="img\logos\designmodo.jpg" />
+    <Content Include="img\logos\envato.jpg" />
+    <Content Include="img\logos\themeforest.jpg" />
+    <Content Include="img\map-image.png" />
+    <Content Include="img\portfolio\01-full.jpg" />
+    <Content Include="img\portfolio\01-thumbnail.jpg" />
+    <Content Include="img\portfolio\02-full.jpg" />
+    <Content Include="img\portfolio\02-thumbnail.jpg" />
+    <Content Include="img\portfolio\03-full.jpg" />
+    <Content Include="img\portfolio\03-thumbnail.jpg" />
+    <Content Include="img\portfolio\04-full.jpg" />
+    <Content Include="img\portfolio\04-thumbnail.jpg" />
+    <Content Include="img\portfolio\05-full.jpg" />
+    <Content Include="img\portfolio\05-thumbnail.jpg" />
+    <Content Include="img\portfolio\06-full.jpg" />
+    <Content Include="img\portfolio\06-thumbnail.jpg" />
+    <Content Include="img\science-art.jpg" />
+    <Content Include="img\science-back.jpg" />
+    <Content Include="img\science-final-edit.jpg" />
+    <Content Include="img\science-final.jpg" />
+    <Content Include="img\team\1.jpg" />
+    <Content Include="img\team\2.jpg" />
+    <Content Include="img\team\3.jpg" />
+    <Content Include="index.html" />
+    <Content Include="js\agency.js" />
+    <Content Include="js\agency.min.js" />
+    <Content Include="js\contact_me.js" />
+    <Content Include="js\jqBootstrapValidation.js" />
+    <Content Include="mail\contact_me.php" />
     <Content Include="Models\NorthwestLabsModels.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>NorthwestLabsModels.edmx</DependentUpon>
@@ -324,7 +370,13 @@
     <Content Include="Models\NorthwestLabsModels.edmx.diagram">
       <DependentUpon>NorthwestLabsModels.edmx</DependentUpon>
     </Content>
+    <Content Include=".gitignore" />
+    <Content Include="LICENSE" />
+    <Content Include="package-lock.json" />
+    <Content Include="package.json" />
+    <Content Include="packages %282%29.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -335,6 +387,25 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="vendor\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="vendor\font-awesome\css\font-awesome.css" />
+    <Content Include="vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="vendor\jquery-easing\jquery.easing.compatibility.js" />
+    <Content Include="vendor\jquery-easing\jquery.easing.js" />
+    <Content Include="vendor\jquery-easing\jquery.easing.min.js" />
+    <Content Include="vendor\jquery\jquery.js" />
+    <Content Include="vendor\jquery\jquery.min.js" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -345,10 +416,59 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Clients\Create.cshtml" />
+    <Content Include="Views\Clients\Delete.cshtml" />
+    <Content Include="Views\Clients\Details.cshtml" />
+    <Content Include="Views\Clients\Edit.cshtml" />
+    <Content Include="Views\Clients\Index.cshtml" />
+    <Content Include="scss\agency.scss" />
+    <Content Include="scss\_contact.scss" />
+    <Content Include="scss\_footer.scss" />
+    <Content Include="scss\_global.scss" />
+    <Content Include="scss\_masthead.scss" />
+    <Content Include="scss\_mixins.scss" />
+    <Content Include="scss\_navbar.scss" />
+    <Content Include="scss\_portfolio.scss" />
+    <Content Include="scss\_services.scss" />
+    <Content Include="scss\_team.scss" />
+    <Content Include="scss\_timeline.scss" />
+    <Content Include="scss\_variables.scss" />
+    <Content Include="vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="vendor\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="vendor\font-awesome\less\animated.less" />
+    <Content Include="vendor\font-awesome\less\bordered-pulled.less" />
+    <Content Include="vendor\font-awesome\less\core.less" />
+    <Content Include="vendor\font-awesome\less\fixed-width.less" />
+    <Content Include="vendor\font-awesome\less\font-awesome.less" />
+    <Content Include="vendor\font-awesome\less\icons.less" />
+    <Content Include="vendor\font-awesome\less\larger.less" />
+    <Content Include="vendor\font-awesome\less\list.less" />
+    <Content Include="vendor\font-awesome\less\mixins.less" />
+    <Content Include="vendor\font-awesome\less\path.less" />
+    <Content Include="vendor\font-awesome\less\rotated-flipped.less" />
+    <Content Include="vendor\font-awesome\less\screen-reader.less" />
+    <Content Include="vendor\font-awesome\less\stacked.less" />
+    <Content Include="vendor\font-awesome\less\variables.less" />
+    <Content Include="vendor\font-awesome\scss\font-awesome.scss" />
+    <Content Include="vendor\font-awesome\scss\_animated.scss" />
+    <Content Include="vendor\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="vendor\font-awesome\scss\_core.scss" />
+    <Content Include="vendor\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="vendor\font-awesome\scss\_icons.scss" />
+    <Content Include="vendor\font-awesome\scss\_larger.scss" />
+    <Content Include="vendor\font-awesome\scss\_list.scss" />
+    <Content Include="vendor\font-awesome\scss\_mixins.scss" />
+    <Content Include="vendor\font-awesome\scss\_path.scss" />
+    <Content Include="vendor\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="vendor\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="vendor\font-awesome\scss\_stacked.scss" />
+    <Content Include="vendor\font-awesome\scss\_variables.scss" />
     <Content Include="Views\Client\Index.cshtml" />
     <Content Include="Views\Client\ClientInfo.cshtml" />
     <Content Include="Views\Client\ClientOrdersSummary.cshtml" />
