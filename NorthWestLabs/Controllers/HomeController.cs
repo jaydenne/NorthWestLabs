@@ -9,6 +9,7 @@ namespace NorthWestLabs.Controllers
 {
     public class HomeController : Controller
     {
+        
 
         public ActionResult Login()
         {
@@ -20,6 +21,7 @@ namespace NorthWestLabs.Controllers
         {
             String user = form["Username"].ToString();
             String password = form["Password"].ToString();
+            
 
             if(string.Equals(user, "Missouri") && (string.Equals(password, "ShowMe")))
             {
