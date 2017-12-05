@@ -173,6 +173,7 @@
     <Compile Include="Models\Authorization.cs">
       <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Catalog.cs" />
     <Compile Include="Models\Client.cs">
       <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
     </Compile>
@@ -376,7 +377,6 @@
     <Content Include="LICENSE" />
     <Content Include="package-lock.json" />
     <Content Include="package.json" />
-    <Content Include="packages %282%29.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -408,7 +408,9 @@
     <Content Include="vendor\jquery\jquery.js" />
     <Content Include="vendor\jquery\jquery.min.js" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -471,6 +473,11 @@
     <Content Include="vendor\font-awesome\scss\_screen-reader.scss" />
     <Content Include="vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="vendor\font-awesome\scss\_variables.scss" />
+    <Content Include="Views\ProtocolNotebooks\Create.cshtml" />
+    <Content Include="Views\ProtocolNotebooks\Delete.cshtml" />
+    <Content Include="Views\ProtocolNotebooks\Details.cshtml" />
+    <Content Include="Views\ProtocolNotebooks\Edit.cshtml" />
+    <Content Include="Views\ProtocolNotebooks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
