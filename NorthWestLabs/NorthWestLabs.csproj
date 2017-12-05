@@ -471,10 +471,6 @@
     <Content Include="vendor\font-awesome\scss\_screen-reader.scss" />
     <Content Include="vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="vendor\font-awesome\scss\_variables.scss" />
-    <Content Include="Views\Client\Index.cshtml" />
-    <Content Include="Views\Client\ClientInfo.cshtml" />
-    <Content Include="Views\Client\ClientOrdersSummary.cshtml" />
-    <Content Include="Views\Client\ClientOrderStatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
