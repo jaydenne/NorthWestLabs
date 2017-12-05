@@ -421,11 +421,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Clients\Create.cshtml" />
-    <Content Include="Views\Clients\Delete.cshtml" />
-    <Content Include="Views\Clients\Details.cshtml" />
-    <Content Include="Views\Clients\Edit.cshtml" />
-    <Content Include="Views\Clients\Index.cshtml" />
+    <Content Include="Views\ClientsManage\Create.cshtml" />
+    <Content Include="Views\ClientsManage\Delete.cshtml" />
+    <Content Include="Views\ClientsManage\Details.cshtml" />
+    <Content Include="Views\ClientsManage\Edit.cshtml" />
+    <Content Include="Views\ClientsManage\Index.cshtml" />
     <Content Include="scss\agency.scss" />
     <Content Include="scss\_contact.scss" />
     <Content Include="scss\_footer.scss" />
@@ -471,6 +471,10 @@
     <Content Include="vendor\font-awesome\scss\_screen-reader.scss" />
     <Content Include="vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="vendor\font-awesome\scss\_variables.scss" />
+    <Content Include="Views\Client\ClientInfo.cshtml" />
+    <Content Include="Views\Client\ClientOrdersSummary.cshtml" />
+    <Content Include="Views\Client\ClientOrderStatus.cshtml" />
+    <Content Include="Views\Client\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
