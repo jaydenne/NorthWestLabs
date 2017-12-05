@@ -1,0 +1,87 @@
+﻿@model IEnumerable<NorthWestLabs.Models.Payment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CCAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BankTransferAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecordedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Invoice.ModifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentData.BillingName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CCAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BankTransferAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecordedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Invoice.ModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentData.BillingName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PaymentID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PaymentID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PaymentID })
+        </td>
+    </tr>
+}
+
+</table>
