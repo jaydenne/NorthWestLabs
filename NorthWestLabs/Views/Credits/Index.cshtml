@@ -1,0 +1,75 @@
+﻿@model IEnumerable<NorthWestLabs.Models.Credit>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CreditDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorizedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Invoice.ModifiedBy)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreditDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuthorizedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Invoice.ModifiedBy)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CreditID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CreditID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CreditID })
+        </td>
+    </tr>
+}
+
+</table>
