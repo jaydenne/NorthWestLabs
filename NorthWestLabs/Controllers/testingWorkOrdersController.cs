@@ -50,31 +50,8 @@ namespace NorthWestLabs.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        class myClient
-            {
-            public int ClientID { get; set; }
-            public string CompanyName { get; set; }
-            public string ContactFirstName { get; set; }
-            public string ContactLastName { get; set; }
-            public string Address1 { get; set; }
-            public string Address2 { get; set; }
-            public string City { get; set; }
-            public string State { get; set; }
-            public string Country { get; set; }
-            public Nullable<int> Zip { get; set; }
-            public string Phone { get; set; }
-            public string Email { get; set; }
-            public string Username { get; set; }
-            public string PasswordHash { get; set; }
-            public string ModifiedBy { get; set; }
-            public System.DateTime ModifiedDate { get; set; }
-            public string CreatedBy { get; set; }
-            public System.DateTime CreatedDate { get; set; }
-        }
-
-        public ActionResult Create([Bind(Include = "WorkOrderID,ClientID,QuoteID,DiscountRate,DateTime,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] WorkOrder workOrder)
+        public ActionResult Create([Bind(Exclude ="WorkOrderID", Include = "ClientID,QuoteID,DiscountRate,DateTime,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] WorkOrder workOrder)
         {
-            myClient stuff = new myClient();
             if (ModelState.IsValid)
             {
                 db.WorkOrders.Add(workOrder);

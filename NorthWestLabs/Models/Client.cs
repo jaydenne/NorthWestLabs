@@ -27,7 +27,7 @@ namespace NorthWestLabs.Models
             this.WorkOrders = new HashSet<WorkOrder>();
         }
     
-        public int ClientID { get; set; }
+        public int? ClientID { get; set; }
         public string CompanyName { get; set; }
         public string ContactFirstName { get; set; }
         public string ContactLastName { get; set; }
