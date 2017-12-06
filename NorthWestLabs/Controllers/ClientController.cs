@@ -1,4 +1,5 @@
-﻿using NorthWestLabs.Models;
+﻿using NorthWestLabs.DAL;
+using NorthWestLabs.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,24 +13,15 @@ using System.Web.Mvc;
 namespace NorthWestLabs.Controllers
 {
     public class ClientController : Controller
-    {
-        private NorthwestLabsEntitiesDB db = new NorthwestLabsEntitiesDB();
+    {/*
+        private NorthwestLabsContext db = new NorthwestLabsContext();
 
         // GET: Client
-        public ActionResult Index(int? id)
+        public ActionResult Index()
         {
-            if (id == null)
-            {
-               return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            //checks to make sure it is a valid client that has been entered
-            Client client = db.Clients.Find(id);
-            if (client == null)
-            {
-                return HttpNotFound();
-            }
+           
 
-            return View(client);
+            return View();
         }
 
 
@@ -37,16 +29,9 @@ namespace NorthWestLabs.Controllers
         // GET: Client
         public ActionResult ClientInfo(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            //checks to make sure it is a valid client that has been entered
+            
             Client client = db.Clients.Find(id);
-            if (client == null)
-            {
-                return HttpNotFound();
-            }
+            
 
             return View(client);
         }
@@ -104,5 +89,6 @@ namespace NorthWestLabs.Controllers
             return View();
         }
 
+*/
     }
 }

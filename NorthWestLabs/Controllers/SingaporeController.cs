@@ -1,4 +1,4 @@
-﻿using NorthWestLabs.Models;
+﻿using NorthWestLabs.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace NorthWestLabs.Controllers
 {
     public class SingaporeController : Controller
     {
-        private NorthwestLabsEntitiesDB db = new NorthwestLabsEntitiesDB();
+        private NorthwestLabsContext db = new NorthwestLabsContext();
 
         // GET: Singapore
         public ActionResult Index()

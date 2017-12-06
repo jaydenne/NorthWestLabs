@@ -6,13 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using NorthWestLabs.DAL;
 using NorthWestLabs.Models;
 
 namespace NorthWestLabs.Controllers
 {
     public class SeattleController : Controller
     {
-        private NorthwestLabsEntitiesDB db = new NorthwestLabsEntitiesDB();
+        private NorthwestLabsContext db = new NorthwestLabsContext();
 
         // GET: ManageClients
         public ActionResult ClientIndex()
@@ -46,7 +47,7 @@ namespace NorthWestLabs.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateClient([Bind(Include = "ClientID,CompanyName,ContactFirstName,ContactLastName,Address1,Address2,City,State,Country,Zip,Phone,Email,Username,PasswordHash,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] Client client)
+        public ActionResult CreateClient([Bind(Include = "CompanyName,ContactFirstName,ContactLastName,Address1,Address2,City,State,Country,Zip,Phone,Email,Username,PasswordHash,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] Client client)
         {
             if (ModelState.IsValid)
             {
