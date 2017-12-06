@@ -25,64 +25,70 @@ namespace NorthWestLabs.Controllers
             String password = form["Password"].ToString();
             IEnumerable<Client> ClientList = db.Clients.ToList();
             IEnumerable<Employee> EmployeeList = db.Employees.ToList();
-            Boolean SingaporeEmployee=false;
-            Boolean SeattleEmployee=false;
-            String SavedPassword=null;
-            
+            Boolean SingaporeEmployee = false;
+            Boolean SeattleEmployee = false;
+            String SavedPassword = null;
 
-            foreach(Client ClientItem in ClientList)
+
+            foreach (Client ClientItem in ClientList)
             {
-                if(user == ClientItem.Username)
+                if (user == ClientItem.Username)
                 {
                     SavedPassword = ClientItem.PasswordHash;
                 }
             }
 
-            if(string.Equals(password, SavedPassword))
+            if (string.Equals(password, SavedPassword))
             {
                 FormsAuthentication.SetAuthCookie(user, rememberMe);
                 if (!string.IsNullOrEmpty(returnUrl))
                 {
                     return Redirect(returnUrl);
                 }
-                    
-                return RedirectToAction("Index","Client");
+
+                return RedirectToAction("Index", "Client");
 
             }
             foreach (Employee EmployeeItem in EmployeeList)
             {
                 if (user == EmployeeItem.UserName)
                 {
-                    SavedPassword = EmployeeItem.Password; 
-                        if (EmployeeItem.Location == "Singapore")
-                        {
-                            SingaporeEmployee = true;
-                        }
-                        else
-                        {
-                            SeattleEmployee = true;
-                        }
-                    
-            }
-            if (string.Equals(password, SavedPassword))
-            {
-                FormsAuthentication.SetAuthCookie(user, rememberMe);
+                    SavedPassword = EmployeeItem.Password;
+                    if (EmployeeItem.Location == "Singapore")
+                    {
+                        SingaporeEmployee = true;
+                    }
+                    else
+                    {
+                        SeattleEmployee = true;
+                    }
 
-                if (!string.IsNullOrEmpty(returnUrl))
-                {
-                    return Redirect(returnUrl);
                 }
-                else if(SingaporeEmployee)
-                    { return RedirectToAction("Index", "Singapore"); }
-                else { return RedirectToAction("SeattleIndex", "Seattle"); }
+                if (string.Equals(password, SavedPassword))
+                {
+                    FormsAuthentication.SetAuthCookie(user, rememberMe);
 
+                    if (!string.IsNullOrEmpty(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else if (SingaporeEmployee)
+                    {
+                        return RedirectToAction("Index", "Singapore");
+                    }
+                    else
+                    {
+                        return RedirectToAction("SeattleIndex", "Seattle");
+
+                    }
+                }
+
+                else
+                {
+                    return View();
+                }
             }
-
-            else
-            {
-                return View();
-            }
-
+            return View();
         }
 
         public ActionResult Index()
