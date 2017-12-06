@@ -121,13 +121,13 @@ namespace NorthWestLabs.Controllers
         }
 
         // GET: Clients2/Edit/5
-        public ActionResult ClientInfoEdit(int? id)
+        public ActionResult ClientInfoEdit()
         {
-            if (id == null)
+            if (GetClientID() == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
+            Client client = db.Clients.Find(GetClientID());
             if (client == null)
             {
                 return HttpNotFound();

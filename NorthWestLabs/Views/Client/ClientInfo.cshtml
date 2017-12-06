@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = "Client Information";
 }
-
+@Html.ActionLink("Back to Client Portal", "Index", "Client", null, new { @class = "btn btn-primary btn default" })
+@Html.ActionLink("Edit Client Information", "ClientInfoEdit", "Client", null, new { @class = "btn btn-primary btn default" })
 <h2>Client Information</h2>
 <hr />
 <div class="row">
