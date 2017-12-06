@@ -40,20 +40,8 @@ namespace NorthWestLabs.Controllers
 
         public ActionResult OrderSummary(int? id)
         {
-
-            List<WorkOrder> NewOrders = new List<WorkOrder>();
-            IEnumerable<WorkOrder> workorderList = db.WorkOrders.ToList();
-
-
-            foreach (WorkOrder item in workorderList)
-            {
-                if (item.ClientID == id)
-                {
-                    NewOrders.Add(item);
-                }
-            }
-            return View(NewOrders);
-
+            var workOrders = db.WorkOrders.Include(w => w.Client).Include(w => w.QuoteEstimate);
+            return View(db.WorkOrders.ToList());
         }
 
         // GET: ManageClients

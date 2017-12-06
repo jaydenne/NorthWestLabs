@@ -1,53 +1,59 @@
-﻿
+﻿@model NorthWestLabs.Models.Employee
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Welcome";
 }
+<h2> </h2>
 
-<h2>Seattle Employee Portal</h2>
-
-<h2></h2>
-<!--<div class="jumbotron">
-    <h1>Welcome ~CompanyName~</h1>
-</div>-->
+<div class="jumbotron">
+    <h1>Welcome @Model.Name</h1>
+</div>
 
 <div class="row">
-
-
-
-    <div class="col-md-5 well">
-
-        <h2>Order Summary</h2>
+    <div class="col-md-4 well text-center">
+        <h2>Compound Receiving</h2>
         <p>
-            View past and current orders including test status and test results.
+            Enter a compound as received and record it's weight upon receipt.
         </p>
-        @Html.ActionLink("Order Summary", "ClientOrdersSummary", "Client", null, new { @class = "btn btn-primary btn default" })
+        @Html.ActionLink("Client Information", "ClientInfo", "Client", null, new { @class = "btn btn-primary btn default" })
     </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-5 well">
-        <h2>Client Account</h2>
-        <p>
-            Access your current account balance and details from any past or current invoices.
-        </p>
-        @Html.ActionLink("Client Account", "ClientAccount", "Client", null, new { @class = "btn btn-primary btn default" })
-    </div>
+    <div class="col-md-4 well text-center">
 
+        <h2>Schedule Tests</h2>
+        <p>
+            View unassigned tests and assign them a start date.
+        </p>
+        @Html.ActionLink("Schedule Orders", "UnassignedTests", "Singpore", null, new { @class = "btn btn-primary btn default" })
+    </div>
+    <div class="col-md-4 well text-center">
+        <h2>My Employee Account</h2>
+        <p>
+            Update your payment information for Employee Wages, change your password, and update your contact information.
+        </p>
+        @Html.ActionLink("My Account", "EmployeeAccount", "Singapore", null, new { @class = "btn btn-primary btn default" })
+    </div>
 </div>
-<div class="row">
-
-    <div class="col-md-5 well">
-        <h2>Client Information</h2>
+<div class="row"> 
+    <div class="col-md-4 well align-content-center text-center">
+        <h2>View Assigned Tests</h2>
         <p>
-            Update your company information.
+            View tests assigned for a given week.
         </p>
-        @Html.ActionLink("Client Information", "ClientInfo", "Client", new { clientid = 2 }, new { @class = "btn btn-primary btn default" })
+        @Html.ActionLink("View Assigned Tests", "AssignedTests", "Singapore", null, new { @class = "btn btn-primary btn default" })
     </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-5 well">
-        <h2>Request a Quote</h2>
+    <div class="col-md-4 well align-content-center text-center">
+        <h2>View All Pending Tests</h2>
         <p>
-            Request a quote for a specific assay and compound.
+            View tests assigned for a given week.
         </p>
-        @Html.ActionLink("Request a Quote", "ClientPortalQuotes", "Client", null, new { @class = "btn btn-primary btn default" })
+        @Html.ActionLink("View Pending Tests", "PendingTests", "Singapore", null, new { @class = "btn btn-primary btn default" })
     </div>
-
+    <div class="col-md-4 well align-content-center text-center">
+        <h2>Upload Test Results</h2>
+        <p>
+            Upload the test results for a completed test.
+        </p>
+        @Html.ActionLink("Request a Quote", "ClientPortalQuotes", "Singapore", null, new { @class = "btn btn-primary btn default" })
+    </div>
 </div>
+
+
