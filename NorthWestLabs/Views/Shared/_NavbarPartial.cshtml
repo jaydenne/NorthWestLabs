@@ -2,7 +2,7 @@
     {
         NorthWestLabs.DAL.NorthwestLabsContext db = new NorthWestLabs.DAL.NorthwestLabsContext();
         IEnumerable<NorthWestLabs.Models.Client> ClientList = db.Clients.ToList();
-        //IEnumerable<NorthWestLabs.Models.Employee> EmployeeList = db.Employees.ToList();
+        IEnumerable<NorthWestLabs.Models.Employee> EmployeeList = db.Employees.ToList();
         Boolean Client;
         Boolean SeattleEmployee;
         Boolean SingaporeEmployee;
@@ -13,27 +13,27 @@
                 Client=true;
             }
         }
-        //foreach (var item in EmployeeList)
-        //{
-        //    if (item.UserName == User.Identity.Name)
-        //    {
-        //        if(item.Location=="Singapore")
-        //        {
-        //            SingaporeEmployee = true;
-        //        }
-        //        else
-        //        {
-        //            SeattleEmployee = true;
-        //        }
-        //    }
+        foreach (var item in EmployeeList)
+        {
+            if (item.UserName == User.Identity.Name)
+            {
+                if (item.Location == "Singapore")
+                {
+                    SingaporeEmployee = true;
+                }
+                else
+                {
+                    SeattleEmployee = true;
+                }
+            }
+        }
+
+
+
+
+
+
+
+
     }
-
-
-
-
-
-
-
-
-}
  }

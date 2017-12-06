@@ -24,11 +24,11 @@ namespace NorthWestLabs.Controllers
             String user = form["Username"].ToString();
             String password = form["Password"].ToString();
             IEnumerable<Client> ClientList = db.Clients.ToList();
-            //IEnumerable<Employee> EmployeList = db.Employees.ToList();
-            
+            IEnumerable<Employee> EmployeeList = db.Employees.ToList();
+            Boolean SingaporeEmployee=false;
+            Boolean SeattleEmployee=false;
             String SavedPassword=null;
-            String ClientID = null;
-            //string SavedHash;
+            
 
             foreach(Client ClientItem in ClientList)
             {
@@ -49,13 +49,21 @@ namespace NorthWestLabs.Controllers
                 return RedirectToAction("Index","Client");
 
             }
-           /* foreach (Employee EmployeeItem in EmployeList)
+            foreach (Employee EmployeeItem in EmployeeList)
             {
                 if (user == EmployeeItem.UserName)
                 {
-                    SavedPassword = EmployeeItem.Password;
-                }
-            }*/
+                    SavedPassword = EmployeeItem.Password; 
+                        if (EmployeeItem.Location == "Singapore")
+                        {
+                            SingaporeEmployee = true;
+                        }
+                        else
+                        {
+                            SeattleEmployee = true;
+                        }
+                    
+            }
             if (string.Equals(password, SavedPassword))
             {
                 FormsAuthentication.SetAuthCookie(user, rememberMe);
@@ -64,8 +72,9 @@ namespace NorthWestLabs.Controllers
                 {
                     return Redirect(returnUrl);
                 }
-                
-                return RedirectToAction("Index", "Employee");
+                else if(SingaporeEmployee)
+                    { return RedirectToAction("Index", "Singapore"); }
+                else { return RedirectToAction("SeattleIndex", "Seattle"); }
 
             }
 

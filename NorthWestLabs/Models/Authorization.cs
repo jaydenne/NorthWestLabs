@@ -8,9 +8,10 @@ using System.Web;
 namespace NorthWestLabs.Models
 {
     [Table("Authorization")]
-    public partial class Authorization
+    public class Authorization
     {
         [Key]
+        public int AuthorizationID { get; set; }
         public int EmployeeID { get; set; }
         public int LevelID { get; set; }
         public string ModifiedBy { get; set; }
