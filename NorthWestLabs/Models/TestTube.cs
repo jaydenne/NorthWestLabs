@@ -14,7 +14,10 @@ namespace NorthWestLabs.Models
        
         [Key]
         public int TestTubeID { get; set; }
-        public Nullable<int> LTNumber { get; set; }
+        [Key]
+        public int LTNumber { get; set; }
+        [Key]
+        public int SequenceCode { get; set; }
         public string Concentration { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }

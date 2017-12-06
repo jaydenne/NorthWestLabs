@@ -11,6 +11,7 @@ namespace NorthWestLabs.Models
     [Table("Client")]
     public class AssayOrder
     {
+        [Key]
         public int AssayOrderID { get; set; }
         public int WorkOrderID { get; set; }
         public int PriorityLevelID { get; set; }
