@@ -17,8 +17,8 @@ namespace NorthWestLabs.ControllerReference
         // GET: WorkOrders
         public ActionResult Index()
         {
-            var workOrders = db.WorkOrders.Include(w => w.Client).Include(w => w.QuoteEstimate);
-            return View(workOrders.ToList());
+            //var workOrders = db.WorkOrders.Include(w => w.Client).Include(w => w.QuoteEstimate);
+            return View(/*workOrders.ToList()*/);
         }
 
         // GET: WorkOrders/Details/5
