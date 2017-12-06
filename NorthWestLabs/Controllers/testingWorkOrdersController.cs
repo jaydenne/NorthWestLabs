@@ -10,111 +10,117 @@ using NorthWestLabs.Models;
 
 namespace NorthWestLabs.Controllers
 {
-    public class ManageClientsController : Controller
+    public class testingWorkOrdersController : Controller
     {
         private NorthwestLabsEntitiesDB db = new NorthwestLabsEntitiesDB();
 
-        // GET: ManageClients
+        // GET: testingWorkOrders
         public ActionResult Index()
         {
-            return View(db.Clients.ToList());
+            var workOrders = db.WorkOrders.Include(w => w.Client).Include(w => w.QuoteEstimate);
+            return View(workOrders.ToList());
         }
 
-        // GET: ManageClients/Details/5
+        // GET: testingWorkOrders/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
-            if (client == null)
+            WorkOrder workOrder = db.WorkOrders.Find(id);
+            if (workOrder == null)
             {
                 return HttpNotFound();
             }
-            return View(client);
+            return View(workOrder);
         }
 
-        // GET: ManageClients/Create
+        // GET: testingWorkOrders/Create
         public ActionResult Create()
         {
+            ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "CompanyName");
+            ViewBag.QuoteID = new SelectList(db.QuoteEstimates, "QuoteID", "ModifiedBy");
             return View();
         }
 
-        // POST: ManageClients/Create
+        // POST: testingWorkOrders/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ClientID,CompanyName,ContactFirstName,ContactLastName,Address1,Address2,City,State,Country,Zip,Phone,Email,Username,PasswordHash,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] Client client)
-        {
-           
-            client.ModifiedDate = DateTime.Now;
-            client.CreatedDate = DateTime.Now;
 
+        public ActionResult Create([Bind(Exclude ="WorkOrderID", Include = "ClientID,QuoteID,DiscountRate,DateTime,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] WorkOrder workOrder)
+        {
             if (ModelState.IsValid)
             {
-                db.Clients.Add(client);
+                db.WorkOrders.Add(workOrder);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(client);
+            ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "CompanyName", workOrder.ClientID);
+            ViewBag.QuoteID = new SelectList(db.QuoteEstimates, "QuoteID", "ModifiedBy", workOrder.QuoteID);
+            return View(workOrder);
         }
 
-        // GET: ManageClients/Edit/5
+        // GET: testingWorkOrders/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
-            if (client == null)
+            WorkOrder workOrder = db.WorkOrders.Find(id);
+            if (workOrder == null)
             {
                 return HttpNotFound();
             }
-            return View(client);
+            ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "CompanyName", workOrder.ClientID);
+            ViewBag.QuoteID = new SelectList(db.QuoteEstimates, "QuoteID", "ModifiedBy", workOrder.QuoteID);
+            return View(workOrder);
         }
 
-        // POST: ManageClients/Edit/5
+        // POST: testingWorkOrders/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ClientID,CompanyName,ContactFirstName,ContactLastName,Address1,Address2,City,State,Country,Zip,Phone,Email,Username,PasswordHash,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] Client client)
+        public ActionResult Edit([Bind(Include = "WorkOrderID,ClientID,QuoteID,DiscountRate,DateTime,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] WorkOrder workOrder)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(client).State = EntityState.Modified;
+                db.Entry(workOrder).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(client);
+            ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "CompanyName", workOrder.ClientID);
+            ViewBag.QuoteID = new SelectList(db.QuoteEstimates, "QuoteID", "ModifiedBy", workOrder.QuoteID);
+            return View(workOrder);
         }
 
-        // GET: ManageClients/Delete/5
+        // GET: testingWorkOrders/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
-            if (client == null)
+            WorkOrder workOrder = db.WorkOrders.Find(id);
+            if (workOrder == null)
             {
                 return HttpNotFound();
             }
-            return View(client);
+            return View(workOrder);
         }
 
-        // POST: ManageClients/Delete/5
+        // POST: testingWorkOrders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Client client = db.Clients.Find(id);
-            db.Clients.Remove(client);
+            WorkOrder workOrder = db.WorkOrders.Find(id);
+            db.WorkOrders.Remove(workOrder);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -195,6 +195,7 @@
     <Compile Include="Controllers\ProtocolNotebooksController.cs" />
     <Compile Include="Controllers\SeattleController.cs" />
     <Compile Include="Controllers\SingaporeController.cs" />
+    <Compile Include="Controllers\testingWorkOrdersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -459,11 +460,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\ClientsManage\Create.cshtml" />
-    <Content Include="Views\ClientsManage\Delete.cshtml" />
-    <Content Include="Views\ClientsManage\Details.cshtml" />
-    <Content Include="Views\ClientsManage\Edit.cshtml" />
-    <Content Include="Views\ClientsManage\Index.cshtml" />
     <Content Include="scss\agency.scss" />
     <Content Include="scss\_contact.scss" />
     <Content Include="scss\_footer.scss" />
@@ -699,17 +695,26 @@
     <Content Include="Views\WorkOrders\Details.cshtml" />
     <Content Include="Views\WorkOrders\Edit.cshtml" />
     <Content Include="Views\WorkOrders\Index.cshtml" />
+    <Content Include="Views\testingWorkOrders\Create.cshtml" />
+    <Content Include="Views\testingWorkOrders\Delete.cshtml" />
+    <Content Include="Views\testingWorkOrders\Details.cshtml" />
+    <Content Include="Views\testingWorkOrders\Edit.cshtml" />
+    <Content Include="Views\testingWorkOrders\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\ProtocolNotebooks\Create.cshtml" />
     <Content Include="Views\ProtocolNotebooks\Delete.cshtml" />
     <Content Include="Views\ProtocolNotebooks\Details.cshtml" />
     <Content Include="Views\ProtocolNotebooks\Edit.cshtml" />
     <Content Include="Views\ProtocolNotebooks\Index.cshtml" />
+    <Content Include="Views\Seattle\ClientIndex.cshtml" />
+    <Content Include="Views\Seattle\ClientDetails.cshtml" />
+    <Content Include="Views\Seattle\CreateClient.cshtml" />
+    <Content Include="Views\Seattle\EditClients.cshtml" />
+    <Content Include="Views\Seattle\DeleteClients.cshtml" />
     <Content Include="Views\Home\Catalog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Seattle\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

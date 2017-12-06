@@ -11,7 +11,9 @@ namespace NorthWestLabs.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class WorkOrder
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,6 +27,8 @@ namespace NorthWestLabs.Models
             this.WorkOrderComments = new HashSet<WorkOrderComment>();
         }
     
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int WorkOrderID { get; set; }
         public int ClientID { get; set; }
         public Nullable<int> QuoteID { get; set; }

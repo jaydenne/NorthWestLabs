@@ -16,9 +16,20 @@ namespace NorthWestLabs.Controllers
         private NorthwestLabsEntitiesDB db = new NorthwestLabsEntitiesDB();
 
         // GET: Client
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            return View();
+            if (id == null)
+            {
+               return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            //checks to make sure it is a valid client that has been entered
+            Client client = db.Clients.Find(id);
+            if (client == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(client);
         }
 
 

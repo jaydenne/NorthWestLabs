@@ -59,7 +59,7 @@ namespace NorthWestLabs.Controllers
         }
 
         // GET: ManageClients/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult EditClients(int? id)
         {
             if (id == null)
             {
@@ -78,19 +78,19 @@ namespace NorthWestLabs.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ClientID,CompanyName,ContactFirstName,ContactLastName,Address1,Address2,City,State,Country,Zip,Phone,Email,Username,PasswordHash,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] Client client)
+        public ActionResult EditClients([Bind(Include = "ClientID,CompanyName,ContactFirstName,ContactLastName,Address1,Address2,City,State,Country,Zip,Phone,Email,Username,PasswordHash,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] Client client)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(client).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ClientIndex");
             }
             return View(client);
         }
 
         // GET: ManageClients/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult DeleteClients(int? id)
         {
             if (id == null)
             {
@@ -107,12 +107,12 @@ namespace NorthWestLabs.Controllers
         // POST: ManageClients/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmedClient(int id)
         {
             Client client = db.Clients.Find(id);
             db.Clients.Remove(client);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ClientIndex");
         }
 
         protected override void Dispose(bool disposing)
