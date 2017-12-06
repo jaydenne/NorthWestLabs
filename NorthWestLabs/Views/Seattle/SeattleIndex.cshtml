@@ -1,0 +1,75 @@
+﻿@model NorthWestLabs.Models.Employee
+@{
+    ViewBag.Title = "Welcome";
+}
+<h2> </h2>
+
+<div class="jumbotron">
+    <h1>Welcome Employee! @*@Model.CompanyName*@</h1>
+</div>
+
+<div class="row">
+
+    <div class="col-md-5 well">
+
+        <h2>Customer Order Summaries</h2>
+        <p>
+            View past and current orders including test status and test results.
+        </p>
+        @Html.ActionLink("Edit Order Summaries", "OrderSummary", "Seattle", null, new { @class = "btn btn-primary btn default" })
+    </div>
+    <div class="col-md-1"></div>
+
+    <div class="col-md-5 well">
+        <h2>Billing Module</h2>
+        <p>
+            Access current account balances and customer details.
+        </p>
+        @Html.ActionLink("Create Invoices", "Billing", "Seattle", null, new { @class = "btn btn-primary btn default" })
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-5 well">
+        <h2>Test Results</h2>
+        <p>
+            Access test results.
+        </p>
+        @Html.ActionLink("Test Results", "TestResults", "Singapore", null, new { @class = "btn btn-primary btn default" })
+    </div>
+
+    <div class="col-md-1"></div>
+    
+    <div class="col-md-5 well">
+        <h2>Quote Response</h2>
+        <p>
+            Generate a quote for a specific assay and compound.
+        </p>
+        @Html.ActionLink("Generate a Quote", "EmployeeQuotes", "Seattle", null, new { @class = "btn btn-primary btn default" })
+    </div>
+</div>
+
+<div class="row">
+    
+    <div class="col-md-5 well">
+        <h2>Management Reports</h2>
+        <p>
+            Generate management reports.
+        </p>
+        @Html.ActionLink("Generate a Report", "ManagementReports", "Seattle", null, new { @class = "btn btn-primary btn default" })
+    </div>
+
+    <div class="col-md-1"></div>
+    
+    <div class="col-md-5 well">
+        <h2>View Client Info</h2>
+        <p>
+            See a list of all current clients and their account information.
+        </p>
+        @Html.ActionLink("See Clients", "ClientIndex", "Seattle", null, new { @class = "btn btn-primary btn default" })
+    </div>
+</div>
+
+
