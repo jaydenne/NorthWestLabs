@@ -12,20 +12,20 @@
 
     <div class="col-md-5 well">
 
-        <h2>Customer Order Summaries</h2>
+        <h2>Customer Work Orders</h2>
         <p>
-            View past and current orders including test status and test results.
+            View past and current orders including test status.
         </p>
-        @Html.ActionLink("Edit Order Summaries", "OrderSummary", "Seattle", null, new { @class = "btn btn-primary btn default" })
+        @Html.ActionLink("Edit Order Summaries", "Index", "WorkOrders", null, new { @class = "btn btn-primary btn default" })
     </div>
     <div class="col-md-1"></div>
 
     <div class="col-md-5 well">
-        <h2>Billing Module</h2>
+        <h2>My Employee Account</h2>
         <p>
-            Access current account balances and customer details.
+            Update your payment information for Employee Wages, change your passwork, and update your contact information.
         </p>
-        @Html.ActionLink("Create Invoices", "Billing", "Seattle", null, new { @class = "btn btn-primary btn default" })
+        @Html.ActionLink("Update Account", "Billing", "Seattle", null, new { @class = "btn btn-primary btn default" })
     </div>
 
 </div>
@@ -69,6 +69,14 @@
             See a list of all current clients and their account information.
         </p>
         @Html.ActionLink("See Clients", "ClientIndex", "Seattle", null, new { @class = "btn btn-primary btn default" })
+    </div>
+
+    <div class="col-md-5 well">
+        <h2>Billing Module</h2>
+        <p>
+            Access current account balances and customer details.
+        </p>
+        @Html.ActionLink("Create Invoices", "Billing", "Seattle", null, new { @class = "btn btn-primary btn default" })
     </div>
 </div>
 

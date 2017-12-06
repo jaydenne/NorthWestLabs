@@ -163,7 +163,7 @@
     <Compile Include="Controllers\Seattle\ProtocolNotebooksController.cs" />
     <Compile Include="Controllers\Seattle\SeattleController.cs" />
     <Compile Include="Controllers\Singapore\SingaporeController.cs" />
-    <Compile Include="Controllers\WorkOrdersController.cs" />
+    <Compile Include="Controllers\Seattle\WorkOrdersController.cs" />
     <Compile Include="DAL\NorthwestLabsContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -407,7 +407,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_NavbarPartial.cshtml" />
     <Content Include="Views\Seattle\SeattleIndex.cshtml" />
-    <Content Include="Views\Seattle\OrderSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,11 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Client Information</h2>
 
-<p>
-    @Html.ActionLink("Create New","CreateClient")
+<p><div style="float:left">@Html.ActionLink("Return to Employee Portal", "SeattleIndex", "Seattle", null, new { @class = "btn btn-primary btn default" })</div>
+    <div style="padding-bottom:10px; float:right">@Html.ActionLink("Create New Client", "CreateClient", null, new { @class = "btn btn-primary btn default" })</div>
 </p>
+
 <table class="table">
     <tr>
         <th>
