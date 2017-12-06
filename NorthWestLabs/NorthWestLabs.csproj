@@ -376,6 +376,13 @@
     <Content Include="img\portfolio\05-thumbnail.jpg" />
     <Content Include="img\portfolio\06-full.jpg" />
     <Content Include="img\portfolio\06-thumbnail.jpg" />
+    <Content Include="img\portfolio\doctor.jpg" />
+    <Content Include="img\portfolio\farm.png" />
+    <Content Include="img\portfolio\microscope.jpg" />
+    <Content Include="img\portfolio\molecule.jpg" />
+    <Content Include="img\portfolio\pills.png" />
+    <Content Include="img\portfolio\plant.jpg" />
+    <Content Include="img\portfolio\test.jpg" />
     <Content Include="img\science-back.jpg" />
     <Content Include="img\science-final-edit.jpg" />
     <Content Include="img\science-final.jpg" />
