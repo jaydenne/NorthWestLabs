@@ -4,8 +4,8 @@
 }
 <h2> </h2>
 
-<div class="jumbotron">
-    <h1>Welcome @*@Model.Name*@</h1>
+<div class="jumbotron" style="text-align:center;">
+    <h1>Welcome @Model.Name</h1>
 </div>
 
 <div class="row">
@@ -14,7 +14,7 @@
         <p>
             Enter a compound as received and record it's weight upon receipt.
         </p>
-        @Html.ActionLink("Client Information", "ClientInfo", "Client", null, new { @class = "btn btn-primary btn default" })
+        @Html.ActionLink("Receive Compound", "ReceiveCompound", "Singapore", null, new { @class = "btn btn-primary btn default" })
     </div>
     <div class="col-md-4 well text-center">
 
