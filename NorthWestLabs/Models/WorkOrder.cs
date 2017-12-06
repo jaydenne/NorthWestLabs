@@ -25,7 +25,7 @@ namespace NorthWestLabs.Models
         public string CreatedBy { get; set; }
         public System.DateTime CreatedDate { get; set; }
     
-       // public virtual ICollection<AssayOrder> AssayOrders { get; set; }
+       // public virtual ICollection<AssayOrder> { get; set; }
         public virtual Client Client { get; set; }
        // public virtual ICollection<ConditionalApproval> ConditionalApprovals { get; set; }
       //  public virtual ICollection<CustomDiscount> CustomDiscounts { get; set; }
