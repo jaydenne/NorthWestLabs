@@ -29,6 +29,11 @@
                 <td>
                     @Html.ActionLink("View Details", "ClientOrderStatus", "Client", new { ordernum = order.WorkOrderID }, null)
                 </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditClients", new { id = item.ClientID }) |
+                    @Html.ActionLink("Details", "ClientDetails", new { id = item.ClientID }) |
+                    @Html.ActionLink("Delete", "DeleteClients", new { id = item.ClientID })
+                </td>
             </tr>
         
 
