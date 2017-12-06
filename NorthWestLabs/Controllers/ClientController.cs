@@ -14,12 +14,27 @@ namespace NorthWestLabs.Controllers
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
 
+        public int GetClientID()
+        {
+            int ClientID=0;
+            IEnumerable<Client> ClientList = db.Clients.ToList();
+            foreach (Client myClient in ClientList)
+            {
+                if (User.Identity.Name == myClient.Username)
+                {
+                    ClientID = myClient.ClientID;
+                }
+            }
+
+            return ClientID;
+        } 
         // GET: Client
         public ActionResult Index()
         {
-           
 
-            return View();
+            Client myClient = db.Clients.Find(GetClientID());
+           
+            return View(myClient);
         }
         
         // GET: Client
