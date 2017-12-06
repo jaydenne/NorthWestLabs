@@ -23,6 +23,7 @@ namespace NorthWestLabs.Models
         public System.DateTime ModifiedDate { get; set; }
         public string CreatedBy { get; set; }
         public System.DateTime CreatedDate { get; set; }
+        public string ImageLocation { get; set; }
     
         //public virtual ICollection<AssayOrder> AssayOrders { get; set; }
         //public virtual ICollection<ConditionalApproval> ConditionalApprovals { get; set; }

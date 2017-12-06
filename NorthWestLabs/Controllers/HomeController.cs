@@ -98,7 +98,7 @@ namespace NorthWestLabs.Controllers
         public ActionResult Catalog()
         {
 
-            return View();
+            return View(db.ProtocolNotebooks.ToList());
         }
 
 
