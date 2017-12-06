@@ -48,6 +48,10 @@ namespace NorthWestLabs.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ClientID,CompanyName,ContactFirstName,ContactLastName,Address1,Address2,City,State,Country,Zip,Phone,Email,Username,PasswordHash,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] Client client)
         {
+           
+            client.ModifiedDate = DateTime.Now;
+            client.CreatedDate = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 db.Clients.Add(client);
