@@ -16,6 +16,12 @@ namespace NorthWestLabs.DAL
         }
         public virtual DbSet<Client> Clients { get; set; }
 
+        public System.Data.Entity.DbSet<NorthWestLabs.Models.WorkOrder> WorkOrders { get; set; }
+
+        public System.Data.Entity.DbSet<NorthWestLabs.Models.QuoteEstimate> QuoteEstimates { get; set; }
+
+        public System.Data.Entity.DbSet<NorthWestLabs.Models.AssayOrder> AssayOrders { get; set; }
+
         /* public virtual DbSet<AssayOrder> AssayOrders { get; set; }
          public virtual DbSet<AssayOrderComment> AssayOrderComments { get; set; }
          public virtual DbSet<AssayOrderReport> AssayOrderReports { get; set; }

@@ -17,25 +17,25 @@
         @Html.HiddenFor(model => model.AssayOrderID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.WorkOrderID, "WorkOrderID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.WorkOrderID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("WorkOrderID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.EditorFor(model => model.WorkOrderID, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.WorkOrderID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PriorityLevelID, "PriorityLevelID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PriorityLevelID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("PriorityLevelID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.EditorFor(model => model.PriorityLevelID, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PriorityLevelID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AssayID, "AssayID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.AssayID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("AssayID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.EditorFor(model => model.AssayID, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.AssayID, "", new { @class = "text-danger" })
             </div>
         </div>

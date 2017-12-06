@@ -155,6 +155,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\Clients2Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SeattleController.cs" />
     <Compile Include="Controllers\SingaporeController.cs" />
@@ -504,6 +505,11 @@
     <Content Include="Views\Seattle\QuoteItems\Details.cshtml" />
     <Content Include="Views\Seattle\QuoteItems\Edit.cshtml" />
     <Content Include="Views\Seattle\QuoteItems\Index.cshtml" />
+    <Content Include="Views\Clients2\Create.cshtml" />
+    <Content Include="Views\Clients2\Delete.cshtml" />
+    <Content Include="Views\Clients2\Details.cshtml" />
+    <Content Include="Views\Clients2\Edit.cshtml" />
+    <Content Include="Views\Clients2\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

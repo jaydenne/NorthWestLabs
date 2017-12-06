@@ -12,6 +12,30 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.WorkOrderID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkOrderID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriorityLevelID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriorityLevelID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssayID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssayID)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.ModifiedBy)
         </dt>
 
@@ -41,30 +65,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PriorityLevel.ModifiedBy)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PriorityLevel.ModifiedBy)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProtocolNotebook.AssayName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProtocolNotebook.AssayName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.WorkOrder.ModifiedBy)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.WorkOrder.ModifiedBy)
         </dd>
 
     </dl>
