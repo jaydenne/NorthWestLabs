@@ -183,7 +183,6 @@
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\LiteratureReference.cs" />
     <Compile Include="Models\Material.cs" />
-    <Compile Include="Models\NorthwestLabsModels1.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\PaymentData.cs" />
     <Compile Include="Models\PriorityLevel.cs" />
