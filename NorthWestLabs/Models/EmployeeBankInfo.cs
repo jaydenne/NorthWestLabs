@@ -18,7 +18,5 @@ namespace NorthWestLabs.Models
         public string AccountType { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
-    
-        public virtual Employee Employee { get; set; }
-    }
+        }
 }

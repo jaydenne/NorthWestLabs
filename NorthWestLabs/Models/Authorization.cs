@@ -15,7 +15,5 @@ namespace NorthWestLabs.Models
         public int LevelID { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
-    
-        public virtual Employee Employee { get; set; }
-    }
+        }
 }
