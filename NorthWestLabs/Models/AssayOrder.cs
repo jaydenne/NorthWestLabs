@@ -20,6 +20,7 @@ namespace NorthWestLabs.Models
         public System.DateTime ModifiedDate { get; set; }
         public string CreatedBy { get; set; }
         public System.DateTime CreatedDate { get; set; }
+        public int CompoundID { get; set; }
     
        public virtual PriorityLevel PriorityLevel { get; set; }
         public virtual ProtocolNotebook ProtocolNotebook { get; set; }

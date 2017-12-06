@@ -150,7 +150,11 @@ namespace NorthWestLabs.Controllers
             }
             return View(client);
         }
-
+        // GET: Client
+        public ActionResult ClientNewWorkOrder()
+        {
+            return View();
+        }
 
 
 
