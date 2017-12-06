@@ -71,34 +71,38 @@ namespace NorthWestLabs.Controllers
             ViewBag.ordernumber = ordernum;
 
             //need a list of assays where the work order is equal to the ordernum
-            List<AssayOrder> assays = new List<AssayOrder>();
+
+            List<AssayOrderWithTestResults> AssayOrderList = new List<AssayOrderWithTestResults>();
+
+            //List<AssayOrder> assays = new List<AssayOrder>();
 
             IEnumerable<AssayOrder> AssayList = db.AssayOrders.ToList();
             IEnumerable<TestResult> TestResList = db.TestResults.ToList();
-            Dictionary<int, TestResult> TestResDictionary = new Dictionary<int, TestResult>();
+            //Dictionary<int, TestResult> TestResDictionary = new Dictionary<int, TestResult>();
             foreach (AssayOrder item in AssayList)
             {
 
                 if (item.WorkOrderID == ordernum)
                 {
-                    assays.Add(item);
+                    AssayOrderWithTestResults assayOrder = new AssayOrderWithTestResults();
+                    //assays.Add(item);
+                    assayOrder.AssayOrder = item;
 
                     foreach(TestResult val in TestResList)
                     {
                         if(val.AssayOrderID == item.AssayOrderID)
                         {
-                            TestResDictionary.Add(item.AssayOrderID, val);
+                            //TestResDictionary.Add(item.AssayOrderID, val);
+                            assayOrder.testResults.Add(val);
                         }
                     }
-
-                    
-                    
+                    AssayOrderList.Add(assayOrder);                          
                 }
             }
 
-            ViewBag.testresults = TestResDictionary;
+            //ViewBag.testresults = TestResDictionary;
 
-            return View(assays);
+            return View(AssayOrderList);
         }
         // GET: Client
         public ActionResult ClientAccount()

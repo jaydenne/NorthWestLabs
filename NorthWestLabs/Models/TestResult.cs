@@ -7,7 +7,7 @@ using System.Web;
 
 namespace NorthWestLabs.Models
 {
-    [Table("TestResult")]
+    [Table("TestResults")]
     public class TestResult
     {
         [Key]

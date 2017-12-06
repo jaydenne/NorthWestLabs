@@ -171,6 +171,7 @@
     <Compile Include="Models\AssayOrder.cs" />
     <Compile Include="Models\AssayOrderComment.cs" />
     <Compile Include="Models\AssayOrderReport.cs" />
+    <Compile Include="Models\AssayOrderWithTestResults.cs" />
     <Compile Include="Models\Authorization.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\ClientComment.cs" />
@@ -408,6 +409,7 @@
     <Content Include="Views\Shared\_NavbarPartial.cshtml" />
     <Content Include="Views\Seattle\SeattleIndex.cshtml" />
     <Content Include="Views\Seattle\OrderSummary.cshtml" />
+    <Content Include="Views\Client\ClientAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
