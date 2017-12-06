@@ -158,6 +158,7 @@
     <Compile Include="Controllers\CompoundsController.cs" />
     <Compile Include="Controllers\Clients2Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InvoicesController.cs" />
     <Compile Include="Controllers\SeattleController.cs" />
     <Compile Include="Controllers\SingaporeController.cs" />
     <Compile Include="Controllers\WorkOrdersController.cs" />
@@ -215,6 +216,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="css\agency.css" />
     <Content Include="css\agency.min.css" />
+    <Content Include="css\BeccaStyles.css" />
     <Content Include="css\myStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -403,11 +405,6 @@
     <Content Include="Views\Seattle\InvioceItems\Details.cshtml" />
     <Content Include="Views\Seattle\InvioceItems\Edit.cshtml" />
     <Content Include="Views\Seattle\InvioceItems\Index.cshtml" />
-    <Content Include="Views\Seattle\Invoices\Create.cshtml" />
-    <Content Include="Views\Seattle\Invoices\Delete.cshtml" />
-    <Content Include="Views\Seattle\Invoices\Details.cshtml" />
-    <Content Include="Views\Seattle\Invoices\Edit.cshtml" />
-    <Content Include="Views\Seattle\Invoices\Index.cshtml" />
     <Content Include="Views\Seattle\LiteratureReferences\Create.cshtml" />
     <Content Include="Views\Seattle\LiteratureReferences\Delete.cshtml" />
     <Content Include="Views\Seattle\LiteratureReferences\Details.cshtml" />
@@ -468,6 +465,12 @@
     <Content Include="Views\WorkOrders\Details.cshtml" />
     <Content Include="Views\WorkOrders\Edit.cshtml" />
     <Content Include="Views\WorkOrders\Index.cshtml" />
+    <Content Include="Views\Invoices\Create.cshtml" />
+    <Content Include="Views\Invoices\Delete.cshtml" />
+    <Content Include="Views\Invoices\Details.cshtml" />
+    <Content Include="Views\Invoices\Edit.cshtml" />
+    <Content Include="Views\Invoices\Index.cshtml" />
+    <Content Include="Views\Client\ClientInfoEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

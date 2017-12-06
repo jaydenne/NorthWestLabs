@@ -1,12 +1,13 @@
-﻿@model  IEnumerable<NorthWestLabs.Models.AssayOrder>
+﻿@model IEnumerable<NorthWestLabs.Models.AssayOrder>
+
 @{
     ViewBag.Title = "ClientOrderStatus";
 }
 
-<h2>Order Details</h2>
-@foreach (var assay in Model)
+<h2>aaa @ViewBag.ordernumber</h2>
+@foreach (var assayorder in Model)
 {
-    <button class="accordion"><h3>@assay</h3></button>
+    <button class="accordion"><h3>@assayorder.AssayOrderID bbb</h3></button>
     <div class="panel">
 
         accordian stuff one.
@@ -17,11 +18,7 @@
 
 
 }
-<button class="accordion"><h3>ITEM 1</h3></button>
-<div class="panel">
 
-     accordian stuff one. 
-</div>
 
 
 

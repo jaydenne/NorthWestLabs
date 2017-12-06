@@ -18,7 +18,7 @@
         <p>
             View past and current orders including test status and test results.
         </p>
-        @Html.ActionLink("Order Summary", "ClientOrdersSummary", "Client", null, new { @class = "btn btn-primary btn default" }) 
+        @Html.ActionLink("Order Summary", "ClientOrdersSummary", "Client", new { id = 3 }, new { @class = "btn btn-primary btn default" }) 
      </div>
     <div class="col-md-1"></div>
     <div class="col-md-5 well">
@@ -37,7 +37,7 @@
         <p>
             Update your company information.
         </p>
-        @Html.ActionLink("Client Information", "ClientInfo", "Client", new { id = 2}, new { @class = "btn btn-primary btn default" })
+        @Html.ActionLink("Client Information", "ClientInfo", "Client", new { id = 3}, new { @class = "btn btn-primary btn default" })
     </div>
     <div class="col-md-1"></div>
     <div class="col-md-5 well">
@@ -49,3 +49,5 @@
     </div>
    
 </div>
+
+

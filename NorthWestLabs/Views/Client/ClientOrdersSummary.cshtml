@@ -20,10 +20,11 @@
        
             <tr >
                 <td>
-                    order.OrderID
+                    @order.WorkOrderID
                 </td>
                 <td>
-                    order.OrderDate
+                    @order.DateTime
+                    <!--do we want to add a work order description field to help identify them on this page. -->
                 </td>
                 <td>
                     @Html.ActionLink("View Details", "ClientOrderStatus", "Client", new { ordernum = order.WorkOrderID }, null)
