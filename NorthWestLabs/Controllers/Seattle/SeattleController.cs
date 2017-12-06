@@ -33,7 +33,7 @@ namespace NorthWestLabs.Controllers
         public ActionResult SeattleIndex()
         {
 
-            Client myEmployee = db.Clients.Find(GetEmployeeID());
+            Employee myEmployee = db.Employees.Find(GetEmployeeID());
 
             return View(myEmployee);
         }
