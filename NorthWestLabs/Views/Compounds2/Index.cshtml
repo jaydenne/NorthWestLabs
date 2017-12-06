@@ -1,0 +1,129 @@
+﻿@model IEnumerable<NorthWestLabs.Models.Compound>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LTNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SequenceCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompoundName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateArrived)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReceivedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateDue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Appearance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MolecularMass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConfirmationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaxTotalDose)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActualWeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LTNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SequenceCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompoundName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateArrived)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReceivedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateDue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Appearance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MolecularMass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConfirmationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaxTotalDose)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActualWeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CompoundID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CompoundID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CompoundID })
+        </td>
+    </tr>
+}
+
+</table>

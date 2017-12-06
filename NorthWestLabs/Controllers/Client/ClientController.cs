@@ -16,7 +16,7 @@ namespace NorthWestLabs.Controllers
 
         public int GetClientID()
         {
-            int ClientID=0;
+            int ClientID = 0;
             IEnumerable<Client> ClientList = db.Clients.ToList();
             foreach (Client myClient in ClientList)
             {
@@ -27,22 +27,22 @@ namespace NorthWestLabs.Controllers
             }
 
             return ClientID;
-        } 
+        }
         // GET: Client
         public ActionResult Index()
         {
 
             Client myClient = db.Clients.Find(GetClientID());
-           
+
             return View(myClient);
         }
-        
+
         // GET: Client
         public ActionResult ClientInfo()
         {
-            
+
             Client client = db.Clients.Find(GetClientID());
-            
+
 
             return View(client);
         }
@@ -52,18 +52,18 @@ namespace NorthWestLabs.Controllers
         {
 
             List<WorkOrder> NewOrders = new List<WorkOrder>();
-            IEnumerable<WorkOrder> workorderList = db.WorkOrders.ToList(); 
+            IEnumerable<WorkOrder> workorderList = db.WorkOrders.ToList();
 
-            
+
             foreach (WorkOrder item in workorderList)
             {
-                if(item.ClientID == GetClientID())
+                if (item.ClientID == GetClientID())
                 {
-                    NewOrders.Add(item); 
+                    NewOrders.Add(item);
                 }
             }
-                return View(NewOrders);
-        
+            return View(NewOrders);
+
         }
         // GET: Client
         public ActionResult ClientOrderStatus(int? ordernum)
@@ -88,15 +88,15 @@ namespace NorthWestLabs.Controllers
                     //assays.Add(item);
                     assayOrder.AssayOrder = item;
 
-                    foreach(TestResult val in TestResList)
+                    foreach (TestResult val in TestResList)
                     {
-                        if(val.AssayOrderID == item.AssayOrderID)
+                        if (val.AssayOrderID == item.AssayOrderID)
                         {
                             //TestResDictionary.Add(item.AssayOrderID, val);
                             assayOrder.testResults.Add(val);
                         }
                     }
-                    AssayOrderList.Add(assayOrder);                          
+                    AssayOrderList.Add(assayOrder);
                 }
             }
 
@@ -150,11 +150,9 @@ namespace NorthWestLabs.Controllers
             }
             return View(client);
         }
-        // GET: Client
-        public ActionResult ClientNewWorkOrder()
-        {
-            return View();
-        }
+
+
+        
 
 
 

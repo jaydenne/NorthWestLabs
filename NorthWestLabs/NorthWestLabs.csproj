@@ -154,7 +154,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClientPortalOrdersController.cs" />
     <Compile Include="Controllers\Client\ClientController.cs" />
+    <Compile Include="Controllers\Compounds2Controller.cs" />
     <Compile Include="Controllers\Seattle\TestsController.cs" />
     <Compile Include="Controllers\Singapore\CompoundsController.cs" />
     <Compile Include="Controllers\Client\Clients2Controller.cs" />
@@ -410,7 +412,15 @@
     <Content Include="Views\Seattle\SeattleIndex.cshtml" />
     <Content Include="Views\Seattle\OrderSummary.cshtml" />
     <Content Include="Views\Client\ClientAccount.cshtml" />
-    <Content Include="Views\Client\ClientNewWorkOrder.cshtml" />
+    <Content Include="Views\Compounds2\Create.cshtml" />
+    <Content Include="Views\Compounds2\Delete.cshtml" />
+    <Content Include="Views\Compounds2\Details.cshtml" />
+    <Content Include="Views\Compounds2\Edit.cshtml" />
+    <Content Include="Views\Compounds2\Index.cshtml" />
+    <Content Include="Views\ClientPortalOrders\ClientNewWorkOrder.cshtml" />
+    <Content Include="Views\ClientPortalOrders\OrderAddCompound.cshtml" />
+    <Content Include="Views\ClientPortalOrders\WorkOrderMain.cshtml" />
+    <Content Include="Views\ClientPortalOrders\OrderAddAssayOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
