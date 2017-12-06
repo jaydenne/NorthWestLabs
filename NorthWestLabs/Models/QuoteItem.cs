@@ -11,6 +11,7 @@ namespace NorthWestLabs.Models
     [Table("QuoteItem")]
     public class QuoteItem
     {
+        [Key]
         public int QuoteItemID { get; set; }
         public int QuoteID { get; set; }
         public int AssayID { get; set; }

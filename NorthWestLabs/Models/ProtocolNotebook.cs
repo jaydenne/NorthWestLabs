@@ -9,7 +9,7 @@ namespace NorthWestLabs.Models
 {
 
     [Table("ProtocolNotebook")]
-    public partial class ProtocolNotebook
+    public class ProtocolNotebook
     {
     
         [Key]
@@ -24,12 +24,12 @@ namespace NorthWestLabs.Models
         public string CreatedBy { get; set; }
         public System.DateTime CreatedDate { get; set; }
     
-        /*public virtual ICollection<AssayOrder> AssayOrders { get; set; }
-        public virtual ICollection<ConditionalApproval> ConditionalApprovals { get; set; }
-        public virtual ICollection<InvioceItem> InvioceItems { get; set; }
-        public virtual ICollection<LiteratureReference> LiteratureReferences { get; set; }
+        //public virtual ICollection<AssayOrder> AssayOrders { get; set; }
+        //public virtual ICollection<ConditionalApproval> ConditionalApprovals { get; set; }
+        //public virtual ICollection<InvioceItem> InvioceItems { get; set; }
+        //public virtual ICollection<LiteratureReference> LiteratureReferences { get; set; }
         public virtual Protocol Protocol { get; set; }
-        public virtual ICollection<QuoteItem> QuoteItems { get; set; }
-        public virtual ICollection<Test> Tests { get; set; }*/
+        //public virtual ICollection<QuoteItem> QuoteItems { get; set; }
+        //public virtual ICollection<Test> Tests { get; set; }
     }
 }
