@@ -154,6 +154,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AssayOrderController.cs" />
     <Compile Include="Controllers\ClientPortalOrdersController.cs" />
     <Compile Include="Controllers\Client\ClientController.cs" />
     <Compile Include="Controllers\Compounds2Controller.cs" />
@@ -211,6 +212,7 @@
     <Compile Include="Models\TestTube.cs" />
     <Compile Include="Models\WorkOrder.cs" />
     <Compile Include="Models\WorkOrderComment.cs" />
+    <Compile Include="Models\WorkOrderWithDetails.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -412,6 +414,12 @@
     <Content Include="Views\Seattle\SeattleIndex.cshtml" />
     <Content Include="Views\Seattle\OrderSummary.cshtml" />
     <Content Include="Views\Client\ClientAccount.cshtml" />
+    <Content Include="Views\Client\ClientNewWorkOrder.cshtml" />
+    <Content Include="Views\AssayOrder23\Create.cshtml" />
+    <Content Include="Views\AssayOrder23\Delete.cshtml" />
+    <Content Include="Views\AssayOrder23\Details.cshtml" />
+    <Content Include="Views\AssayOrder23\Edit.cshtml" />
+    <Content Include="Views\AssayOrder23\Index.cshtml" />
     <Content Include="Views\Compounds2\Create.cshtml" />
     <Content Include="Views\Compounds2\Delete.cshtml" />
     <Content Include="Views\Compounds2\Details.cshtml" />

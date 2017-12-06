@@ -1,4 +1,5 @@
 ﻿using NorthWestLabs.DAL;
+using NorthWestLabs.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,26 @@ namespace NorthWestLabs.Controllers
     public class SingaporeController : Controller
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
+        public int GetEmployeeID()
+        {
+            int EmployeeID = 0;
+            IEnumerable<Employee> EmployeeList = db.Employees.ToList();
+            foreach (Employee myEmployee in EmployeeList)
+            {
+                if (User.Identity.Name == myEmployee.UserName)
+                {
+                    EmployeeID = myEmployee.EmployeeID;
+                }
+            }
+
+            return EmployeeID;
+        }
 
         // GET: Singapore
         public ActionResult Index()
         {
-            return View();
+            Employee myEmployee = db.Employees.Find(GetEmployeeID());
+            return View(myEmployee);
         }
 
 

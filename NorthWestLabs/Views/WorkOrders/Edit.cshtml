@@ -1,4 +1,4 @@
-﻿@model NorthWestLabs.Models.WorkOrder
+﻿@model NorthWestLabs.Models.WorkOrderWithDetails
 
 @{
     ViewBag.Title = "Edit";
@@ -11,40 +11,40 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>WorkOrder</h4>
+        <h4>Work Order Information</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.WorkOrderID)
+        @Html.HiddenFor(model => model.workOrder.WorkOrderID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ClientID, "Company Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.workOrder.ClientID, "Company Name", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("ClientID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ClientID, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.workOrder.ClientID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.QuoteID, "QuoteID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.workOrder.QuoteID, "QuoteID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("QuoteID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.QuoteID, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.workOrder.QuoteID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DiscountRate, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.workOrder.DiscountRate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DiscountRate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DiscountRate, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.workOrder.DiscountRate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.workOrder.DiscountRate, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DateTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.workOrder.DateTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DateTime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DateTime, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.workOrder.DateTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.workOrder.DateTime, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -56,53 +56,42 @@
     </div>
 }
 
-@*@model IEnumerable<NorthWestLabs.Models.AssayOrderWithTestResults>
 
-@{
-    ViewBag.Title = "ClientOrderStatus";
-}*@
-
-@*@Html.ActionLink("Back to Order Summary", "Client") | @Html.ActionLink("Back to Client Portal", "Index")*@
-
-
-<h2>Order Number @ViewBag.ordernumber</h2>
-@foreach (NorthWestLabs.Models.AssayOrderWithTestResults assayorder in Model)
+@foreach (NorthWestLabs.Models.AssayOrderWithTestResults assayorder in Model.assayOrderWithTestResultsList)
 {
     <button class="accordion"><h3>Assay @assayorder.AssayOrder.AssayID ID:@assayorder.AssayOrder.AssayOrderID </h3><p>@assayorder.AssayOrder.ProtocolNotebook.AssayName</p></button>
     <div class="panel">
 
+        <div style="padding-top:10px; float:right">@Html.ActionLink("Edit Assay Order", "Edit", "WorkOrders", new { id = Model.workOrder.WorkOrderID }, new { @class = "btn btn-primary btn default" })</div>
         <strong>Assay Name</strong> @assayorder.AssayOrder.ProtocolNotebook.AssayName<br />
         <strong>Assay Description</strong> @assayorder.AssayOrder.ProtocolNotebook.Description<br />
         <strong>Priority Level</strong> @assayorder.AssayOrder.PriorityLevel<br />
 
-
-
         <table class="table">
             <tr>
                 <th>
-                    LTNumber
+                    LT Number
                 </th>
                 <th>
-                    Test.Name
+                    Test Name
                 </th>
                 <th>
-                    RunNumber
+                    Run Number
                 </th>
                 <th>
-                    RunAgain
+                    Run Again
                 </th>
-
                 <th>
-                    ScheduleStart
+                    Schedule Start
                 </th>
                 <th>
                     Status
                 </th>
                 <th>
-                    StatusUpdatedDate
+                    Status Updated Date
                 </th>
                 <th>
-                    TestTube.
+                    Test Tube
                 </th>
                 <th>
                     Results
@@ -136,35 +125,16 @@
                         <td>
                             @item.StatusUpdatedDate
                         </td>
-
-
                         <td>
-                            item.TestTube.
+                            item.TestTube
                         </td>
-
                     </tr>
-
                 }
             }
-
         </table>
-
-
         <br />
     </div>
-
-
-
-
-
                 }
-
-<br /><br /><br /><br /><br /><br /><br />
-
-
-
-
-
 
 <script>
     var acc = document.getElementsByClassName("accordion");
@@ -186,6 +156,3 @@
         }
     }
 </script>
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
