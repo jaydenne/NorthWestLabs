@@ -27,6 +27,7 @@ namespace NorthWestLabs.Controllers
             //IEnumerable<Employee> EmployeList = db.Employees.ToList();
             
             String SavedPassword=null;
+            String ClientID = null;
             //string SavedHash;
 
             foreach(Client ClientItem in ClientList)
@@ -40,7 +41,6 @@ namespace NorthWestLabs.Controllers
             if(string.Equals(password, SavedPassword))
             {
                 FormsAuthentication.SetAuthCookie(user, rememberMe);
-
                 if (!string.IsNullOrEmpty(returnUrl))
                 {
                     return Redirect(returnUrl);
