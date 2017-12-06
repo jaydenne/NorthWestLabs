@@ -54,7 +54,7 @@ namespace NorthWestLabs.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Clients.Add(client);
+                //db.Clients.Add(client);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
