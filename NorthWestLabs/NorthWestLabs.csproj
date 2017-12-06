@@ -412,6 +412,9 @@
     <Content Include="Views\Seattle\OrderSummary.cshtml" />
     <Content Include="Views\Client\ClientAccount.cshtml" />
     <Content Include="Views\Client\ClientNewWorkOrder.cshtml" />
+    <Content Include="Views\Seattle\ManagementReports.cshtml" />
+    <Content Include="Views\Seattle\EmployeeQuotes.cshtml" />
+    <Content Include="Views\Seattle\Billing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

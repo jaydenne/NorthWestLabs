@@ -177,7 +177,17 @@ namespace NorthWestLabs.Controllers
             base.Dispose(disposing);
         }
 
-        
-        
+        public ActionResult ManagementReports()
+        {
+            return View();
+        }
+        public ActionResult EmployeeQuotes()
+        {
+            return View();
+        }
+        public ActionResult Billing()
+        {
+            return View();
+        }
     }
 }
