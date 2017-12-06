@@ -5,7 +5,7 @@
 <h2> </h2>
 
 <div class="jumbotron">
-    <h1>Welcome @Model.CompanyName</h1>
+    <h1>Welcome Model.CompanyName</h1>
 </div>
 
 <div class="row">
@@ -37,7 +37,7 @@
         <p>
             Update your company information.
         </p>
-        @Html.ActionLink("Client Information", "ClientInfo", "Client", new { clientid = 2}, new { @class = "btn btn-primary btn default" })
+        @Html.ActionLink("Client Information", "ClientInfo", "Client", new { id = 2}, new { @class = "btn btn-primary btn default" })
     </div>
     <div class="col-md-1"></div>
     <div class="col-md-5 well">

@@ -10,17 +10,17 @@ using NorthWestLabs.Models;
 
 namespace NorthWestLabs.Controllers
 {
-    public class ManageClientsController : Controller
+    public class TestingClientsController : Controller
     {
         private NorthwestLabsEntitiesDB db = new NorthwestLabsEntitiesDB();
 
-        // GET: ManageClients
+        // GET: TestingClients
         public ActionResult Index()
         {
             return View(db.Clients.ToList());
         }
 
-        // GET: ManageClients/Details/5
+        // GET: TestingClients/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,26 +35,22 @@ namespace NorthWestLabs.Controllers
             return View(client);
         }
 
-        // GET: ManageClients/Create
+        // GET: TestingClients/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: ManageClients/Create
+        // POST: TestingClients/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CompanyName,ContactFirstName,ContactLastName,Address1,Address2,City,State,Country,Zip,Phone,Email,Username,PasswordHash,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] Client client)
         {
-           
-            client.ModifiedDate = DateTime.Now;
-            client.CreatedDate = DateTime.Now;
-
             if (ModelState.IsValid)
             {
-                //db.Clients.Add(client);
+                db.Clients.Add(client);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -62,7 +58,7 @@ namespace NorthWestLabs.Controllers
             return View(client);
         }
 
-        // GET: ManageClients/Edit/5
+        // GET: TestingClients/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,7 +73,7 @@ namespace NorthWestLabs.Controllers
             return View(client);
         }
 
-        // POST: ManageClients/Edit/5
+        // POST: TestingClients/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -93,7 +89,7 @@ namespace NorthWestLabs.Controllers
             return View(client);
         }
 
-        // GET: ManageClients/Delete/5
+        // GET: TestingClients/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,7 +104,7 @@ namespace NorthWestLabs.Controllers
             return View(client);
         }
 
-        // POST: ManageClients/Delete/5
+        // POST: TestingClients/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
