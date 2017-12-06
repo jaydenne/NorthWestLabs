@@ -460,11 +460,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\ClientsManage\Create.cshtml" />
-    <Content Include="Views\ClientsManage\Delete.cshtml" />
-    <Content Include="Views\ClientsManage\Details.cshtml" />
-    <Content Include="Views\ClientsManage\Edit.cshtml" />
-    <Content Include="Views\ClientsManage\Index.cshtml" />
     <Content Include="scss\agency.scss" />
     <Content Include="scss\_contact.scss" />
     <Content Include="scss\_footer.scss" />
@@ -700,10 +695,14 @@
     <Content Include="Views\WorkOrders\Details.cshtml" />
     <Content Include="Views\WorkOrders\Edit.cshtml" />
     <Content Include="Views\WorkOrders\Index.cshtml" />
+    <Content Include="Views\Seattle\ClientIndex.cshtml" />
+    <Content Include="Views\Seattle\ClientDetails.cshtml" />
+    <Content Include="Views\Seattle\CreateClient.cshtml" />
+    <Content Include="Views\Seattle\EditClients.cshtml" />
+    <Content Include="Views\Seattle\DeleteClients.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Seattle\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
