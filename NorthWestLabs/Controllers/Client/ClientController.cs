@@ -38,17 +38,17 @@ namespace NorthWestLabs.Controllers
         }
         
         // GET: Client
-        public ActionResult ClientInfo(int? id)
+        public ActionResult ClientInfo()
         {
             
-            Client client = db.Clients.Find(id);
+            Client client = db.Clients.Find(GetClientID());
             
 
             return View(client);
         }
 
         // GET: Client
-        public ActionResult ClientOrdersSummary(int? id)
+        public ActionResult ClientOrdersSummary()
         {
 
             List<WorkOrder> NewOrders = new List<WorkOrder>();
@@ -57,7 +57,7 @@ namespace NorthWestLabs.Controllers
             
             foreach (WorkOrder item in workorderList)
             {
-                if(item.ClientID == id)
+                if(item.ClientID == GetClientID())
                 {
                     NewOrders.Add(item); 
                 }
@@ -74,18 +74,30 @@ namespace NorthWestLabs.Controllers
             List<AssayOrder> assays = new List<AssayOrder>();
 
             IEnumerable<AssayOrder> AssayList = db.AssayOrders.ToList();
+            IEnumerable<TestResult> TestResList = db.TestResults.ToList();
+            Dictionary<int, TestResult> TestResDictionary = new Dictionary<int, TestResult>();
             foreach (AssayOrder item in AssayList)
             {
+
                 if (item.WorkOrderID == ordernum)
                 {
                     assays.Add(item);
+
+                    foreach(TestResult val in TestResList)
+                    {
+                        if(val.AssayOrderID == item.AssayOrderID)
+                        {
+                            TestResDictionary.Add(item.AssayOrderID, val);
+                        }
+                    }
+
+                    
+                    
                 }
             }
 
-            
+            ViewBag.testresults = TestResDictionary;
 
-           // WorkOrder workorder = db.WorkOrders.Find(ordernum);
-           
             return View(assays);
         }
         // GET: Client
