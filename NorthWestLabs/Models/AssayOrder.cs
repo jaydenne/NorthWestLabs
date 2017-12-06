@@ -24,6 +24,7 @@ namespace NorthWestLabs.Models
        public virtual PriorityLevel PriorityLevel { get; set; }
         public virtual ProtocolNotebook ProtocolNotebook { get; set; }
         public virtual WorkOrder WorkOrder { get; set; }
+        public virtual TestResult TestResult { get; set; }
        // public virtual ICollection<AssayOrderComment> AssayOrderComments { get; set; }
        // public virtual ICollection<AssayOrderReport> AssayOrderReports { get; set; }
        // public virtual ICollection<TestResult> TestResults { get; set; }
