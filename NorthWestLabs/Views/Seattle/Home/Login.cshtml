@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+    <label for="inputUser">Username</label>
+    @Html.TextBox("UserName")
+    <label for="inputPassword">Password</label>
+    @Html.Password("Password")
+    <button type="submit">Login</button>
+}
+
+<br />
+<br />
+<br />
+
+<p class="text-muted"><i>New Client?  Please call 555-867-5309 to speak with a one of our dedicated team members, who will help you make an account and get your order placed! </i></p>

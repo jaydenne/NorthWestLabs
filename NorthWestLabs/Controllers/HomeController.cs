@@ -1,4 +1,5 @@
-﻿using NorthWestLabs.Models;
+﻿using NorthWestLabs.DAL;
+using NorthWestLabs.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace NorthWestLabs.Controllers
 {
     public class HomeController : Controller
     {
-        private NorthwestLabsEntitiesDB db = new NorthwestLabsEntitiesDB();
+        private NorthwestLabsContext db = new NorthwestLabsContext();
         
         public ActionResult Login()
         {
@@ -23,7 +24,7 @@ namespace NorthWestLabs.Controllers
             String user = form["Username"].ToString();
             String password = form["Password"].ToString();
             IEnumerable<Client> ClientList = db.Clients.ToList();
-            IEnumerable<Employee> EmployeList = db.Employees.ToList();
+            //IEnumerable<Employee> EmployeList = db.Employees.ToList();
             
             String SavedPassword=null;
             //string SavedHash;
@@ -48,13 +49,13 @@ namespace NorthWestLabs.Controllers
                 return RedirectToAction("Index","Client");
 
             }
-            foreach (Employee EmployeeItem in EmployeList)
+           /* foreach (Employee EmployeeItem in EmployeList)
             {
                 if (user == EmployeeItem.UserName)
                 {
                     SavedPassword = EmployeeItem.Password;
                 }
-            }
+            }*/
             if (string.Equals(password, SavedPassword))
             {
                 FormsAuthentication.SetAuthCookie(user, rememberMe);

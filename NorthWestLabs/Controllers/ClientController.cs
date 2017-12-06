@@ -1,4 +1,5 @@
-﻿using NorthWestLabs.Models;
+﻿using NorthWestLabs.DAL;
+using NorthWestLabs.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,8 +13,8 @@ using System.Web.Mvc;
 namespace NorthWestLabs.Controllers
 {
     public class ClientController : Controller
-    {
-        private NorthwestLabsEntitiesDB db = new NorthwestLabsEntitiesDB();
+    {/*
+        private NorthwestLabsContext db = new NorthwestLabsContext();
 
         // GET: Client
         public ActionResult Index()
@@ -88,5 +89,6 @@ namespace NorthWestLabs.Controllers
             return View();
         }
 
+*/
     }
 }
