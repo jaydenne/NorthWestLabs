@@ -705,6 +705,7 @@
     <Content Include="Views\ProtocolNotebooks\Details.cshtml" />
     <Content Include="Views\ProtocolNotebooks\Edit.cshtml" />
     <Content Include="Views\ProtocolNotebooks\Index.cshtml" />
+    <Content Include="Views\Home\Catalog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
