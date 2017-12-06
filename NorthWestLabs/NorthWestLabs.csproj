@@ -166,7 +166,6 @@
     <Compile Include="Models\AssayOrderComment.cs" />
     <Compile Include="Models\AssayOrderReport.cs" />
     <Compile Include="Models\Authorization.cs" />
-    <Compile Include="Models\Catalog.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\ClientComment.cs" />
     <Compile Include="Models\Compound.cs" />
