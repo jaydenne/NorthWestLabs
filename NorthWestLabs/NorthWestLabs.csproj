@@ -183,7 +183,6 @@
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\LiteratureReference.cs" />
     <Compile Include="Models\Material.cs" />
-    <Compile Include="Models\NorthwestLabsModels1.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\PaymentData.cs" />
     <Compile Include="Models\PriorityLevel.cs" />
@@ -193,7 +192,6 @@
     <Compile Include="Models\QuoteItem.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\Status.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\Term.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\TestCondition.cs" />
