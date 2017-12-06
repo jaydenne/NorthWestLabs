@@ -8,7 +8,7 @@ using System.Web;
 namespace NorthWestLabs.Models
 {
 
-    [Table("Client")]
+    [Table("AssayOrder")]
     public class AssayOrder
     {
         [Key]

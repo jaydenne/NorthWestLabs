@@ -160,6 +160,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SeattleController.cs" />
     <Compile Include="Controllers\SingaporeController.cs" />
+    <Compile Include="Controllers\WorkOrdersController.cs" />
     <Compile Include="DAL\NorthwestLabsContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -462,6 +463,11 @@
     <Content Include="Views\Clients2\Details.cshtml" />
     <Content Include="Views\Clients2\Edit.cshtml" />
     <Content Include="Views\Clients2\Index.cshtml" />
+    <Content Include="Views\WorkOrders\Create.cshtml" />
+    <Content Include="Views\WorkOrders\Delete.cshtml" />
+    <Content Include="Views\WorkOrders\Details.cshtml" />
+    <Content Include="Views\WorkOrders\Edit.cshtml" />
+    <Content Include="Views\WorkOrders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
