@@ -15,6 +15,47 @@ namespace NorthWestLabs.Controllers
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
 
+        public int GetEmployeeID()
+        {
+            int EmployeeID = 0;
+            IEnumerable<Employee> EmployeeList = db.Employees.ToList();
+            foreach (Employee myEmployee in EmployeeList)
+            {
+                if (User.Identity.Name == myEmployee.UserName)
+                {
+                    EmployeeID = myEmployee.EmployeeID;
+                }
+            }
+
+            return EmployeeID;
+        }
+
+        public ActionResult SeattleIndex()
+        {
+
+            Client myEmployee = db.Clients.Find(GetEmployeeID());
+
+            return View(myEmployee);
+        }
+
+        public ActionResult OrderSummary(int? id)
+        {
+
+            List<WorkOrder> NewOrders = new List<WorkOrder>();
+            IEnumerable<WorkOrder> workorderList = db.WorkOrders.ToList();
+
+
+            foreach (WorkOrder item in workorderList)
+            {
+                if (item.ClientID == id)
+                {
+                    NewOrders.Add(item);
+                }
+            }
+            return View(NewOrders);
+
+        }
+
         // GET: ManageClients
         public ActionResult ClientIndex()
         {
@@ -124,5 +165,8 @@ namespace NorthWestLabs.Controllers
             }
             base.Dispose(disposing);
         }
+
+        
+        
     }
 }
