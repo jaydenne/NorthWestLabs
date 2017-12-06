@@ -1,0 +1,57 @@
+﻿@model IEnumerable<NorthWestLabs.Models.ProtocolNotebook>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Protocol.ProtocolName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssayName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstDaysToComplete)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequireAnimalTesting)
+        </th>
+       <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Protocol.ProtocolName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssayName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstDaysToComplete)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequireAnimalTesting)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AssayID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AssayID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AssayID })
+        </td>
+    </tr>
+}
+
+</table>

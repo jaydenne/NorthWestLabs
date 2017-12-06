@@ -1,321 +1,78 @@
-﻿
+﻿@model IEnumerable<NorthWestLabs.Models.ProtocolNotebook>
 @{
     ViewBag.Title = "Catalog";
 }
 
-<br />
-<br />
+<h2>Catalog</h2>
 
-<!-- Portfolio Grid -->
 <section class="bg-light" id="portfolio">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Pharmacology Catalog</h2>
-                <h3 class="section-subheading text-muted">Examine our most common tests</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-sm-6 portfolio-item">
-                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
+            @{  int iCount = 1;
+                int iCounter = 1;
+                foreach (var item in Model)
+                {
+                    if (iCount % 3 == 0)
+                    {
+                        iCount++;
+                        @: </div>
+                    @:<div class='row'>
+              }
+                    <div class="col-md-4 col-sm-6 portfolio-item">
+                        <a class="portfolio-link" data-toggle="modal" href="@Url.Content("#portfolioModal" + (iCounter++))">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="@Url.Content(item.ImageLocation)" alt="">
+                        </a>
+                        <div class="portfolio-caption">
+                            <h4>@item.AssayName</h4>
+                            @*<p class="text-muted">Illustration</p>*@
                         </div>
                     </div>
-                    <img class="img-fluid" src="../img/portfolio/microscope.jpg" alt="">
-                </a>
-                <div class="portfolio-caption">
-                    <h4>Biochemical Pharmacology</h4>
-                    @*<p class="text-muted">Illustration</p>*@
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 portfolio-item">
-                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="../img/portfolio/plant.jpg" alt="">
-                </a>
-                <div class="portfolio-caption">
-                    <h4>DiscoveryScreen&reg;</h4>
-                    @*<p class="text-muted">Graphic Design</p>*@
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 portfolio-item">
-                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="../img/portfolio/test.jpg" alt="">
-                </a>
-                <div class="portfolio-caption">
-                    <h4>ImmunoScreen&reg;</h4>
-                    @*<p class="text-muted">Identity</p>*@
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 portfolio-item">
-                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="../img/portfolio/pills.png" alt="">
-                </a>
-                <div class="portfolio-caption">
-                    <h4>ProfilingScreen&reg;</h4>
-                    @*<p class="text-muted">Branding</p>*@
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 portfolio-item">
-                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="../img/portfolio/farm.png" alt="">
-                </a>
-                <div class="portfolio-caption">
-                    <h4>PharmaScreen&reg;</h4>
-                    @*<p class="text-muted">Website Design</p>*@
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 portfolio-item">
-                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="../img/portfolio/doctor.jpg" alt="">
-                </a>
-                <div class="portfolio-caption">
-                    <h4>CustomScreen&trade;</h4>
-                    @*<p class="text-muted">Photography</p>*@
-                </div>
-            </div>
+
+                }
+            }
         </div>
     </div>
 </section>
 
-<!-- Portfolio Modals -->
-<!-- Modal 1 -->
-<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl"></div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <div class="modal-body">
-                            <!-- Project Details Go Here -->
-                            <h2>Biochemical Pharmacology</h2>
-                            <p class="item-intro text-muted"></p>
-                            <img class="img-fluid d-block mx-auto" src="img/portfolio/01-full.jpg" alt="">
-                            <p>Found in 25% of all assays.</p>
-                            <ul class="list-inline">      
-                                <li>Completion Time: 12 days</li>
-                                <li>Price: $35.00</li>
-                            </ul>
-                            @*<button class="btn btn-primary" data-dismiss="modal" type="button">
-                                <i class="fa fa-times"></i>
-                                Close Project
-                            </button>*@
+@{  iCounter = 1;
+    foreach (var item in Model)
+    {
+        <div class="portfolio-modal modal fade" id="@Url.Content("portfolioModal" + (iCounter++))" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal">
+                        <div class="lr">
+                            <div class="rl"></div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 mx-auto">
+                                <div class="modal-body">
+                                    <!-- Project Details Go Here -->
+                                    <h2>@item.AssayName</h2>
+                                    <p class="item-intro text-muted"></p>
+                                    <img class="img-fluid d-block mx-auto" src="img/portfolio/01-full.jpg" alt="">
+                                    <p>@item.Description</p>
+                                    <ul class="list-inline">
+                                        <li>Estimated Testing Time: @item.EstDaysToComplete days</li>
+                                       
+                                    </ul>
+                                    @*<button class="btn btn-primary" data-dismiss="modal" type="button">
+                                            <i class="fa fa-times"></i>
+                                            Close Project
+                                        </button>*@
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-<!-- Modal 2 -->
-<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl"></div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <div class="modal-body">
-                            <!-- Project Details Go Here -->
-                            <h2>DiscoveryScreen&reg;</h2>
-                            <p class="item-intro text-muted">Another test</p>
-                            <img class="img-fluid d-block mx-auto" src="img/portfolio/02-full.jpg" alt="">
-                            <p>Test Description</p>
-                            <ul class="list-inline">
-                                
-                                <li>Completion Time: 12 days</li>
-                                <li>Price: $35.00</li>
-
-                            </ul>
-                            @*<button class="btn btn-primary" data-dismiss="modal" type="button">
-                                <i class="fa fa-times"></i>
-                                Close Project
-                            </button>*@
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal 3 -->
-<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl"></div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <div class="modal-body">
-                            <!-- Project Details Go Here -->
-                            <h2>ImmunoScreen&reg;</h2>
-                            <p class="item-intro text-muted">Test Description</p>
-                            <img class="img-fluid d-block mx-auto" src="img/portfolio/03-full.jpg" alt="">
-                            <p>Test Description</p>
-                            <ul class="list-inline">
-                                
-                                <li>Completion Time: 12 days</li>
-                                <li>Price: $35.00</li>
-
-                            </ul>
-                            @*<button class="btn btn-primary" data-dismiss="modal" type="button">
-                                <i class="fa fa-times"></i>
-                                Close Project
-                            </button>*@
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal 4 -->
-<div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl"></div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <div class="modal-body">
-                            <!-- Project Details Go Here -->
-                            <h2>ProfilingScreen&reg; </h2>
-                            <p class="item-intro text-muted">Test Description</p>
-                            <img class="img-fluid d-block mx-auto" src="img/portfolio/04-full.jpg" alt="">
-                            <p>Anoter Test</p>
-                            <ul class="list-inline">
-                                
-                                <li>Completion Time: 12 days</li>
-                                <li>Price: $35.00</li>
-
-                            </ul>
-                            @*<button class="btn btn-primary" data-dismiss="modal" type="button">
-                                <i class="fa fa-times"></i>
-                                Close Project
-                            </button>*@
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal 5 -->
-<div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl"></div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <div class="modal-body">
-                            <!-- Project Details Go Here -->
-                            <h2>PharmaScreen&reg;</h2>
-                            <p class="item-intro text-muted">Test Description</p>
-                            <img class="img-fluid d-block mx-auto" src="img/portfolio/05-full.jpg" alt="">
-                            <p>Another test</p>
-                            <ul class="list-inline">
-                                
-                                <li>Completion Time: 12 days</li>
-                                <li>Price: $35.00</li>
-
-                            </ul>
-                            @*<button class="btn btn-primary" data-dismiss="modal" type="button">
-                                <i class="fa fa-times"></i>
-                                Close Project
-                            </button>*@
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal 6 -->
-<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl"></div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <div class="modal-body">
-                            <!-- Project Details Go Here -->
-                            <h2>CustomScreen&trade;</h2>
-                            <p class="item-intro text-muted">Test Details</p>
-                            <img class="img-fluid d-block mx-auto" src="img/portfolio/06-full.jpg" alt="">
-                            <p>Another Test</p>
-                            <ul class="list-inline">
-                                
-                                <li>Completion Time: 12 days</li>
-                                <li>Price: $35.00</li>
-
-                            </ul>
-                            @*<button class="btn btn-primary" data-dismiss="modal" type="button">
-                                <i class="fa fa-times"></i>
-                                Close Project
-                            </button>*@
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+        }
+    }

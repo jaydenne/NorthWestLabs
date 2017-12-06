@@ -30,6 +30,13 @@ namespace NorthWestLabs.DAL
 
         public System.Data.Entity.DbSet<NorthWestLabs.Models.Term> Terms { get; set; }
 
+        object placeHolderVariable;
+        public System.Data.Entity.DbSet<NorthWestLabs.Models.ProtocolNotebook> ProtocolNotebooks { get; set; }
+
+        public System.Data.Entity.DbSet<NorthWestLabs.Models.Protocol> Protocols { get; set; }
+
+        public System.Data.Entity.DbSet<NorthWestLabs.Models.Test> Tests { get; set; }
+
         /* public virtual DbSet<AssayOrder> AssayOrders { get; set; }
          public virtual DbSet<AssayOrderComment> AssayOrderComments { get; set; }
          public virtual DbSet<AssayOrderReport> AssayOrderReports { get; set; }
