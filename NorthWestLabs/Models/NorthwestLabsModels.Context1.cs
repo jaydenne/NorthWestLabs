@@ -12,7 +12,7 @@ namespace NorthWestLabs.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+    /*
     public partial class NorthwestLabsEntitiesDB : DbContext
     {
         public NorthwestLabsEntitiesDB()
@@ -66,5 +66,5 @@ namespace NorthWestLabs.Models
         public virtual DbSet<TestTube> TestTubes { get; set; }
         public virtual DbSet<WorkOrder> WorkOrders { get; set; }
         public virtual DbSet<WorkOrderComment> WorkOrderComments { get; set; }
-    }
+    }*/
 }

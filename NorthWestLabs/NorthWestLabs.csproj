@@ -195,8 +195,7 @@
     <Compile Include="Controllers\ProtocolNotebooksController.cs" />
     <Compile Include="Controllers\SeattleController.cs" />
     <Compile Include="Controllers\SingaporeController.cs" />
-    <Compile Include="Controllers\TestingClientsController.cs" />
-    <Compile Include="Controllers\testingWorkOrdersController.cs" />
+    <Compile Include="Controllers\TESTClientsController.cs" />
     <Compile Include="DAL\NorthwestLabsContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -214,9 +213,7 @@
       <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Catalog.cs" />
-    <Compile Include="Models\Client.cs">
-      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Client.cs" />
     <Compile Include="Models\ClientComment.cs">
       <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
     </Compile>
@@ -713,6 +710,11 @@
     <Content Include="Views\ProtocolNotebooks\Details.cshtml" />
     <Content Include="Views\ProtocolNotebooks\Edit.cshtml" />
     <Content Include="Views\ProtocolNotebooks\Index.cshtml" />
+    <Content Include="Views\TESTClients\Create.cshtml" />
+    <Content Include="Views\TESTClients\Delete.cshtml" />
+    <Content Include="Views\TESTClients\Details.cshtml" />
+    <Content Include="Views\TESTClients\Edit.cshtml" />
+    <Content Include="Views\TESTClients\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
