@@ -195,6 +195,7 @@
     <Compile Include="Controllers\ProtocolNotebooksController.cs" />
     <Compile Include="Controllers\SeattleController.cs" />
     <Compile Include="Controllers\SingaporeController.cs" />
+    <Compile Include="Controllers\testingWorkOrdersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -375,7 +376,6 @@
     <Content Include="img\portfolio\05-thumbnail.jpg" />
     <Content Include="img\portfolio\06-full.jpg" />
     <Content Include="img\portfolio\06-thumbnail.jpg" />
-    <Content Include="img\science-art.jpg" />
     <Content Include="img\science-back.jpg" />
     <Content Include="img\science-final-edit.jpg" />
     <Content Include="img\science-final.jpg" />
@@ -695,6 +695,17 @@
     <Content Include="Views\WorkOrders\Details.cshtml" />
     <Content Include="Views\WorkOrders\Edit.cshtml" />
     <Content Include="Views\WorkOrders\Index.cshtml" />
+    <Content Include="Views\testingWorkOrders\Create.cshtml" />
+    <Content Include="Views\testingWorkOrders\Delete.cshtml" />
+    <Content Include="Views\testingWorkOrders\Details.cshtml" />
+    <Content Include="Views\testingWorkOrders\Edit.cshtml" />
+    <Content Include="Views\testingWorkOrders\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\ProtocolNotebooks\Create.cshtml" />
+    <Content Include="Views\ProtocolNotebooks\Delete.cshtml" />
+    <Content Include="Views\ProtocolNotebooks\Details.cshtml" />
+    <Content Include="Views\ProtocolNotebooks\Edit.cshtml" />
+    <Content Include="Views\ProtocolNotebooks\Index.cshtml" />
     <Content Include="Views\Seattle\ClientIndex.cshtml" />
     <Content Include="Views\Seattle\ClientDetails.cshtml" />
     <Content Include="Views\Seattle\CreateClient.cshtml" />
