@@ -12,7 +12,8 @@ namespace NorthWestLabs.Models
     public class EmployeeWageInfo
     {
         [Key]
-        public int EmloyeeID { get; set; }
+        public int EmployeeWageInfoID { get; set; }
+        public int EmployeeID { get; set; }
         public Nullable<System.DateTime> LastIncreaseDate { get; set; }
         public Nullable<decimal> LastIncreaseAmount { get; set; }
         public Nullable<decimal> CurrentWage { get; set; }

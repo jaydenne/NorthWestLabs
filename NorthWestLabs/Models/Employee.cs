@@ -25,8 +25,8 @@ namespace NorthWestLabs.Models
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
     
-        public virtual Authorization Authorization { get; set; }
-        public virtual EmployeeBankInfo EmployeeBankInfo { get; set; }
-        public virtual EmployeeWageInfo EmployeeWageInfo { get; set; }
+        //public virtual Authorization Authorization { get; set; }
+        //public virtual EmployeeBankInfo EmployeeBankInfo { get; set; }
+        //public virtual EmployeeWageInfo EmployeeWageInfo { get; set; }
     }
 }

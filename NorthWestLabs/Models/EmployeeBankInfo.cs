@@ -12,6 +12,7 @@ namespace NorthWestLabs.Models
     public class EmployeeBankInfo
     {
         [Key]
+        public int EmployeeBankInfoID { get; set; }
         public int EmployeeID { get; set; }
         public string BankAccount { get; set; }
         public string RoutingNumber { get; set; }

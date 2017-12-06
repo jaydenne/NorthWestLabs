@@ -24,56 +24,71 @@ namespace NorthWestLabs.Controllers
             String user = form["Username"].ToString();
             String password = form["Password"].ToString();
             IEnumerable<Client> ClientList = db.Clients.ToList();
-            //IEnumerable<Employee> EmployeList = db.Employees.ToList();
-            
-            String SavedPassword=null;
-            String ClientID = null;
-            //string SavedHash;
+            IEnumerable<Employee> EmployeeList = db.Employees.ToList();
+            Boolean SingaporeEmployee = false;
+            Boolean SeattleEmployee = false;
+            String SavedPassword = null;
 
-            foreach(Client ClientItem in ClientList)
+
+            foreach (Client ClientItem in ClientList)
             {
-                if(user == ClientItem.Username)
+                if (user == ClientItem.Username)
                 {
                     SavedPassword = ClientItem.PasswordHash;
                 }
             }
 
-            if(string.Equals(password, SavedPassword))
+            if (string.Equals(password, SavedPassword))
             {
                 FormsAuthentication.SetAuthCookie(user, rememberMe);
                 if (!string.IsNullOrEmpty(returnUrl))
                 {
                     return Redirect(returnUrl);
                 }
-                    
-                return RedirectToAction("Index","Client");
+
+                return RedirectToAction("Index", "Client");
 
             }
-           /* foreach (Employee EmployeeItem in EmployeList)
+            foreach (Employee EmployeeItem in EmployeeList)
             {
                 if (user == EmployeeItem.UserName)
                 {
                     SavedPassword = EmployeeItem.Password;
-                }
-            }*/
-            if (string.Equals(password, SavedPassword))
-            {
-                FormsAuthentication.SetAuthCookie(user, rememberMe);
+                    if (EmployeeItem.Location == "Singapore")
+                    {
+                        SingaporeEmployee = true;
+                    }
+                    else
+                    {
+                        SeattleEmployee = true;
+                    }
 
-                if (!string.IsNullOrEmpty(returnUrl))
+                }
+                if (string.Equals(password, SavedPassword))
                 {
-                    return Redirect(returnUrl);
+                    FormsAuthentication.SetAuthCookie(user, rememberMe);
+
+                    if (!string.IsNullOrEmpty(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else if (SingaporeEmployee)
+                    {
+                        return RedirectToAction("Index", "Singapore");
+                    }
+                    else
+                    {
+                        return RedirectToAction("SeattleIndex", "Seattle");
+
+                    }
                 }
-                
-                return RedirectToAction("Index", "Employee");
 
+                else
+                {
+                    return View();
+                }
             }
-
-            else
-            {
-                return View();
-            }
-
+            return View();
         }
 
         public ActionResult Index()
