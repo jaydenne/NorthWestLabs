@@ -12,28 +12,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.PriorityLevel.ModifiedBy)
+            @Html.DisplayNameFor(model => model.AssayOrderID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ProtocolNotebook.AssayName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.WorkOrder.ModifiedBy)
+            @Html.DisplayNameFor(model => model.WorkOrder.WorkOrderID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ModifiedBy)
+            LTNumber-SequenceCode
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ModifiedDate)
+            @Html.DisplayNameFor(model => model.Compound.CompoundName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CompoundID)
+            @Html.DisplayNameFor(model => model.PriorityLevel.PriorityLevelID)
         </th>
         <th></th>
     </tr>
@@ -41,28 +35,22 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.PriorityLevel.ModifiedBy)
+            @Html.DisplayFor(modelItem => item.AssayOrderID)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ProtocolNotebook.AssayName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.WorkOrder.ModifiedBy)
+            @Html.DisplayFor(modelItem => item.WorkOrder.WorkOrderID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ModifiedBy)
+            @Html.DisplayFor(modelItem => item.Compound.LTNumber) - @Html.DisplayFor(modelItem => item.Compound.SequenceCode)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ModifiedDate)
+            @Html.DisplayFor(modelItem => item.Compound.CompoundName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CompoundID)
+            @Html.DisplayFor(modelItem => item.PriorityLevel.PriorityLevelID)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.AssayOrderID }) |

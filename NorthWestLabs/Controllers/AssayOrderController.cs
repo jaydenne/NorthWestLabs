@@ -18,8 +18,8 @@ namespace NorthWestLabs.Controllers
         // GET: AssayOrder
         public ActionResult Index()
         {
-            var assayOrder = db.AssayOrders.Include(a => a.PriorityLevel).Include(a => a.ProtocolNotebook).Include(a => a.WorkOrder);
-            return View(assayOrder.ToList());
+            IEnumerable<AssayOrder> AssayOrderList = db.AssayOrders.ToList();
+            return View(AssayOrderList);
         }
 
         // GET: AssayOrder/Details/5
