@@ -415,6 +415,11 @@
     <Content Include="Views\Seattle\OrderSummary.cshtml" />
     <Content Include="Views\Client\ClientAccount.cshtml" />
     <Content Include="Views\Client\ClientNewWorkOrder.cshtml" />
+    <Content Include="Views\AssayOrder\Create.cshtml" />
+    <Content Include="Views\AssayOrder\Delete.cshtml" />
+    <Content Include="Views\AssayOrder\Details.cshtml" />
+    <Content Include="Views\AssayOrder\Edit.cshtml" />
+    <Content Include="Views\AssayOrder\Index.cshtml" />
     <Content Include="Views\AssayOrder23\Create.cshtml" />
     <Content Include="Views\AssayOrder23\Delete.cshtml" />
     <Content Include="Views\AssayOrder23\Details.cshtml" />
@@ -429,6 +434,9 @@
     <Content Include="Views\ClientPortalOrders\OrderAddCompound.cshtml" />
     <Content Include="Views\ClientPortalOrders\WorkOrderMain.cshtml" />
     <Content Include="Views\ClientPortalOrders\OrderAddAssayOrder.cshtml" />
+    <Content Include="Views\Seattle\ManagementReports.cshtml" />
+    <Content Include="Views\Seattle\EmployeeQuotes.cshtml" />
+    <Content Include="Views\Seattle\Billing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

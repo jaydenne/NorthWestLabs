@@ -18,7 +18,7 @@ namespace NorthWestLabs.Controllers
         // GET: AssayOrder
         public ActionResult Index()
         {
-            var assayOrder = db.AssayOrder.Include(a => a.PriorityLevel).Include(a => a.ProtocolNotebook).Include(a => a.WorkOrder);
+            var assayOrder = db.AssayOrders.Include(a => a.PriorityLevel).Include(a => a.ProtocolNotebook).Include(a => a.WorkOrder);
             return View(assayOrder.ToList());
         }
 
@@ -29,7 +29,7 @@ namespace NorthWestLabs.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AssayOrder assayOrder = db.AssayOrder.Find(id);
+            AssayOrder assayOrder = db.AssayOrders.Find(id);
             if (assayOrder == null)
             {
                 return HttpNotFound();
@@ -55,7 +55,7 @@ namespace NorthWestLabs.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.AssayOrder.Add(assayOrder);
+                db.AssayOrders.Add(assayOrder);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -73,7 +73,7 @@ namespace NorthWestLabs.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AssayOrder assayOrder = db.AssayOrder.Find(id);
+            AssayOrder assayOrder = db.AssayOrders.Find(id);
             if (assayOrder == null)
             {
                 return HttpNotFound();
@@ -110,7 +110,7 @@ namespace NorthWestLabs.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AssayOrder assayOrder = db.AssayOrder.Find(id);
+            AssayOrder assayOrder = db.AssayOrders.Find(id);
             if (assayOrder == null)
             {
                 return HttpNotFound();
@@ -123,8 +123,8 @@ namespace NorthWestLabs.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            AssayOrder assayOrder = db.AssayOrder.Find(id);
-            db.AssayOrder.Remove(assayOrder);
+            AssayOrder assayOrder = db.AssayOrders.Find(id);
+            db.AssayOrders.Remove(assayOrder);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

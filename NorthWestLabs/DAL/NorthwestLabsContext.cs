@@ -35,8 +35,6 @@ namespace NorthWestLabs.DAL
 
         public System.Data.Entity.DbSet<NorthWestLabs.Models.Test> Tests { get; set; }
 
-        public System.Data.Entity.DbSet<NorthWestLabs.Models.AssayOrder> AssayOrder { get; set; }
-
         public System.Data.Entity.DbSet<NorthWestLabs.Models.PriorityLevel> PriorityLevels { get; set; }
     }
 }
