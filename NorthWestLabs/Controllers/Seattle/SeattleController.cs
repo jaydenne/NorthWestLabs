@@ -41,7 +41,30 @@ namespace NorthWestLabs.Controllers
         public ActionResult OrderSummary(int? id)
         {
             var workOrders = db.WorkOrders.Include(w => w.Client).Include(w => w.QuoteEstimate);
-            return View(db.WorkOrders.ToList());
+            List<AssayOrderWithTestResults> AssayOrderList = new List<AssayOrderWithTestResults>();
+
+            IEnumerable<AssayOrder> AssayList = db.AssayOrders.ToList();
+            IEnumerable<TestResult> TestResList = db.TestResults.ToList();
+
+            foreach(AssayOrder item  in AssayList)
+            {
+                if (item.WorkOrderID == id)
+                {
+                    AssayOrderWithTestResults assayOrder = new AssayOrderWithTestResults();
+                    assayOrder.AssayOrder = item;
+
+                    foreach(TestResult val in TestResList)
+                    {
+                        if (val.AssayOrderID == item.AssayOrderID)
+                        {
+                            assayOrder.testResults.Add(val);
+                        }
+                    }
+                    AssayOrderList.Add(assayOrder);
+                } 
+            }
+
+            return View(AssayOrderList);
         }
 
         // GET: ManageClients

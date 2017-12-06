@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -15,7 +16,9 @@ namespace NorthWestLabs.Models
         public int WorkOrderID { get; set; }
         public int ClientID { get; set; }
         public Nullable<int> QuoteID { get; set; }
+        [DisplayName("Discount Rate")]
         public decimal DiscountRate { get; set; }
+        [DisplayName("Date")]
         public System.DateTime DateTime { get; set; }
         public string ModifiedBy { get; set; }
         public System.DateTime ModifiedDate { get; set; }

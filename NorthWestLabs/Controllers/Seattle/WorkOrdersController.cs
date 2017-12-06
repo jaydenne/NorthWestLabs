@@ -34,7 +34,32 @@ namespace NorthWestLabs.Controllers
             {
                 return HttpNotFound();
             }
-            return View(workOrder);
+            var workOrders = db.WorkOrders.Include(w => w.Client).Include(w => w.QuoteEstimate);
+            
+            WorkOrderWithDetails workOrderWithDetails = new WorkOrderWithDetails();
+            workOrderWithDetails.workOrder = workOrder;
+            IEnumerable<AssayOrder> AssayList = db.AssayOrders.ToList();
+            IEnumerable<TestResult> TestResList = db.TestResults.ToList();
+
+            foreach (AssayOrder item in AssayList)
+            {
+                if (item.WorkOrderID == id)
+                {
+                    AssayOrderWithTestResults assayOrder = new AssayOrderWithTestResults();
+                    assayOrder.AssayOrder = item;
+
+                    foreach (TestResult val in TestResList)
+                    {
+                        if (val.AssayOrderID == item.AssayOrderID)
+                        {
+                            assayOrder.testResults.Add(val);
+                        }
+                    }
+                    workOrderWithDetails.assayOrderWithTestResultsList.Add(assayOrder);
+                }
+            }
+            return View(workOrderWithDetails);
+
         }
 
         // GET: WorkOrders/Create
@@ -76,9 +101,34 @@ namespace NorthWestLabs.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "CompanyName", workOrder.ClientID);
-            ViewBag.QuoteID = new SelectList(db.QuoteEstimates, "QuoteID", "ModifiedBy", workOrder.QuoteID);
-            return View(workOrder);
+            var workOrders = db.WorkOrders.Include(w => w.Client).Include(w => w.QuoteEstimate);
+
+            WorkOrderWithDetails workOrderWithDetails = new WorkOrderWithDetails();
+            workOrderWithDetails.workOrder = workOrder;
+            IEnumerable<AssayOrder> AssayList = db.AssayOrders.ToList();
+            IEnumerable<TestResult> TestResList = db.TestResults.ToList();
+
+            foreach (AssayOrder item in AssayList)
+            {
+                if (item.WorkOrderID == id)
+                {
+                    AssayOrderWithTestResults assayOrder = new AssayOrderWithTestResults();
+                    assayOrder.AssayOrder = item;
+
+                    foreach (TestResult val in TestResList)
+                    {
+                        if (val.AssayOrderID == item.AssayOrderID)
+                        {
+                            assayOrder.testResults.Add(val);
+                        }
+                    }
+                    workOrderWithDetails.assayOrderWithTestResultsList.Add(assayOrder);
+                }
+            }
+                ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "CompanyName", workOrder.ClientID);
+                ViewBag.QuoteID = new SelectList(db.QuoteEstimates, "QuoteID", "ModifiedBy", workOrder.QuoteID);
+            
+                return View(workOrderWithDetails);
         }
 
         // POST: WorkOrders/Edit/5
