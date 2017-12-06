@@ -193,7 +193,6 @@
     <Compile Include="Models\QuoteItem.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\Status.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\Term.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\TestCondition.cs" />
