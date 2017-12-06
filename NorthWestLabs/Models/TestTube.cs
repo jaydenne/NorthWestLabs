@@ -14,9 +14,8 @@ namespace NorthWestLabs.Models
        
         [Key]
         public int TestTubeID { get; set; }
-        [Key]
+        public int TestTubeNumber { get; set; }
         public int LTNumber { get; set; }
-        [Key]
         public int SequenceCode { get; set; }
         public string Concentration { get; set; }
         public string CreatedBy { get; set; }
