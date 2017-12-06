@@ -1,50 +1,167 @@
-﻿@model NorthWestLabs.Models.WorkOrder
+﻿@model NorthWestLabs.Models.WorkOrderWithDetails
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>WorkOrder</h4>
+
+    <p style="display:contents">
+        <div style="float:left">@Html.ActionLink("Back to Work Order Information", "Index", "WorkOrders", null, new { @class = "btn btn-primary btn default" })</div>
+        <div style="padding-bottom:10px; float:right">@Html.ActionLink("Edit Work Order", "Edit", "WorkOrders", new { id = Model.workOrder.WorkOrderID}, new { @class = "btn btn-primary btn default" })</div>
+    </p>
+
+    <br /><br />
+<h2>Order Number: @Model.workOrder.WorkOrderID</h2>
     <hr />
+    
+  <div>
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Client.CompanyName)
+            @Html.DisplayNameFor(model => model.workOrder.Client.CompanyName)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.Client.CompanyName)
+            @Html.DisplayFor(model => model.workOrder.Client.CompanyName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.QuoteEstimate.ModifiedBy)
+            Contact Name
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.QuoteEstimate.ModifiedBy)
+            @Html.DisplayFor(modelItem => Model.workOrder.Client.ContactFirstName) @Html.DisplayFor(modelItem => Model.workOrder.Client.ContactLastName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DiscountRate)
+            @Html.DisplayNameFor(model => model.workOrder.Client.Phone)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.DiscountRate)
+            @Html.DisplayFor(model => model.workOrder.Client.Phone)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DateTime)
+            @Html.DisplayNameFor(model => model.workOrder.Client.Email)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.DateTime)
+            @Html.DisplayFor(model => model.workOrder.Client.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.workOrder.QuoteEstimate.QuoteID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.workOrder.QuoteEstimate.QuoteID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.workOrder.DateTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.workOrder.DateTime)
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.WorkOrderID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<hr />
+
+
+
+@foreach (NorthWestLabs.Models.AssayOrderWithTestResults assayorder in Model.assayOrderWithTestResultsList)
+{
+    <button class="accordion"><h3>Assay @assayorder.AssayOrder.AssayID ID:@assayorder.AssayOrder.AssayOrderID </h3><p>@assayorder.AssayOrder.ProtocolNotebook.AssayName</p></button>
+    <div class="panel">
+
+        <div style="padding-top:10px; float:right">@Html.ActionLink("Edit Assay Order", "Edit", "WorkOrders", new { id = Model.workOrder.WorkOrderID }, new { @class = "btn btn-primary btn default" })</div>
+        <strong>Assay Name</strong> @assayorder.AssayOrder.ProtocolNotebook.AssayName<br />
+        <strong>Assay Description</strong> @assayorder.AssayOrder.ProtocolNotebook.Description<br />
+        <strong>Priority Level</strong> @assayorder.AssayOrder.PriorityLevel<br />
+
+        <table class="table">
+            <tr>
+                <th>
+                    LT Number
+                </th>
+                <th>
+                    Test Name
+                </th>
+                <th>
+                    Run Number
+                </th>
+                <th>
+                    Run Again
+                </th>
+                <th>
+                    Schedule Start
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Status Updated Date
+                </th>
+                <th>
+                    Test Tube
+                </th>
+                <th>
+                    Results
+                </th>
+
+            </tr>
+
+            @{foreach (NorthWestLabs.Models.TestResult item in assayorder.testResults)
+                {
+                    <tr>
+                        <td>
+                            @item.LTNumber -
+                            @item.TestID
+                        </td>
+
+                        <td>
+                            @item.Test.Name
+                        </td>
+                        <td>
+                            @item.RunNumber
+                        </td>
+                        <td>
+                            @item.RunAgain
+                        </td>
+                        <td>
+                            @item.ScheduleStart
+                        </td>
+                        <td>
+                            @item.Status
+                        </td>
+                        <td>
+                            @item.StatusUpdatedDate
+                        </td>
+                        <td>
+                            item.TestTube
+                        </td>
+                    </tr>
+                }
+              }
+        </table>
+        <br />
+    </div>
+ }
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function () {
+            /* Toggle between adding and removing the "active" class,
+            to highlight the button that controls the panel */
+            this.classList.toggle("active");
+
+            /* Toggle between hiding and showing the active panel */
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        }
+    }
+</script>

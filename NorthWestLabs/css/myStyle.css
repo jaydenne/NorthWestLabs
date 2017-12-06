@@ -45,3 +45,9 @@ div.panel {
     text-decoration: underline;
     background-color: transparent;
 }
+@media (min-width: 768px) 
+{ .dl-horizontal dt 
+  {
+      text-align:left
+  }
+}

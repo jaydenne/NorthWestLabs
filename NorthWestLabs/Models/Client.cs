@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -12,11 +13,17 @@ namespace NorthWestLabs.Models
     {
 
         [Key]
+        [DisplayName("Client ID")]
         public int ClientID { get; set; }
+        [DisplayName ("Company Name")]
         public string CompanyName { get; set; }
+        [DisplayName("Contact First Name")]
         public string ContactFirstName { get; set; }
+        [DisplayName("Contact Last Name")]
         public string ContactLastName { get; set; }
+        [DisplayName("Address 1")]
         public string Address1 { get; set; }
+        [DisplayName("Address 2")]
         public string Address2 { get; set; }
         public string City { get; set; }
         public string State { get; set; }
@@ -25,10 +32,15 @@ namespace NorthWestLabs.Models
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Username { get; set; }
+        [DisplayName("Password Hash")]
         public string PasswordHash { get; set; }
+        [DisplayName("Modified By")]
         public string ModifiedBy { get; set; }
+        [DisplayName("Modified Date")]
         public System.DateTime ModifiedDate { get; set; }
+        [DisplayName("Created By")]
         public string CreatedBy { get; set; }
+        [DisplayName("Created Date")]
         public System.DateTime CreatedDate { get; set; }
 
 /*
