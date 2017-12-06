@@ -154,6 +154,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AssayOrderController.cs" />
     <Compile Include="Controllers\Client\ClientController.cs" />
     <Compile Include="Controllers\Seattle\TestsController.cs" />
     <Compile Include="Controllers\Singapore\CompoundsController.cs" />
@@ -412,6 +413,11 @@
     <Content Include="Views\Seattle\OrderSummary.cshtml" />
     <Content Include="Views\Client\ClientAccount.cshtml" />
     <Content Include="Views\Client\ClientNewWorkOrder.cshtml" />
+    <Content Include="Views\AssayOrder23\Create.cshtml" />
+    <Content Include="Views\AssayOrder23\Delete.cshtml" />
+    <Content Include="Views\AssayOrder23\Details.cshtml" />
+    <Content Include="Views\AssayOrder23\Edit.cshtml" />
+    <Content Include="Views\AssayOrder23\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
