@@ -195,6 +195,7 @@
     <Compile Include="Controllers\ProtocolNotebooksController.cs" />
     <Compile Include="Controllers\SeattleController.cs" />
     <Compile Include="Controllers\SingaporeController.cs" />
+    <Compile Include="Controllers\testingWorkOrdersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -700,6 +701,11 @@
     <Content Include="Views\WorkOrders\Details.cshtml" />
     <Content Include="Views\WorkOrders\Edit.cshtml" />
     <Content Include="Views\WorkOrders\Index.cshtml" />
+    <Content Include="Views\testingWorkOrders\Create.cshtml" />
+    <Content Include="Views\testingWorkOrders\Delete.cshtml" />
+    <Content Include="Views\testingWorkOrders\Details.cshtml" />
+    <Content Include="Views\testingWorkOrders\Edit.cshtml" />
+    <Content Include="Views\testingWorkOrders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
