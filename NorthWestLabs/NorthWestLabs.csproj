@@ -199,8 +199,150 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AssayOrder.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssayOrderComment.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssayOrderReport.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Authorization.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Catalog.cs" />
-    <Compile Include="Models\WorkOrder.cs" />
+    <Compile Include="Models\Client.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientComment.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Compound.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConditionalApproval.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Country.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Credit.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomDiscount.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DiscountReference.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Employee.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeeBankInfo.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeeWageInfo.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Equiptment.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InvioceItem.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Invoice.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LiteratureReference.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Material.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NorthwestLabsModels.Context.cs" />
+    <Compile Include="Models\NorthwestLabsModels.Context1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthwestLabsModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NorthwestLabsModels.cs" />
+    <Compile Include="Models\NorthwestLabsModels.Designer.cs">
+      <DependentUpon>NorthwestLabsModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NorthwestLabsModels1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NorthwestLabsModels1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthwestLabsModels.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Payment.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PaymentData.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PriorityLevel.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Protocol.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProtocolNotebook.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuoteEstimate.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuoteItem.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\State.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Status.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Term.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Test.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestCondition.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestEquiptment.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestMaterial.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestReport.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestResult.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestResultComment.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestTube.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrder.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrderComment.cs">
+      <DependentUpon>NorthwestLabsModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -258,6 +400,14 @@
     <Content Include="js\contact_me.js" />
     <Content Include="js\jqBootstrapValidation.js" />
     <Content Include="mail\contact_me.php" />
+    <Content Include="Models\NorthwestLabsModels.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NorthwestLabsModels.Context1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\NorthwestLabsModels.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NorthwestLabsModels1.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -267,6 +417,13 @@
     <Content Include="LICENSE" />
     <Content Include="package-lock.json" />
     <Content Include="package.json" />
+    <EntityDeploy Include="Models\NorthwestLabsModels.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NorthwestLabsModels1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\NorthwestLabsModels.edmx.diagram">
+      <DependentUpon>NorthwestLabsModels.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
