@@ -7,11 +7,12 @@
 <h2>Order Number @ViewBag.ordernumber</h2>
 @foreach (var assayorder in Model)
 {
-    <button class="accordion"><h3>Assay Order ID @assayorder.AssayOrderID</h3></button>
+    <button class="accordion"><h3>Assay @assayorder.AssayID</h3><p>@assayorder.ProtocolNotebook.AssayName</p></button>
     <div class="panel">
        
-        @assayorder.ProtocolNotebook.AssayName<br />
-        @assayorder.ProtocolNotebook.Description<br />
+        <strong>Assay Name</strong> @assayorder.ProtocolNotebook.AssayName<br />
+        <strong>Assay Description</strong> @assayorder.ProtocolNotebook.Description<br />
+        
 
         accordian stuff one.
 
