@@ -418,6 +418,14 @@
     <Content Include="Views\AssayOrder\Details.cshtml" />
     <Content Include="Views\AssayOrder\Edit.cshtml" />
     <Content Include="Views\AssayOrder\Index.cshtml" />
+    <Content Include="Views\AssayOrder23\Create.cshtml" />
+    <Content Include="Views\AssayOrder23\Delete.cshtml" />
+    <Content Include="Views\AssayOrder23\Details.cshtml" />
+    <Content Include="Views\AssayOrder23\Edit.cshtml" />
+    <Content Include="Views\AssayOrder23\Index.cshtml" />
+    <Content Include="Views\Seattle\ManagementReports.cshtml" />
+    <Content Include="Views\Seattle\EmployeeQuotes.cshtml" />
+    <Content Include="Views\Seattle\Billing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
