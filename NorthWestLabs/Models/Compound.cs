@@ -13,6 +13,7 @@ namespace NorthWestLabs.Models
     {
 
         [Key]
+        public int CompoundID { get; set; }
         public int LTNumber { get; set; }
         public int SequenceCode { get; set; }
         public string CompoundName { get; set; }

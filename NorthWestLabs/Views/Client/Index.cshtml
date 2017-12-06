@@ -9,10 +9,14 @@
 </div>
 
 <div class="row">
-
-  
-    
-    <div class="col-md-5 well text-center">
+    <div class="col-md-4 well text-center">
+        <h2>Client Information</h2>
+        <p>
+            Update your company information.
+        </p>
+        @Html.ActionLink("Client Information", "ClientInfo", "Client", null, new { @class = "btn btn-primary btn default" })
+    </div>
+    <div class="col-md-4 well text-center">
         
         <h2>Order Summary</h2>
         <p>
@@ -20,8 +24,8 @@
         </p>
         @Html.ActionLink("Order Summary", "ClientOrdersSummary", "Client", null, new { @class = "btn btn-primary btn default" }) 
      </div>
-    <div class="col-md-2"></div>
-    <div class="col-md-5 well text-center">
+    
+    <div class="col-md-4 well text-center">
         <h2>Client Account</h2>
         <p>
             Access your current account balance and details from any past or current invoices. 
@@ -29,18 +33,26 @@
         @Html.ActionLink("Client Account", "ClientAccount", "Client", null, new { @class = "btn btn-primary btn default" })
     </div>
 
+
     </div>
 <div class="row">
-
-    <div class="col-md-5 well text-center">
-        <h2>Client Information</h2>
+    <div class="col-md-4 well align-content-center text-center">
+        <h2>Quote Summary</h2>
         <p>
-            Update your company information.
+            Review past quotes.
         </p>
-        @Html.ActionLink("Client Information", "ClientInfo", "Client", null, new { @class = "btn btn-primary btn default" })
+        @Html.ActionLink("Quote Summary", "ClientPortalQuotes", "Client", null, new { @class = "btn btn-primary btn default" })
     </div>
-    <div class="col-md-2"></div>
-    <div class="col-md-5 well align-content-center text-center">
+    <div class="col-md-4 well align-content-center text-center">
+        <h2>Create New Work Order</h2>
+        <p>
+            Create and send a work order for testing. 
+        </p>
+        @Html.ActionLink("New Work Order", "ClientNewWorkOrder", "Client", null, new { @class = "btn btn-primary btn default" })
+    </div>
+    
+   
+    <div class="col-md-4 well align-content-center text-center">
         <h2>Request a Quote</h2>
         <p>
            Request a quote for a specific assay and compound. 

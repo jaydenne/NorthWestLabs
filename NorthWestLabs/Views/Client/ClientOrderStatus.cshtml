@@ -4,7 +4,8 @@
     ViewBag.Title = "ClientOrderStatus";
 }
 
-@Html.ActionLink("Back to Order Summary", "Client") | @Html.ActionLink("Back to Client Portal", "Index")
+
+@Html.ActionLink("Back to Order Summary", "ClientOrdersSummary", "Client", null, new { @class = "btn btn-primary btn default" })
 
 
 <h2>Order Number @ViewBag.ordernumber</h2>
