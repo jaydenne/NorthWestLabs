@@ -16,20 +16,11 @@ namespace NorthWestLabs.Controllers
         private NorthwestLabsEntitiesDB db = new NorthwestLabsEntitiesDB();
 
         // GET: Client
-        public ActionResult Index(int? id)
+        public ActionResult Index()
         {
-            if (id == null)
-            {
-               return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            //checks to make sure it is a valid client that has been entered
-            Client client = db.Clients.Find(id);
-            if (client == null)
-            {
-                return HttpNotFound();
-            }
+           
 
-            return View(client);
+            return View();
         }
 
 
@@ -37,16 +28,9 @@ namespace NorthWestLabs.Controllers
         // GET: Client
         public ActionResult ClientInfo(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            //checks to make sure it is a valid client that has been entered
+            
             Client client = db.Clients.Find(id);
-            if (client == null)
-            {
-                return HttpNotFound();
-            }
+            
 
             return View(client);
         }
