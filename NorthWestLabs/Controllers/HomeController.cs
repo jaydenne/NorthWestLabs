@@ -49,12 +49,12 @@ namespace NorthWestLabs.Controllers
                 return RedirectToAction("Index", "Client");
 
             }
-            foreach (Employee EmployeeItem in EmployeeList)
+            foreach (Employee Employee in EmployeeList)
             {
-                if (user == EmployeeItem.UserName)
+                if (user == Employee.UserName)
                 {
-                    SavedPassword = EmployeeItem.Password;
-                    if (EmployeeItem.Location == "Singapore")
+                    SavedPassword = Employee.Password;
+                    if (Employee.Location == "Singapore")
                     {
                         SingaporeEmployee = true;
                     }
@@ -83,14 +83,16 @@ namespace NorthWestLabs.Controllers
                     }
                 }
 
-                else
-                {
-                    return View();
-                }
             }
             return View();
         }
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
         public ActionResult Index()
         {
             return View();
