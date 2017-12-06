@@ -366,59 +366,10 @@
     <Content Include="Views\Client\Index.cshtml" />
     <Content Include="Views\Singapore\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Seattle\AssayOrderComments\Create.cshtml" />
-    <Content Include="Views\Seattle\AssayOrderComments\Delete.cshtml" />
-    <Content Include="Views\Seattle\AssayOrderComments\Details.cshtml" />
-    <Content Include="Views\Seattle\AssayOrderComments\Edit.cshtml" />
-    <Content Include="Views\Seattle\AssayOrderComments\Index.cshtml" />
-    <Content Include="Views\Seattle\AssayOrderReports\Create.cshtml" />
-    <Content Include="Views\Seattle\AssayOrderReports\Delete.cshtml" />
-    <Content Include="Views\Seattle\AssayOrderReports\Details.cshtml" />
-    <Content Include="Views\Seattle\AssayOrderReports\Edit.cshtml" />
-    <Content Include="Views\Seattle\AssayOrderReports\Index.cshtml" />
-    <Content Include="Views\Seattle\AssayOrders\Create.cshtml" />
-    <Content Include="Views\Seattle\AssayOrders\Delete.cshtml" />
-    <Content Include="Views\Seattle\AssayOrders\Details.cshtml" />
-    <Content Include="Views\Seattle\AssayOrders\Edit.cshtml" />
-    <Content Include="Views\Seattle\AssayOrders\Index.cshtml" />
-    <Content Include="Views\Seattle\ClientComments\Create.cshtml" />
-    <Content Include="Views\Seattle\ClientComments\Delete.cshtml" />
-    <Content Include="Views\Seattle\ClientComments\Details.cshtml" />
-    <Content Include="Views\Seattle\ClientComments\Edit.cshtml" />
-    <Content Include="Views\Seattle\ClientComments\Index.cshtml" />
     <Content Include="Views\Seattle\ClientDetails.cshtml" />
     <Content Include="Views\Seattle\ClientIndex.cshtml" />
-    <Content Include="Views\Seattle\Client\ClientInfo.cshtml" />
-    <Content Include="Views\Seattle\Client\ClientOrdersSummary.cshtml" />
-    <Content Include="Views\Seattle\Client\ClientOrderStatus.cshtml" />
-    <Content Include="Views\Seattle\Client\Index.cshtml" />
-    <Content Include="Views\Seattle\Compounds\Create.cshtml" />
-    <Content Include="Views\Seattle\Compounds\Delete.cshtml" />
-    <Content Include="Views\Seattle\Compounds\Details.cshtml" />
-    <Content Include="Views\Seattle\Compounds\Edit.cshtml" />
-    <Content Include="Views\Seattle\Compounds\Index.cshtml" />
-    <Content Include="Views\Seattle\ConditionalApprovals\Create.cshtml" />
-    <Content Include="Views\Seattle\ConditionalApprovals\Delete.cshtml" />
-    <Content Include="Views\Seattle\ConditionalApprovals\Details.cshtml" />
-    <Content Include="Views\Seattle\ConditionalApprovals\Edit.cshtml" />
-    <Content Include="Views\Seattle\ConditionalApprovals\Index.cshtml" />
     <Content Include="Views\Seattle\CreateClient.cshtml" />
-    <Content Include="Views\Seattle\Credits\Create.cshtml" />
-    <Content Include="Views\Seattle\Credits\Delete.cshtml" />
-    <Content Include="Views\Seattle\Credits\Details.cshtml" />
-    <Content Include="Views\Seattle\Credits\Edit.cshtml" />
-    <Content Include="Views\Seattle\Credits\Index.cshtml" />
-    <Content Include="Views\Seattle\CustomDiscounts\Create.cshtml" />
-    <Content Include="Views\Seattle\CustomDiscounts\Delete.cshtml" />
-    <Content Include="Views\Seattle\CustomDiscounts\Details.cshtml" />
-    <Content Include="Views\Seattle\CustomDiscounts\Edit.cshtml" />
-    <Content Include="Views\Seattle\CustomDiscounts\Index.cshtml" />
     <Content Include="Views\Seattle\DeleteClients.cshtml" />
-    <Content Include="Views\Seattle\DiscountReferences\Create.cshtml" />
-    <Content Include="Views\Seattle\DiscountReferences\Delete.cshtml" />
-    <Content Include="Views\Seattle\DiscountReferences\Details.cshtml" />
-    <Content Include="Views\Seattle\DiscountReferences\Edit.cshtml" />
-    <Content Include="Views\Seattle\DiscountReferences\Index.cshtml" />
     <Content Include="Views\Seattle\EditClients.cshtml" />
     <Content Include="Views\Seattle\EmployeeBankInfoes\Create.cshtml" />
     <Content Include="Views\Seattle\EmployeeBankInfoes\Delete.cshtml" />
@@ -513,7 +464,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Seattle\ClientsManage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
