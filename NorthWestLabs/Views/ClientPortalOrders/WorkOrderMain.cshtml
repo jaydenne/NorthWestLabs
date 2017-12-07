@@ -3,7 +3,7 @@
     ViewBag.Title = "ClientNewWorkOrder";
 }
 
-<h2>Create New Work Order</h2>
+<h2>Work Order</h2>
 <hr />
 
 
@@ -15,73 +15,17 @@
     foreach (NorthWestLabs.Models.CompoundAssayOrder item in Model.compoundAssayOrderList)
     {
             <!--Display of compound and assay details-->
-        <p> @item.assayOrder.CompoundID</p>
-        <p>@item.assayOrder.PriorityLevel</p>
-        <p> @item.assayOrder.ProtocolNotebook.AssayName</p>
-        <p> @item.assayOrder.Compound.LTNumber</p>
-        <p> @item.compound.SequenceCode</p>
-        <p> @item.compound.CompoundName</p>
-
-
-
-
+        <h3>Compound @item.assayOrder.Compound.LTNumber | @item.assayOrder.Compound.CompoundName</h3>
+            <h4>@item.assayOrder.ProtocolNotebook.AssayName   </h4>
+            <h5>Sequence Number @item.compound.SequenceCode</h5>
+            <h5>Work Days To Processing: @item.assayOrder.PriorityLevel.WorkDaysProcessing</h5>
+                <h5> Priority Rate:@item.assayOrder.PriorityLevel.PriorityRate</h5>
 
     }
+    @Html.ActionLink("Add Another Compound", "ClientNewWorkOrder", "ClientPortalOrders", new { workorderid = Model.workOrder.WorkOrderID}, new { @class = "btn btn-primary btn default" })
 
-    if (ViewBag.firstitemcreated == true)
-    {
-        @:<div hidden>
-            }
-    <h3>Enter Compound Details</h3>
-            <div class="form-group">
-                @Html.LabelFor(model => Model.compoundAssayOrderTemplate.compound.CompoundName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => Model.compoundAssayOrderTemplate.compound.CompoundName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => Model.compoundAssayOrderTemplate.compound.CompoundName, "", new { @class = "text-danger" })
-                </div>
-            </div>
+    //@Html.ActionLink("Add Another Compound to Order", "ClientNewWorkOrder", "ClientPortalOrders", new { workorderid = Model.compoundAssayOrderList.wor item.assayOrder.WorkOrderID, LTnumber = item.compound.LTNumber }, new { @class = "btn btn-primary btn default" })
 
-            <div class="form-group">
-                @Html.LabelFor(model => Model.compoundAssayOrderTemplate.compound.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => Model.compoundAssayOrderTemplate.compound.Quantity, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => Model.compoundAssayOrderTemplate.compound.Quantity, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.compoundAssayOrderTemplate.compound.Appearance, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.compoundAssayOrderTemplate.compound.Appearance, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.compoundAssayOrderTemplate.compound.Appearance, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.compoundAssayOrderTemplate.compound.Weight, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.compoundAssayOrderTemplate.compound.Weight, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.compoundAssayOrderTemplate.compound.Weight, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-
-            <h3>Enter Assay</h3>
-            <div class="form-group">
-                @Html.LabelFor(model => model.compoundAssayOrderTemplate.assayOrder.PriorityLevelID, "Work Days Processing", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("PriorityLevelID", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.compoundAssayOrderTemplate.assayOrder.PriorityLevelID, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.compoundAssayOrderTemplate.assayOrder.AssayID, "Assay Name", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("AssayID", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.compoundAssayOrderTemplate.assayOrder.AssayID, "", new { @class = "text-danger" })
-                </div>
-            </div>
 
 
                 <div class="form-horizontal">
@@ -92,10 +36,7 @@
                     </div>
                 </div>
 
-    if (ViewBag.firstitemcreated == true)
-    {
-        @: </div>
-            }
+   
 }
 
 <div>

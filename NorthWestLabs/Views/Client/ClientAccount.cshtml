@@ -5,16 +5,108 @@
 
 <h2>Client Account</h2>
 <hr />
+@Html.ActionLink("Back to Client Portal", "Index", "Client", null, new { @class = "btn btn-primary btn default" })
 <div class="row">
-    <div>
+    <div class="well">
         <h3>Account Balance</h3>
     </div>
-    <div>
+    <div class="well">
         <h3>Unpaid Charges</h3>
     </div>
 
 </div>
 <div>
+    foreach (NorthWestLabs.Models.AssayOrderWithTestResults assayorder in Model)
+    {
+        <button class="accordion"><h3>Assay assayorder.AssayOrder.AssayID ID:assayorder.AssayOrder.AssayOrderID </h3><p>assayorder.AssayOrder.ProtocolNotebook.AssayName</p></button>
+        <div class="panel">
 
+            <strong>Assay Name</strong> assayorder.AssayOrder.ProtocolNotebook.AssayName<br />
+            <strong>Assay Description</strong> assayorder.AssayOrder.ProtocolNotebook.Description<br />
+            <strong>Priority Level</strong> assayorder.AssayOrder.PriorityLevel<br />
+
+
+
+            <table class="table">
+                <tr>
+                    <th>
+                        LTNumber
+                    </th>
+                    <th>
+                        Test.Name
+                    </th>
+                    <th>
+                        RunNumber
+                    </th>
+                    <th>
+                        RunAgain
+                    </th>
+
+                    <th>
+                        ScheduleStart
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        StatusUpdatedDate
+                    </th>
+                    <th>
+                        TestTube.
+                    </th>
+                    <th>
+                        Results
+                    </th>
+
+                </tr>
+
+                {foreach (NorthWestLabs.Models.TestResult item in assayorder.testResults)
+                {
+                        <tr>
+                            <td>
+                                //item.LTNumber -
+                                //item.TestID
+                            </td>
+
+                            <td>
+                                //item.Test.Name
+                            </td>
+                            <td>
+                                //item.RunNumber
+                            </td>
+                            <td>
+                              //item.RunAgain
+                            </td>
+                            <td>
+                                //item.ScheduleStart
+                            </td>
+                            <td>
+                                //item.Status
+                            </td>
+                            <td>
+                                //item.StatusUpdatedDate
+                            </td>
+
+
+                            <td>
+                                item.TestTube.
+                            </td>
+
+                        </tr>
+
+                    }
+                }
+
+            </table>
+
+
+            <br />
+        </div>
+
+
+
+
+
+                    }
 
 </div>
