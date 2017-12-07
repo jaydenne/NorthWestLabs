@@ -155,7 +155,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AssayOrderController.cs" />
-    <Compile Include="Controllers\ClientPortalOrdersController.cs" />
+    <Compile Include="Controllers\Client\ClientPortalOrdersController.cs" />
     <Compile Include="Controllers\Client\ClientController.cs" />
     <Compile Include="Controllers\Compounds2Controller.cs" />
     <Compile Include="Controllers\EmployeeBankInfoesController.cs" />
