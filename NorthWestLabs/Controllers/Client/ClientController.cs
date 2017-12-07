@@ -227,9 +227,139 @@ namespace NorthWestLabs.Controllers
             return View(client);
         }
 
+        public ActionResult CompanyInfoEdit()
+        {
+            if (!IsClient())
+            {
+                RedirectToAction("Index");
+            }
+            Client myClient=new Client();
+            IEnumerable<Client> ClientList = db.Clients.ToList();
+            foreach(Client item in ClientList)
+            {
+                if(item.ClientID==GetClientID())
+                {
+                    myClient = item;
+                }
+            }
+            if (myClient == null)
+            {
+                return HttpNotFound();
+            }
+            return View(myClient);
+        }
 
-        
+        // POST: Clients2/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CompanyInfoEdit([Bind(Include = "CompanyName,Address1,Address2,City,State,Country,Zip")] Client client)
+        {
+            Client myClient = db.Clients.Find(GetClientID());
+            myClient.ModifiedBy = "Client " + GetClientID();
+            myClient.ModifiedDate = DateTime.Now;
+            myClient.CompanyName = client.CompanyName;
+            myClient.Address1 = client.Address1;
+            myClient.Address2 = client.Address2;
+            myClient.City = client.City;
+            myClient.State = client.State;
+            myClient.Country = client.Country;
+            myClient.Zip = client.Zip;
+            if (!IsClient())
+            {
+                RedirectToAction("Index");
+            }
+            if (ModelState.IsValid)
+            {
+               //db.Entry(client).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("ClientInfo");
+            }
+            return View(client);
+        }
 
+        public ActionResult UpdateContactInfo()
+        {
+            if (!IsClient())
+            {
+                RedirectToAction("Index");
+            }
+            Client myClient = new Client();
+            IEnumerable<Client> ClientList = db.Clients.ToList();
+            foreach (Client item in ClientList)
+            {
+                if (item.ClientID == GetClientID())
+                {
+                    myClient = item;
+                }
+            }
+            if (myClient == null)
+            {
+                return HttpNotFound();
+            }
+            return View(myClient);
+        }
+
+        // POST: Clients2/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateContactInfo([Bind(Include = "ClientID,ContactFirstName,ContactLastName,Phone,Email")] Client client)
+        {
+            if (!IsClient())
+            {
+                RedirectToAction("Index");
+            }
+
+            Client myClient = db.Clients.Find(GetClientID());
+            myClient.ModifiedBy = "Client " + GetClientID();
+            myClient.ModifiedDate = DateTime.Now;
+            myClient.ContactFirstName = client.ContactFirstName;
+            myClient.ContactLastName = client.ContactLastName;
+            myClient.Phone = client.Phone;
+            myClient.Email = client.Email;
+            if (ModelState.IsValid)
+            {
+                //db.Entry(client).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("ClientInfo");
+            }
+            return View(client);
+        }
+
+        public ActionResult ChangePassword()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        [Authorize]
+        public ActionResult ChangePassword(FormCollection form, string returnUrl, bool rememberMe = false)
+        {
+            if (!IsClient())
+            {
+                RedirectToAction("Index");
+            }
+            String password = form["OldPassword"].ToString();
+            String Newpassword = form["NewPassword"].ToString();
+            String Confirmpassword = form["ConfirmPassword"].ToString();
+
+            Client myClient = db.Clients.Find(GetClientID());
+            if (myClient.PasswordHash == password)
+            {
+                if (Newpassword == Confirmpassword)
+                {
+                    myClient.PasswordHash = Newpassword;
+                    db.SaveChanges();
+                    return RedirectToAction("ClientInfo");
+                }
+            }
+
+            return View();
+
+        }
 
 
     }

@@ -480,6 +480,9 @@
     <Content Include="Views\Singapore\PendingTests.cshtml" />
     <Content Include="Views\Singapore\UploadResults.cshtml" />
     <Content Include="Views\Seattle\DownloadResults.cshtml" />
+    <Content Include="Views\Client\CompanyInfoEdit.cshtml" />
+    <Content Include="Views\Client\UpdateContactInfo.cshtml" />
+    <Content Include="Views\Client\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
