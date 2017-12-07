@@ -174,7 +174,7 @@ namespace NorthWestLabs.Controllers
 
         public ActionResult EditBankInfo()
         {
-            return View()
+            return View();
         }
         [HttpPost]
         public ActionResult EditBankInfo(int placeholder)
