@@ -158,6 +158,9 @@
     <Compile Include="Controllers\ClientPortalOrdersController.cs" />
     <Compile Include="Controllers\Client\ClientController.cs" />
     <Compile Include="Controllers\Compounds2Controller.cs" />
+    <Compile Include="Controllers\EmployeeBankInfoesController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Controllers\EmployeeWageInfoesController.cs" />
     <Compile Include="Controllers\Seattle\TestsController.cs" />
     <Compile Include="Controllers\Singapore\CompoundsController.cs" />
     <Compile Include="Controllers\Client\Clients2Controller.cs" />
@@ -171,6 +174,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AllEmployeeInfo.cs" />
     <Compile Include="Models\AssayOrder.cs" />
     <Compile Include="Models\AssayOrderComment.cs" />
     <Compile Include="Models\AssayOrderReport.cs" />
@@ -437,6 +441,22 @@
     <Content Include="Views\Seattle\ManagementReports.cshtml" />
     <Content Include="Views\Seattle\EmployeeQuotes.cshtml" />
     <Content Include="Views\Seattle\Billing.cshtml" />
+    <Content Include="Views\Home\EmployeeAccount.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\EmployeeWageInfoes\Create.cshtml" />
+    <Content Include="Views\EmployeeWageInfoes\Delete.cshtml" />
+    <Content Include="Views\EmployeeWageInfoes\Details.cshtml" />
+    <Content Include="Views\EmployeeWageInfoes\Edit.cshtml" />
+    <Content Include="Views\EmployeeWageInfoes\Index.cshtml" />
+    <Content Include="Views\EmployeeBankInfoes\Create.cshtml" />
+    <Content Include="Views\EmployeeBankInfoes\Delete.cshtml" />
+    <Content Include="Views\EmployeeBankInfoes\Details.cshtml" />
+    <Content Include="Views\EmployeeBankInfoes\Edit.cshtml" />
+    <Content Include="Views\EmployeeBankInfoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

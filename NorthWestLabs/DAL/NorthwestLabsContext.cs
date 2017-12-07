@@ -36,5 +36,9 @@ namespace NorthWestLabs.DAL
         public System.Data.Entity.DbSet<NorthWestLabs.Models.Test> Tests { get; set; }
 
         public System.Data.Entity.DbSet<NorthWestLabs.Models.PriorityLevel> PriorityLevels { get; set; }
+
+        public System.Data.Entity.DbSet<NorthWestLabs.Models.EmployeeWageInfo> EmployeeWageInfoes { get; set; }
+
+        public System.Data.Entity.DbSet<NorthWestLabs.Models.EmployeeBankInfo> EmployeeBankInfoes { get; set; }
     }
 }

@@ -118,6 +118,12 @@ namespace NorthWestLabs.Controllers
             return View(db.ProtocolNotebooks.ToList());
         }
 
+        [Authorize]
+        public ActionResult  EmployeeAccount()
+        {
+
+            return View();
+        }
 
     }
 }
