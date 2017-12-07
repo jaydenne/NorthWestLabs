@@ -59,6 +59,9 @@ namespace NorthWestLabs.Controllers
             [Bind(Include = "LTNumber,SequenceCode,CompoundName,Quantity,DateArrived,ReceivedBy,DateDue,Appearance,Weight,MolecularMass,ConfirmationDate,MaxTotalDose,ActualWeight,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] Compound compound,
             [Bind(Include = "AssayOrderID,WorkOrderID,PriorityLevelID,AssayID,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate,CompoundID")] AssayOrder assayorder)
         {
+            ViewBag.PriorityLevelID = new SelectList(db.PriorityLevels, "PriorityLevelID", "WorkDaysProcessing");
+            ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName");
+
             WorkOrder workOrder = new WorkOrder();
             workOrder.ClientID = GetClientID();
             workOrder.CreatedBy = "Client "+GetClientID();
