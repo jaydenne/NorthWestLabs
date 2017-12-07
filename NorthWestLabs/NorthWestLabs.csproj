@@ -155,7 +155,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AssayOrderController.cs" />
-    <Compile Include="Controllers\ClientPortalOrdersController.cs" />
+    <Compile Include="Controllers\Client\ClientPortalOrdersController.cs" />
     <Compile Include="Controllers\Client\ClientController.cs" />
     <Compile Include="Controllers\Compounds2Controller.cs" />
     <Compile Include="Controllers\EmployeeBankInfoesController.cs" />
@@ -183,6 +183,7 @@
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\ClientComment.cs" />
     <Compile Include="Models\Compound.cs" />
+    <Compile Include="Models\CompoundAssayOrder.cs" />
     <Compile Include="Models\ConditionalApproval.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Credit.cs" />
@@ -196,6 +197,7 @@
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\LiteratureReference.cs" />
     <Compile Include="Models\Material.cs" />
+    <Compile Include="Models\NewClientOrder.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\PaymentData.cs" />
     <Compile Include="Models\PriorityLevel.cs" />
@@ -457,6 +459,7 @@
     <Content Include="Views\EmployeeBankInfoes\Details.cshtml" />
     <Content Include="Views\EmployeeBankInfoes\Edit.cshtml" />
     <Content Include="Views\EmployeeBankInfoes\Index.cshtml" />
+    <Content Include="Views\ClientPortalOrders\_NewOrderPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
