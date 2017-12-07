@@ -3,9 +3,11 @@
     ViewBag.Title = "ClientNewWorkOrder";
 }
 
-<h2>Work Order</h2>
+<h2>New Work Order</h2>
 <hr />
 
+@Html.ActionLink("Add Another Compound to Order", "ClientNewWorkOrder", "ClientPortalOrders", new { workorderid = Model.workOrder.WorkOrderID }, new { @class = "btn btn-primary btn default" })
+@Html.ActionLink("Submit Order", "Index", "Client",null, new { @class = "btn btn-primary btn default", style="float:right" })
 
 @using (Html.BeginForm())
 {
@@ -23,23 +25,31 @@
     {
             <!--Display of compound and assay details-->
             <h3>Compound @LtNumber.Key | @LtNumber.Value.CompoundName</h3>
-            <ul>
-                @foreach(NorthWestLabs.Models.CompoundAssayOrder item in Model.compoundAssayOrderList) {
-                    if (item.assayOrder.Compound.LTNumber == LtNumber.Key)
-                    {
-                <li>
-                    <p>@item.assayOrder.ProtocolNotebook.AssayName   </p>
-                    <p>Sequence Number @item.compound.SequenceCode</p>
-                    <p>Work Days To Processing: @item.assayOrder.PriorityLevel.WorkDaysProcessing</p>
-                    <p> Priority Rate:@item.assayOrder.PriorityLevel.PriorityRate</p>
-                </li>
-                    }
-                }
-      @Html.ActionLink("Add Assay to Compound", "ClientAddAssay", "ClientPortalOrders", new { workorderid = Model.workOrder.WorkOrderID, LTNumber=LtNumber.Key }, new { @class = "btn btn-primary btn default" })
-             </ul>
+    <table class="table">
+        <tr>
+            <th>Assay Name</th>
+            <th>LTNumber</th>
+            <th>Work Days Processing</th>
+            <th>Priority Rate</th>
+        </tr>
+    
+    @foreach (NorthWestLabs.Models.CompoundAssayOrder item in Model.compoundAssayOrderList)
+    {
+        if (item.assayOrder.Compound.LTNumber == LtNumber.Key)
+        {
+            <tr>
+                <td>@item.assayOrder.ProtocolNotebook.AssayName </td>
+                <td>@LtNumber.Key-@item.compound.SequenceCode</td>
+                <td>@item.assayOrder.PriorityLevel.WorkDaysProcessing</td>
+                <td>@item.assayOrder.PriorityLevel.PriorityRate</td>
+            </tr>
+        }
+    }
+    </table>
+    @Html.ActionLink("Add Assay to Compound", "ClientAddAssay", "ClientPortalOrders", new { workorderid = Model.workOrder.WorkOrderID, LTNumber = LtNumber.Key }, new { @class = "btn btn-primary btn default" })
+
 
     }
-    @Html.ActionLink("Add Another Compound", "ClientNewWorkOrder", "ClientPortalOrders", new { workorderid = Model.workOrder.WorkOrderID}, new { @class = "btn btn-primary btn default" })
 
     //@Html.ActionLink("Add Another Compound to Order", "ClientNewWorkOrder", "ClientPortalOrders", new { workorderid = Model.compoundAssayOrderList.wor item.assayOrder.WorkOrderID, LTnumber = item.compound.LTNumber }, new { @class = "btn btn-primary btn default" })
 
@@ -48,14 +58,10 @@
                 <div class="form-horizontal">
 
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
+                    @*<div class="form-group">
                         <input type="submit" value="New Order" class="btn btn-default" />
-                    </div>
+                    </div>*@
                 </div>
 
    
 }
-
-<div>
-    @Html.ActionLink("Back to Client Portal", "Index", "Client", null, new { @class = "btn btn-primary btn default" })
-</div>

@@ -34,8 +34,29 @@ namespace NorthWestLabs.Controllers
         }
         public ActionResult ReceiveCompound()
         {
-            return View();
+            IEnumerable<Compound> AllCompounds = db.Compounds.ToList();
+            List<SelectListItem> CompoundList = new List<SelectListItem>();
+            foreach(Compound item in AllCompounds)
+            {
+                if(item.DateArrived==null)
+                {
+                    CompoundList.Add(new SelectListItem
+                    {
+                        Text = item.LTNumber + "-" + item.SequenceCode,
+                        Value = item.CompoundID.ToString()
+                    });  
+                    }
+                }
+            
+
+            return View(CompoundList);
         }
+        [HttpPost]
+        public ActionResult ReceiveCompound(FormCollection form)
+        {
+            return RedirectToAction("Index");
+        }
+
         public ActionResult UnassignedTests()
         {
             return View();

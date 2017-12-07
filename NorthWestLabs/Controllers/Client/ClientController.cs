@@ -10,10 +10,26 @@ using System.Web.Mvc;
 
 namespace NorthWestLabs.Controllers
 {
+
+
     [Authorize]
     public class ClientController : Controller
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
+        public Boolean IsClient()
+        {
+            Boolean client = false;
+            IEnumerable<Client> ClientList = db.Clients.ToList();
+            foreach (Client item in ClientList)
+            {
+                if (User.Identity.Name == item.Username)
+                {
+                    client = true;
+                }
+            }
+
+            return client;
+        }
 
         public int GetClientID()
         {
@@ -32,6 +48,10 @@ namespace NorthWestLabs.Controllers
         // GET: Client
         public ActionResult Index()
         {
+            if (!IsClient())
+            {
+                RedirectToAction("Index");
+            }
 
             Client myClient = db.Clients.Find(GetClientID());
 
@@ -41,6 +61,10 @@ namespace NorthWestLabs.Controllers
         // GET: Client
         public ActionResult ClientInfo()
         {
+            if (!IsClient())
+            {
+                RedirectToAction("Index");
+            }
 
             Client client = db.Clients.Find(GetClientID());
 
@@ -51,6 +75,10 @@ namespace NorthWestLabs.Controllers
         // GET: Client
         public ActionResult ClientOrdersSummary()
         {
+            if (!IsClient())
+            {
+                RedirectToAction("Index");
+            }
 
             List<WorkOrder> NewOrders = new List<WorkOrder>();
             IEnumerable<WorkOrder> workorderList = db.WorkOrders.ToList();
@@ -69,6 +97,10 @@ namespace NorthWestLabs.Controllers
         // GET: Client
         public ActionResult ClientOrderStatus(int? ordernum)
         {
+            if (!IsClient())
+            {
+                RedirectToAction("Index");
+            }
             ViewBag.ordernumber = ordernum;
 
             //need a list of assays where the work order is equal to the ordernum
@@ -110,6 +142,12 @@ namespace NorthWestLabs.Controllers
         {
             decimal AccTotal = 0;
            
+            if (!IsClient())
+            {
+                RedirectToAction("Index");
+            }
+            return View();
+            
             List<AccountInvoiceData> totalactinvoice = new List<AccountInvoiceData>(); 
             IEnumerable<Invoice> AllInvoices = db.Invoices.ToList();
             IEnumerable<InvioceItem> ItemList = db.InvoiceItems.ToList();
@@ -137,19 +175,32 @@ namespace NorthWestLabs.Controllers
         // GET: Client
         public ActionResult ClientInvoiceDetails()
         {
+            if (!IsClient())
+            {
+                RedirectToAction("Index");
+            }
             return View();
         }
         // GET: Client
         public ActionResult ClientPortalQuotes()
         {
+            if (!IsClient())
+            {
+                RedirectToAction("Index");
+            }
             return View();
         }
 
         // GET: Clients2/Edit/5
         public ActionResult ClientInfoEdit()
         {
+            if (!IsClient())
+            {
+                RedirectToAction("Index");
+            }
             if (GetClientID() == null)
             {
+
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Client client = db.Clients.Find(GetClientID());
@@ -167,6 +218,10 @@ namespace NorthWestLabs.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ClientInfoEdit([Bind(Include = "ClientID,CompanyName,ContactFirstName,ContactLastName,Address1,Address2,City,State,Country,Zip,Phone,Email,Username,PasswordHash,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] Client client)
         {
+            if (!IsClient())
+            {
+                RedirectToAction("Index");
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(client).State = EntityState.Modified;
