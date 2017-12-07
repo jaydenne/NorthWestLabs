@@ -83,6 +83,14 @@ namespace NorthWestLabs.Controllers
             ViewBag.PriorityLevelID = new SelectList(db.PriorityLevels, "PriorityLevelID", "ModifiedBy", assayOrder.PriorityLevelID);
             ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName", assayOrder.AssayID);
             assayOrderWithTestResults.AssayOrder = assayOrder;
+            IEnumerable<TestResult> TestResList = db.TestResults.ToList();
+                    foreach (TestResult val in TestResList)
+                    {
+                        if (val.AssayOrderID == assayOrder.AssayOrderID)
+                        {
+                            assayOrderWithTestResults.testResults.Add(val);
+                        }
+                    }
             return View(assayOrderWithTestResults);
         }
 
