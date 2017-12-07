@@ -8,8 +8,19 @@
 <div>
     @Html.ActionLink("Back to Client Portal", "Index", "Client", null, new { @class = "btn btn-primary btn default" })
 </div>
+@{ 
+    int? workorderid;
+    if(Model.workOrder==null)
+    {
+        workorderid = 0;
+    }
+    else
+    {
+        workorderid = Model.workOrder.WorkOrderID;
+    }
+}
 
-@using (Html.BeginForm("ClientNewWorkOrder", "ClientPortalOrders",  if(Model.workOrder != null) {new workorderid = Model.workOrder.WorkOrderID} }))
+@using (Html.BeginForm("ClientNewWorkOrder", "ClientPortalOrders",new { workorderid = workorderid }))
 {
     @Html.AntiForgeryToken()
     
