@@ -483,6 +483,7 @@
     <Content Include="Views\Client\CompanyInfoEdit.cshtml" />
     <Content Include="Views\Client\UpdateContactInfo.cshtml" />
     <Content Include="Views\Client\ChangePassword.cshtml" />
+    <Content Include="Views\Home\RequestQuote.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
