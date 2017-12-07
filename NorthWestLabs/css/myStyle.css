@@ -52,7 +52,11 @@ div.panel {
   }
 }
 
-.well {text-align:center;}
+.well {
+    text-align: center;
+    border:15px solid white;
+    border-radius:23px;
+}
 
 
 

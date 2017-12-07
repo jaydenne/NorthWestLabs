@@ -14,7 +14,20 @@ namespace NorthWestLabs.Controllers
     public class HomeController : Controller
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
-
+        public Boolean IsClient()
+        {
+            Boolean client = false;
+            IEnumerable<Client> ClientList = db.Clients.ToList();
+            foreach(Client item in ClientList)
+            {
+                if(User.Identity.Name==item.Username)
+                {
+                    client = true;
+                }
+            }
+            
+            return client;
+          }
         public int GetEmployeeID()
         {
             int EmployeeID = 0;
@@ -150,7 +163,10 @@ namespace NorthWestLabs.Controllers
         [Authorize]
         public ActionResult  EmployeeAccount()
         {
-
+            if(IsClient())
+            {
+                RedirectToAction("Index");
+            }
             int EmployeeID = GetEmployeeID();
             AllEmployeeInfo AllInfo = new AllEmployeeInfo();
             AllInfo.Employee = db.Employees.Find(EmployeeID);
@@ -173,10 +189,15 @@ namespace NorthWestLabs.Controllers
 
             return View(AllInfo);
         }
+        [Authorize]
 
         public ActionResult EditBankInfo()
         {
-           IEnumerable<EmployeeBankInfo> AllEmployeeBankInfo = db.EmployeeBankInfoes.ToList();
+            if (IsClient())
+            {
+                RedirectToAction("Index");
+            }
+            IEnumerable<EmployeeBankInfo> AllEmployeeBankInfo = db.EmployeeBankInfoes.ToList();
             EmployeeBankInfo employeeBankInfo = new EmployeeBankInfo();
             int EmployeeID = GetEmployeeID();
             foreach(EmployeeBankInfo item in AllEmployeeBankInfo)
@@ -199,8 +220,13 @@ namespace NorthWestLabs.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult EditBankInfo([Bind(Include = "EmployeeBankInfoID,EmployeeID,BankAccount,RoutingNumber,AccountType,ModifiedBy,ModifiedDate")] EmployeeBankInfo employeeBankInfo)
         {
+            if (IsClient())
+            {
+                RedirectToAction("Index");
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(employeeBankInfo).State = EntityState.Modified;
@@ -209,9 +235,13 @@ namespace NorthWestLabs.Controllers
             }
             return View(employeeBankInfo);
         }
+        [Authorize]
         public ActionResult EditPersonalInfo()
         {
-
+            if (IsClient())
+            {
+                RedirectToAction("Index");
+            }
             Employee employee = db.Employees.Find(GetEmployeeID());
             if (employee == null)
             {
@@ -225,8 +255,13 @@ namespace NorthWestLabs.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult EditPersonalInfo([Bind(Include = "EmployeeID,Name,Address,Phone,Position,Location,StartDate,UserName,Password,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] Employee employee)
         {
+            if (IsClient())
+            {
+                RedirectToAction("Index");
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(employee).State = EntityState.Modified;
@@ -240,9 +275,14 @@ namespace NorthWestLabs.Controllers
             return View();
         }
         [HttpPost]
+        [Authorize]
         public ActionResult ChangePassword(FormCollection form, string returnUrl, bool rememberMe = false)
             {
-                String password = form["OldPassword"].ToString();
+            if (IsClient())
+            {
+                RedirectToAction("Index");
+            }
+            String password = form["OldPassword"].ToString();
             String Newpassword = form["NewPassword"].ToString();
             String Confirmpassword = form["ConfirmPassword"].ToString();
             
