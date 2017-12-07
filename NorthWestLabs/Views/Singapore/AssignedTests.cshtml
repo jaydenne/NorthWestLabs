@@ -1,0 +1,47 @@
+﻿@model IEnumerable<NorthWestLabs.Models.AssayOrder>
+@{
+    ViewBag.Title = "AssignedTests";
+}
+<p style="display:contents">
+    <div style="float:left">@Html.ActionLink("Back to Employee Portal", "Index", "Singapore", null, new { @class = "btn btn-primary btn default" })</div>
+    <div style="padding-bottom:10px; float:right">@Html.ActionLink("Edit Test Status", "StatusEdit", "Singapore", null, new { @class = "btn btn-primary btn default" })</div>
+</p>
+<br /><br />
+<h2>AssignedTests</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AssayOrderID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProtocolNotebook.AssayName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkOrder.WorkOrderID)
+        </th>
+        <th>
+            LTNumber-SequenceCode
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Compound.CompoundName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriorityLevel.PriorityLevelID)
+        </th>
+        <th></th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            @Html.ActionLink("Edit", "Edit") |
+            @Html.ActionLink("Details", "Details") |
+            @Html.ActionLink("Delete", "Delete")
+        </td>
+    </tr>
+</table>

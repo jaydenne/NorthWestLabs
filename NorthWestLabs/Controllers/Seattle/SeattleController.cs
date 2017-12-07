@@ -185,7 +185,7 @@ namespace NorthWestLabs.Controllers
         {
             return View();
         }
-        public ActionResult Billing()
+        public ActionResult DownloadResults()
         {
             return View();
         }

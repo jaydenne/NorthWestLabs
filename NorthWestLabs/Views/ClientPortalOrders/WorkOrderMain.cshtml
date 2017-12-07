@@ -10,16 +10,33 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    Dictionary<int,NorthWestLabs.Models.Compound> LTNumberList = new Dictionary<int, NorthWestLabs.Models.Compound>();
+    foreach(NorthWestLabs.Models.CompoundAssayOrder item in Model.compoundAssayOrderList)
+    {
+        if(!LTNumberList.ContainsKey(item.compound.LTNumber))
+        {
+            LTNumberList.Add(item.compound.LTNumber,item.compound);
+        }
+    }
 
-
-    foreach (NorthWestLabs.Models.CompoundAssayOrder item in Model.compoundAssayOrderList)
+    foreach (var LtNumber in LTNumberList)
     {
             <!--Display of compound and assay details-->
-        <h3>Compound @item.assayOrder.Compound.LTNumber | @item.assayOrder.Compound.CompoundName</h3>
-            <h4>@item.assayOrder.ProtocolNotebook.AssayName   </h4>
-            <h5>Sequence Number @item.compound.SequenceCode</h5>
-            <h5>Work Days To Processing: @item.assayOrder.PriorityLevel.WorkDaysProcessing</h5>
-                <h5> Priority Rate:@item.assayOrder.PriorityLevel.PriorityRate</h5>
+            <h3>Compound @LtNumber.Key | @LtNumber.Value.CompoundName</h3>
+            <ul>
+                @foreach(NorthWestLabs.Models.CompoundAssayOrder item in Model.compoundAssayOrderList) {
+                    if (item.assayOrder.Compound.LTNumber == LtNumber.Key)
+                    {
+                <li>
+                    <p>@item.assayOrder.ProtocolNotebook.AssayName   </p>
+                    <p>Sequence Number @item.compound.SequenceCode</p>
+                    <p>Work Days To Processing: @item.assayOrder.PriorityLevel.WorkDaysProcessing</p>
+                    <p> Priority Rate:@item.assayOrder.PriorityLevel.PriorityRate</p>
+                </li>
+                    }
+                }
+      @Html.ActionLink("Add Assay to Compound", "ClientAddAssay", "ClientPortalOrders", new { workorderid = Model.workOrder.WorkOrderID, LTNumber=LtNumber.Key }, new { @class = "btn btn-primary btn default" })
+             </ul>
 
     }
     @Html.ActionLink("Add Another Compound", "ClientNewWorkOrder", "ClientPortalOrders", new { workorderid = Model.workOrder.WorkOrderID}, new { @class = "btn btn-primary btn default" })
