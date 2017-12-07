@@ -5,46 +5,92 @@
 }
 
 <h2>Add Assays</h2>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+            <div class="form-horizontal ">
 
-    <div class="form-horizontal">
-      
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.WorkOrder, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.WorkOrder, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+
+                    </div>
+                </div>
+
+                
+
                
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.PriorityLevel.WorkDaysProcessing, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PriorityLevel.PriorityLevelID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PriorityLevel.PriorityLevelID, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PriorityLevelID, "Work Days Processing", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("PriorityLevelID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PriorityLevelID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.AssayID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AssayID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AssayID, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AssayID, "Assay Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("AssayID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.AssayID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Compound.CompoundName, "Compound Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("CompoundID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Compound.CompoundName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
             </div>
-        </div>
+        }
     </div>
-}
+        <div class="col-md-4">
+            <table class="table">
+                <tr>
+                    <th>
+                        Priority Rate
+                    </th>
+                    <th>
+                        Work Days of Processing
+                    </th>
+                </tr>
 
+                @foreach (NorthWestLabs.Models.PriorityLevel item in ViewBag.hello)
+                {
+                    <tr>
+                        <td>
+                            @(item.PriorityRate*100)
+                        </td>
+                        <td>
+                            @item.WorkDaysProcessing Days
+                        </td>
+                    </tr>
+
+                }
+            </table>
+            <p>**The Work Days Processing includes the time from recieving compound samples in our Singapore lab to beginning testing. 
+            There is a standard amount of days for testing and 
+            reporting which varies by compound on top of the work days processing. </p>
+            <p>**The Priority Rate determines the Priority Level Fee which is the priority rate percentage of the total cost. </p>
+        </div>
+</div>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
