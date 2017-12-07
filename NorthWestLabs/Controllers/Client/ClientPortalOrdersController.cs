@@ -93,10 +93,10 @@ namespace NorthWestLabs.Controllers
             compoundAssayOrder.assayOrder = assayorder;
             compoundAssayOrder.compound = compound;
             newClientOrder.workOrder = workOrder;
-            return View("WorkOrderMain",newClientOrder);
+            return RedirectToAction("WorkOrderMain",newClientOrder);
         }
         
-        public ActionResult WorkOrderMain()
+        public ActionResult WorkOrderMain(NewClientOrder newClientOrder)
         {
             return View();
         }
