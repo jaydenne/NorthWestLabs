@@ -1,7 +1,57 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "EmployeeQuotes";
 }
+<div style="padding-bottom:10px; float:right">@Html.ActionLink("Return to Employee Portal", "SeattleIndex", "Seattle", null, new { @class = "btn btn-primary btn default" })</div>
 
 <h2>Generate a Quote</h2>
-
+<br />
+<dl class="dl-horizontal" style="text-align:left">
+    <dt>
+        Number of Assays:
+    </dt>
+    <dd>
+        @Html.TextBox("Hey")
+    </dd>
+    <br />
+    <dt>
+        Assay Name(s):
+    </dt>
+    <dd>
+        @Html.TextBox("Hey")
+    </dd>
+    <br />
+    <dt>
+        Test Name
+    </dt>
+    <dd>
+        @Html.TextBox("Hey")
+    </dd>
+    <br />
+    <dt>
+        Associated Compound(s):
+    </dt>
+    <dd>
+        @Html.TextBox("Hey")
+    </dd>
+    <br />
+    <dt>
+        Description:
+    </dt>
+    <dd>
+        @Html.TextBox("Hey")
+    </dd>
+    <br />
+    <dt>
+        Priority Level
+    </dt>
+    <dd>
+        @Html.TextBox("Hey")
+    </dd>
+    
+</dl>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <br />
+        <input type="submit" value="Submit Quote" class="btn btn-default" />
+    </div>
+</div>
