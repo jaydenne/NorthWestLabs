@@ -146,7 +146,7 @@ namespace NorthWestLabs.Controllers
             {
                 RedirectToAction("Index");
             }
-            return View();
+            
             
             List<AccountInvoiceData> totalactinvoice = new List<AccountInvoiceData>(); 
             IEnumerable<Invoice> AllInvoices = db.Invoices.ToList();
