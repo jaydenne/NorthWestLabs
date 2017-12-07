@@ -69,6 +69,7 @@ namespace NorthWestLabs.Controllers
         // GET: AssayOrder/Edit/5
         public ActionResult Edit(int? id, int? WorkOrderID)
         {
+            AssayOrderWithTestResults assayOrderWithTestResults = new AssayOrderWithTestResults();
             ViewBag.WorkOrderID = WorkOrderID;
             if (id == null)
             {
@@ -81,8 +82,8 @@ namespace NorthWestLabs.Controllers
             }
             ViewBag.PriorityLevelID = new SelectList(db.PriorityLevels, "PriorityLevelID", "ModifiedBy", assayOrder.PriorityLevelID);
             ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName", assayOrder.AssayID);
-            
-            return View(assayOrder);
+            assayOrderWithTestResults.AssayOrder = assayOrder;
+            return View(assayOrderWithTestResults);
         }
 
         // POST: AssayOrder/Edit/5
@@ -92,7 +93,9 @@ namespace NorthWestLabs.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "AssayOrderID,WorkOrderID,PriorityLevelID,AssayID,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate,CompoundID")] AssayOrder assayOrder, int? WorkOrderID)
         {
-            ViewBag.WorkOrderID = WorkOrderID;
+
+                       
+                AssayOrderWithTestResults assayOrderWithTestResults = new AssayOrderWithTestResults();
             if (ModelState.IsValid)
             {
                 db.Entry(assayOrder).State = EntityState.Modified;
@@ -101,8 +104,8 @@ namespace NorthWestLabs.Controllers
             }
             ViewBag.PriorityLevelID = new SelectList(db.PriorityLevels, "PriorityLevelID", "ModifiedBy", assayOrder.PriorityLevelID);
             ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName", assayOrder.AssayID);
-            
-            return View(assayOrder);
+            assayOrderWithTestResults.AssayOrder = assayOrder;
+            return View(assayOrderWithTestResults);
         }
 
         // GET: AssayOrder/Delete/5
