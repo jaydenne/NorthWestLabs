@@ -145,6 +145,24 @@ namespace NorthWestLabs.Controllers
                 RedirectToAction("Index");
             }
             return View();
+            
+            List<AccountInvoiceData> totalactinvoice = new List<AccountInvoiceData>(); 
+            IEnumerable<Invoice> AllInvoices = db.Invoices.ToList();
+            IEnumerable<InvioceItem> ItemList = db.InvoiceItems.ToList();
+          foreach(Invoice item in AllInvoices)
+            {
+                if(item.ClientID == GetClientID())
+                {
+                    AccountInvoiceData acctdata = new AccountInvoiceData();
+                    acctdata.Invoice = item;
+                        foreach(InvioceItem val in ItemList)
+                    {
+                        acctdata.invoiceitems.Add(val);
+                    }
+                    totalactinvoice.Add(acctdata);
+                }
+            }
+               return View(totalactinvoice);
         }
         // GET: Client
         public ActionResult ClientInvoiceDetails()

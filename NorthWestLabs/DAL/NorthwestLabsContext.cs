@@ -18,6 +18,8 @@ namespace NorthWestLabs.DAL
         public DbSet<AssayOrder> AssayOrders { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<TestResult> TestResults { get; set; }
+        public virtual DbSet<InvioceItem> InvoiceItems { get; set; }
+        public virtual DbSet<Term> Terms { get; set; }
         public System.Data.Entity.DbSet<NorthWestLabs.Models.Compound> Compounds { get; set; }
 
         public System.Data.Entity.DbSet<NorthWestLabs.Models.WorkOrder> WorkOrders { get; set; }
@@ -27,7 +29,7 @@ namespace NorthWestLabs.DAL
       
         public System.Data.Entity.DbSet<NorthWestLabs.Models.Invoice> Invoices { get; set; }
 
-        public System.Data.Entity.DbSet<NorthWestLabs.Models.Term> Terms { get; set; }
+      //  public System.Data.Entity.DbSet<NorthWestLabs.Models.Term> Terms { get; set; }
 
         public System.Data.Entity.DbSet<NorthWestLabs.Models.ProtocolNotebook> ProtocolNotebooks { get; set; }
 
