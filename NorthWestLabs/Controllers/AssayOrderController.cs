@@ -67,8 +67,10 @@ namespace NorthWestLabs.Controllers
         }
 
         // GET: AssayOrder/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, int? WorkOrderID)
         {
+            AssayOrderWithTestResults assayOrderWithTestResults = new AssayOrderWithTestResults();
+            ViewBag.WorkOrderID = WorkOrderID;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -80,8 +82,16 @@ namespace NorthWestLabs.Controllers
             }
             ViewBag.PriorityLevelID = new SelectList(db.PriorityLevels, "PriorityLevelID", "ModifiedBy", assayOrder.PriorityLevelID);
             ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName", assayOrder.AssayID);
-            ViewBag.WorkOrderID = new SelectList(db.WorkOrders, "WorkOrderID", "ModifiedBy", assayOrder.WorkOrderID);
-            return View(assayOrder);
+            assayOrderWithTestResults.AssayOrder = assayOrder;
+            IEnumerable<TestResult> TestResList = db.TestResults.ToList();
+                    foreach (TestResult val in TestResList)
+                    {
+                        if (val.AssayOrderID == assayOrder.AssayOrderID)
+                        {
+                            assayOrderWithTestResults.testResults.Add(val);
+                        }
+                    }
+            return View(assayOrderWithTestResults);
         }
 
         // POST: AssayOrder/Edit/5
@@ -89,18 +99,21 @@ namespace NorthWestLabs.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AssayOrderID,WorkOrderID,PriorityLevelID,AssayID,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate,CompoundID")] AssayOrder assayOrder)
+        public ActionResult Edit([Bind(Include = "AssayOrderID,WorkOrderID,PriorityLevelID,AssayID,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate,CompoundID")] AssayOrder assayOrder, int? WorkOrderID)
         {
+
+                       
+                AssayOrderWithTestResults assayOrderWithTestResults = new AssayOrderWithTestResults();
             if (ModelState.IsValid)
             {
                 db.Entry(assayOrder).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details","WorkOrders", new { id=assayOrder.WorkOrderID});
             }
             ViewBag.PriorityLevelID = new SelectList(db.PriorityLevels, "PriorityLevelID", "ModifiedBy", assayOrder.PriorityLevelID);
             ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName", assayOrder.AssayID);
-            ViewBag.WorkOrderID = new SelectList(db.WorkOrders, "WorkOrderID", "ModifiedBy", assayOrder.WorkOrderID);
-            return View(assayOrder);
+            assayOrderWithTestResults.AssayOrder = assayOrder;
+            return View(assayOrderWithTestResults);
         }
 
         // GET: AssayOrder/Delete/5
