@@ -221,8 +221,9 @@ namespace NorthWestLabs.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult EditBankInfo([Bind(Include = "EmployeeBankInfoID,EmployeeID,BankAccount,RoutingNumber,AccountType,ModifiedBy,ModifiedDate")] EmployeeBankInfo employeeBankInfo)
+        public ActionResult EditBankInfo([Bind(Include = "EmployeeBankInfoID,BankAccount,RoutingNumber,AccountType,ModifiedBy,ModifiedDate")] EmployeeBankInfo employeeBankInfo)
         {
+            employeeBankInfo.EmployeeID = GetEmployeeID();
             if (IsClient())
             {
                 RedirectToAction("Index");
@@ -231,7 +232,7 @@ namespace NorthWestLabs.Controllers
             {
                 db.Entry(employeeBankInfo).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("EmployeeAccount");
             }
             return View(employeeBankInfo);
         }
@@ -256,7 +257,7 @@ namespace NorthWestLabs.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult EditPersonalInfo([Bind(Include = "EmployeeID,Name,Address,Phone,Position,Location,StartDate,UserName,Password,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] Employee employee)
+        public ActionResult EditPersonalInfo([Bind(Include = "Name,Address,Phone,Position,Location,StartDate,UserName,Password,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] Employee employee)
         {
             if (IsClient())
             {
@@ -264,9 +265,10 @@ namespace NorthWestLabs.Controllers
             }
             if (ModelState.IsValid)
             {
+                employee.EmployeeID = GetEmployeeID();
                 db.Entry(employee).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("EmployeeAccount");
             }
             return View(employee);
         }
@@ -293,7 +295,7 @@ namespace NorthWestLabs.Controllers
                 {
                     myEmployee.Password = Newpassword;
                     db.SaveChanges();
-                    RedirectToAction("EmployeeAccount", "Home");
+                    return RedirectToAction("EmployeeAccount", "Home");
                 }
             }
                                                     
