@@ -2,7 +2,9 @@
 using NorthWestLabs.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -174,12 +176,89 @@ namespace NorthWestLabs.Controllers
 
         public ActionResult EditBankInfo()
         {
+           IEnumerable<EmployeeBankInfo> AllEmployeeBankInfo = db.EmployeeBankInfoes.ToList();
+            EmployeeBankInfo employeeBankInfo = new EmployeeBankInfo();
+            int EmployeeID = GetEmployeeID();
+            foreach(EmployeeBankInfo item in AllEmployeeBankInfo)
+            {
+                if(item.EmployeeID==EmployeeID)
+                {
+                    employeeBankInfo = item;
+                }
+            }
+
+            if (employeeBankInfo == null)
+            {
+                return HttpNotFound();
+            }
+            return View(employeeBankInfo);
+        }
+
+        // POST: EmployeeBankInfoes/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditBankInfo([Bind(Include = "EmployeeBankInfoID,EmployeeID,BankAccount,RoutingNumber,AccountType,ModifiedBy,ModifiedDate")] EmployeeBankInfo employeeBankInfo)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(employeeBankInfo).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(employeeBankInfo);
+        }
+        public ActionResult EditPersonalInfo()
+        {
+
+            Employee employee = db.Employees.Find(GetEmployeeID());
+            if (employee == null)
+            {
+                return HttpNotFound();
+            }
+            return View(employee);
+        }
+
+        // POST: Employees/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPersonalInfo([Bind(Include = "EmployeeID,Name,Address,Phone,Position,Location,StartDate,UserName,Password,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(employee).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(employee);
+        }
+        public ActionResult ChangePassword()
+        {
             return View();
         }
         [HttpPost]
-        public ActionResult EditBankInfo(int placeholder)
-        {
-            return View();
+        public ActionResult ChangePassword(FormCollection form, string returnUrl, bool rememberMe = false)
+            {
+                String password = form["OldPassword"].ToString();
+            String Newpassword = form["NewPassword"].ToString();
+            String Confirmpassword = form["ConfirmPassword"].ToString();
+            
+            Employee myEmployee = db.Employees.Find(GetEmployeeID());
+            if(myEmployee.Password == password)
+            {
+                if (Newpassword == Confirmpassword)
+                {
+                    myEmployee.Password = Newpassword;
+                    db.SaveChanges();
+                    RedirectToAction("EmployeeAccount", "Home");
+                }
+            }
+                                                    
+                return View();
+            
         }
 
     }
