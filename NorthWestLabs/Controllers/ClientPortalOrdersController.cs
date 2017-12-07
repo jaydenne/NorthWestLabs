@@ -44,17 +44,23 @@ namespace NorthWestLabs.Controllers
         public ActionResult ClientNewWorkOrder()
         {
 
-
-
-            return View();
+            ViewBag.PriorityLevelID = new SelectList(db.PriorityLevels, "PriorityLevelID", "WorkDaysProcessing");
+            ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName");
+            ViewBag.WorkOrderID = new SelectList(db.WorkOrders, "WorkOrderID", "ModifiedBy");
+            ViewBag.CompoundID = new SelectList(db.Compounds, "CompoundID", "CompoundName");
+            NewClientOrder newClientOrder = new NewClientOrder();
+            return View(newClientOrder);
+          
         }
 
         // POST: WorkOrders/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ClientNewWorkOrder([Bind(Include = "WorkOrderID,ClientID,QuoteID,DiscountRate,DateTime,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] WorkOrder workOrder)
+        public ActionResult ClientNewWorkOrder(int? id/*[Bind(Include = "WorkOrderID,ClientID,QuoteID,DiscountRate,DateTime,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] WorkOrder workOrder,
+            [Bind(Include = "LTNumber,SequenceCode,CompoundName,Quantity,DateArrived,ReceivedBy,DateDue,Appearance,Weight,MolecularMass,ConfirmationDate,MaxTotalDose,ActualWeight,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] Compound compound,
+            [Bind(Include = "AssayOrderID,WorkOrderID,PriorityLevelID,AssayID,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate,CompoundID")] AssayOrder assayorder*/)
         {
-            if (ModelState.IsValid)
+            /*if (ModelState.IsValid)
             {
                 workOrder.ClientID = GetClientID();
                 workOrder.DateTime = DateTime.Now;
@@ -63,16 +69,39 @@ namespace NorthWestLabs.Controllers
                 workOrder.CreatedBy = "End User";
                 workOrder.CreatedDate = DateTime.Now;
 
-
+                compound.LTNumber = db.Compounds.Max(t => t.LTNumber) + 1;
+                compound.SequenceCode = 1;
+                compound.ModifiedBy = "End User";
+                compound.ModifiedDate = DateTime.Now;
+                compound.CreatedBy = "End User";
+                compound.CreatedDate = DateTime.Now;
+                db.Compounds.Add(compound);
                 db.WorkOrders.Add(workOrder);
-                db.SaveChanges();
-                return RedirectToAction("OrderAddCompound");
-            }
+               
 
-            ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "CompanyName", workOrder.ClientID);
-            ViewBag.QuoteID = new SelectList(db.QuoteEstimates, "QuoteID", "ModifiedBy", workOrder.QuoteID);
-            return View(workOrder);
-        }
+                assayorder.ModifiedBy = "End User";
+                assayorder.ModifiedDate = DateTime.Now;
+                assayorder.CreatedBy = "End User";
+                assayorder.CreatedDate = DateTime.Now;
+                db.AssayOrders.Add(assayorder);
+                db.SaveChanges();
+                return RedirectToAction("WorkOrderMain");*/
+
+            /*
+                            db.WorkOrders.Add(workOrder);
+                            db.SaveChanges();
+                            return RedirectToAction("OrderAddCompound");*/
+            // }
+            /*
+                ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "CompanyName", workOrder.ClientID);
+                ViewBag.QuoteID = new SelectList(db.QuoteEstimates, "QuoteID", "ModifiedBy", workOrder.QuoteID);
+                return View(workOrder);*/
+            ViewBag.viewcreated = true;
+            //  return PartialViewResult PartialView("NewOrderPartial");
+
+            NewClientOrder newClientOrder = new NewClientOrder();
+        return View(newClientOrder);
+    }
 
 
         // GET: Client
@@ -124,7 +153,7 @@ namespace NorthWestLabs.Controllers
         // POST: Compounds2/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult OrderAddAssayOrder([Bind(Include = "AssayOrderID,WorkOrderID,PriorityLevelID,AssayID,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] AssayOrder assayorder)
+        public ActionResult OrderAddAssayOrder([Bind(Include = "AssayOrderID,WorkOrderID,PriorityLevelID,AssayID,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate,CompoundID")] AssayOrder assayorder)
         {
             if (ModelState.IsValid)
             {
