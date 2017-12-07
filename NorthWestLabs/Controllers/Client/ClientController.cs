@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace NorthWestLabs.Controllers
 {
+    [Authorize]
     public class ClientController : Controller
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();

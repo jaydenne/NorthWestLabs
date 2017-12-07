@@ -2,6 +2,8 @@
 @{
     ViewBag.Title = "EmployeeAccount";
 }
+
+
 <p>
     <div style="padding-bottom:10px; float:right">@Html.ActionLink("Return to Employee Portal", "SeattleIndex", "Seattle", null, new { @class = "btn btn-primary btn default" })</div>
 </p>
@@ -9,135 +11,133 @@
 <br /><br />
 
 <h2 style="text-align:center"><u>@Model.Employee.Name's Account Information</u></h2>
-
-        <h2>Personal Information</h2>
-            <p>
-                <div style="padding-bottom:10px; float:left">@Html.ActionLink("Edit Personal Information", "EditPersonalInfo", "Home", null, new { @class = "btn btn-primary btn default" })</div>
-            </p>
-
-            <br /><br />
-
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Employee.Name)
-                </dt>
-                <dd>
-                    @Model.Employee.Name
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Employee.Phone)
-                </dt>
-                <dd>
-                    @Model.Employee.Phone
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Employee.Address)
-                </dt>
-                <dd>
-                    @Model.Employee.Address
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Employee.Location)
-                </dt>
-                <dd>
-                    @Model.Employee.Location
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Employee.Position)
-                </dt>
-                <dd>
-                    @Model.Employee.Position
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Employee.StartDate)
-                </dt>
-                <dd>
-                    @Model.Employee.StartDate
-                </dd>
-            </dl>
-   
-        <h2>Wage Information</h2>
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.WageInfo.CurrentWage.Value)
-                </dt>
-                <dd>
-                    @Model.WageInfo.CurrentWage.Value
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.WageInfo.WageType)
-                </dt>
-                <dd>
-                    @Model.WageInfo.WageType
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.WageInfo.LastIncreaseAmount)
-                </dt>
-                <dd>
-                    @Model.WageInfo.LastIncreaseAmount
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.WageInfo.LastIncreaseDate)
-                </dt>
-                <dd>
-                    @Model.WageInfo.LastIncreaseDate
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.WageInfo.DirectDeposit)
-                </dt>
-                <dd>
-                    @Model.WageInfo.DirectDeposit
-                </dd>
-            </dl>
-    
+<br />
+        <div class="row">
+            <div class="col-md-5 well">
+                <h2>Personal Information</h2>
+                                        
+                <dl class="dl-horizontal"style="text-align:left">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Employee.Name)
+                    </dt>
+                    <dd>
+                        @Model.Employee.Name
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Employee.Phone)
+                    </dt>
+                    <dd>
+                        @Model.Employee.Phone
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Employee.Address)
+                    </dt>
+                    <dd>
+                        @Model.Employee.Address
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Employee.Location)
+                    </dt>
+                    <dd>
+                        @Model.Employee.Location
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Employee.Position)
+                    </dt>
+                    <dd>
+                        @Model.Employee.Position
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Employee.StartDate)
+                    </dt>
+                    <dd>
+                        @Model.Employee.StartDate
+                    </dd>
+                </dl>
+                <p>
+                    <div style="padding-bottom:10px">@Html.ActionLink("Edit Personal Information", "EditPersonalInfo", "Home", null, new { @class = "btn btn-primary btn default" })</div>
+                </p>
+            </div>
         
+            <div class="col-md-2"></div>        
 
-        <h2>Bank Information</h2>
-            <p>
-                <div style="padding-bottom:10px; float:left">@Html.ActionLink("Edit Bank Information", "EditBankInfo", "Home", null, new { @class = "btn btn-primary btn default" })</div>
-            </p>
-            <br /><br />
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.BankInfo.AccountType)
-                </dt>
-                <dd>
-                    @Model.BankInfo.AccountType
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.BankInfo.BankAccount)
-                </dt>
-                <dd>
-                    @Model.BankInfo.BankAccount
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.BankInfo.RoutingNumber)
-                </dt>
-                <dd>
-                    @Model.BankInfo.RoutingNumber
-                </dd>
-            </dl>
+            <div class="col-md-5 well">
+                <h2>Wage Information</h2>
+                <hr />
+            
+                <dl class="dl-horizontal"style="text-align:left">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.WageInfo.CurrentWage.Value)
+                    </dt>
+                    <dd>
+                        $@Model.WageInfo.CurrentWage.Value
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.WageInfo.WageType)
+                    </dt>
+                    <dd>
+                        @Model.WageInfo.WageType
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.WageInfo.DirectDeposit)
+                    </dt>
+                    <dd>
+                        @Model.WageInfo.DirectDeposit
+                    </dd>
+                </dl>
+            </div>
+        </div>
 
-    <h2>Account Credentials</h2>
-        <p>
-            <div style="padding-bottom:10px; float:left">@Html.ActionLink("Edit Account Credentials", "EditCredentials", "Home", null, new { @class = "btn btn-primary btn default" })</div>
-        </p>
-        <br /><br />
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Employee.UserName)
-            </dt>
-            <dd>
-                @Model.Employee.UserName
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Employee.Password)
-            </dt>
-            <dd>
-                @Model.Employee.Password
-            </dd>
-        </dl>
+        <div class="row">
+            <div class="col-md-5 well">
+                <h2>Bank Information</h2>
+            
+                <dl class="dl-horizontal"style="text-align:left">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BankInfo.AccountType)
+                    </dt>
+                    <dd>
+                        @Model.BankInfo.AccountType
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BankInfo.BankAccount)
+                    </dt>
+                    <dd>
+                        @Model.BankInfo.BankAccount
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BankInfo.RoutingNumber)
+                    </dt>
+                    <dd>
+                        @Model.BankInfo.RoutingNumber
+                    </dd>
+                </dl>
+                <p>
+                    <div style="padding-bottom:10px">@Html.ActionLink("Edit Bank Information", "EditBankInfo", "Home", null, new { @class = "btn btn-primary btn default" })</div>
+                </p>
+            </div>
+
+            <div class="col-md-2"></div>
+
+            <div class="col-md-5 well">
+                <h2>Account Credentials</h2>
+                                
+                <dl class="dl-horizontal" style="text-align:left">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Employee.UserName)
+                    </dt>
+                    <dd>
+                        @Model.Employee.UserName
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Employee.Password)
+                    </dt>
+                    <dd>
+                        *********
+                    </dd>
+                </dl>
+                <p>
+                    <div style="padding-bottom:10px">@Html.ActionLink("Change Password", "ChangePassword", "Home", null, new { @class = "btn btn-primary btn default" })</div>
+                </p>
+            </div>
+        </div>
