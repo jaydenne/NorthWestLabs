@@ -17,7 +17,7 @@ namespace NorthWestLabs.Models
         public int TestID { get; set; }
         public int AssayOrderID { get; set; }
         public int TestTubeID { get; set; }
-        public int LTNumber { get; set; }
+        public int CompoundID { get; set; }
         public Nullable<System.DateTime> ScheduleStart { get; set; }
         public byte[] TextFile { get; set; }
         public byte[] NumericFile { get; set; }

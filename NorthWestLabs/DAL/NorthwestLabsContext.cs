@@ -20,6 +20,7 @@ namespace NorthWestLabs.DAL
         public virtual DbSet<TestResult> TestResults { get; set; }
         public virtual DbSet<InvioceItem> InvoiceItems { get; set; }
         public virtual DbSet<Term> Terms { get; set; }
+        public virtual DbSet<TestTube> TestTubes { get; set; }
         public System.Data.Entity.DbSet<NorthWestLabs.Models.Compound> Compounds { get; set; }
 
         public System.Data.Entity.DbSet<NorthWestLabs.Models.WorkOrder> WorkOrders { get; set; }

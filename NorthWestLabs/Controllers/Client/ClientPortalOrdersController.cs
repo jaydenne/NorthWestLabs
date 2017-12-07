@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace NorthWestLabs.Controllers
 {
+    [Authorize]
     public class ClientPortalOrdersController : Controller
     {
 
@@ -200,110 +201,61 @@ namespace NorthWestLabs.Controllers
             return View("WorkOrderMain", newClientOrder);
         }
 
-            /*if (ModelState.IsValid)
-            {
+        public ActionResult SubmitOrder(int workorderid)
+        {
+                ViewBag.PriorityLevelID = new SelectList(db.PriorityLevels, "PriorityLevelID", "WorkDaysProcessing");
+                ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName");
+                WorkOrder workOrder = db.WorkOrders.Find(workorderid);
+                NewClientOrder newClientOrder = new NewClientOrder();
+                IEnumerable<AssayOrder> allAssay = db.AssayOrders.ToList();
+                foreach (AssayOrder item in allAssay)
+                {
+                    if (item.WorkOrderID == workOrder.WorkOrderID)
+                    {
+                        CompoundAssayOrder myCompoundAssayOrder = new CompoundAssayOrder();
+                        myCompoundAssayOrder.assayOrder = item;
+                        myCompoundAssayOrder.compound = db.Compounds.Find(item.CompoundID);
+                        newClientOrder.compoundAssayOrderList.Add(myCompoundAssayOrder);
+                    }
+                }
+                newClientOrder.workOrder = workOrder;
+                IEnumerable<Test> TestList = db.Tests.ToList();
+                foreach (var item in newClientOrder.compoundAssayOrderList)
+                {
+                    item.assayOrder.ProtocolNotebook = db.ProtocolNotebooks.Find(item.assayOrder.AssayID);
+                    item.assayOrder.PriorityLevel = db.PriorityLevels.Find(item.assayOrder.PriorityLevelID);
+                    foreach (var test in TestList)
+                    {
+                        if(test.AssayID==item.assayOrder.AssayID)
+                        {
+                            TestResult newresult = new TestResult();
+                        newresult.AssayOrderID = item.assayOrder.AssayOrderID;
+                        newresult.CompoundID = item.compound.CompoundID;
+                        newresult.TestID = test.TestID;
+                        newresult.CreatedBy = "Client " + GetClientID();
+                        newresult.CreatedDate = DateTime.Now;
+                        newresult.ModifedBy = "Client " + GetClientID();
+                        newresult.ModifiedDate = DateTime.Now;
+                        newresult.StatusID = 1;
+                        newresult.StatusUpdatedDate = DateTime.Now;
+                        TestTube mytube = new TestTube();
+                        mytube.CompoundID = item.compound.CompoundID;
+                        mytube.CreatedBy = "System";
+                        mytube.CreatedDate = DateTime.Now;
+                        db.TestTubes.Add(mytube);
 
-                compound.LTNumber = db.Compounds.Max(t => t.LTNumber) + 1;
-                compound.SequenceCode = 1;
-                compound.ModifiedBy = "End User";
-                compound.ModifiedDate = DateTime.Now;
-                compound.CreatedBy = "End User";
-                compound.CreatedDate = DateTime.Now;
-                db.Compounds.Add(compound);
-                db.WorkOrders.Add(workOrder);
+                        newresult.TestTubeID = mytube.TestTubeID;
+                        db.TestResults.Add(newresult);
+                        db.SaveChanges();
+                        }
+                    }
+
+                }
+                return RedirectToAction("Index","Client");
+            
 
 
-                assayorder.ModifiedBy = "End User";
-                assayorder.ModifiedDate = DateTime.Now;
-                assayorder.CreatedBy = "End User";
-                assayorder.CreatedDate = DateTime.Now;
-                db.AssayOrders.Add(assayorder);
-                db.SaveChanges();
-                return RedirectToAction("WorkOrderMain");*/
-
-            /*
-                            db.WorkOrders.Add(workOrder);
-                            db.SaveChanges();
-                            return RedirectToAction("OrderAddCompound");*/
-            // }
-            /*
-                ViewBag.ClientID = new SelectList(db.Clients, "ClientID", "CompanyName", workOrder.ClientID);
-                ViewBag.QuoteID = new SelectList(db.QuoteEstimates, "QuoteID", "ModifiedBy", workOrder.QuoteID);
-                return View(workOrder);*/
-
-
-
-
-
-
-
-
-            // GET: Client
-            //public ActionResult OrderAddCompound()
-            //{
-            //    // Team.teamID = db.Teams.Max(t => t.teamID) + 1;
-            //    // ViewBag.LTNumber = db.Compounds.Max(t => t.LTNumber) + 1;
-
-            //    return View();
-            //}
-            //// POST: Compounds2/Create
-            //[HttpPost]
-            //[ValidateAntiForgeryToken]
-            //public ActionResult OrderAddCompound([Bind(Include = "LTNumber,SequenceCode,CompoundName,Quantity,DateArrived,ReceivedBy,DateDue,Appearance,Weight,MolecularMass,ConfirmationDate,MaxTotalDose,ActualWeight,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] Compound compound)
-            //{
-            //    if (ModelState.IsValid)
-            //    {
-            //        compound.LTNumber = db.Compounds.Max(t => t.LTNumber) + 1;
-            //        compound.SequenceCode = 1;
-            //        compound.ModifiedBy = "End User";
-            //        compound.ModifiedDate = DateTime.Now;
-            //        compound.CreatedBy = "End User";
-            //        compound.CreatedDate = DateTime.Now;
-            //        db.Compounds.Add(compound);
-            //        db.SaveChanges();
-            //        return RedirectToAction("WorkOrderMain");
-            //    }
-
-            //    return View(compound);
-            //}
-
-            //// GET: Client
-            //public ActionResult WorkOrderMain()
-            //{
-            //    return View();
-            //}
-
-            //// GET: Client
-            //public ActionResult OrderAddAssayOrder()
-            //{
-            //    ViewBag.PriorityLevelID = new SelectList(db.PriorityLevels, "PriorityLevelID", "WorkDaysProcessing");
-            //    ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName");
-            //    ViewBag.WorkOrderID = new SelectList(db.WorkOrders, "WorkOrderID", "ModifiedBy");
-            //    ViewBag.CompoundID = new SelectList(db.Compounds, "CompoundID", "CompoundName");
-            //    ViewBag.hello = db.PriorityLevels.ToList();
-
-            //    return View();
-            //}
-            //// POST: Compounds2/Create
-            //[HttpPost]
-            //[ValidateAntiForgeryToken]
-            //public ActionResult OrderAddAssayOrder([Bind(Include = "AssayOrderID,WorkOrderID,PriorityLevelID,AssayID,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate,CompoundID")] AssayOrder assayorder)
-            //{
-            //    if (ModelState.IsValid)
-            //    {
-
-            //        assayorder.ModifiedBy = "End User";
-            //        assayorder.ModifiedDate = DateTime.Now;
-            //        assayorder.CreatedBy = "End User";
-            //        assayorder.CreatedDate = DateTime.Now;
-            //        db.AssayOrders.Add(assayorder);
-            //        db.SaveChanges();
-            //        return RedirectToAction("WorkOrderMain");
-            //    }
-
-            //    return View(assayorder);
-            //}
-
+        }
 
 
         }

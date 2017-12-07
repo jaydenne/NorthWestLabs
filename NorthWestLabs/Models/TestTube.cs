@@ -9,22 +9,22 @@ using System.Web;
 namespace NorthWestLabs.Models
 {
     [Table("TestTube")]
-    
+
     public class TestTube
     {
-       
+
         [Key]
         [DisplayName("Test Tube #")]
         public int TestTubeID { get; set; }
         [DisplayName("Test Tube Number")]
         public int TestTubeNumber { get; set; }
-        [DisplayName("LT Number")]
-        public int LTNumber { get; set; }
-        [DisplayName("Sequence Code")]
-        public int SequenceCode { get; set; }
+        [DisplayName("CompoundID")]
+        public int CompoundID { get; set; }
         public string Concentration { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
+
+        public virtual Compound compound{get; set;}
     
         //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         //public virtual ICollection<TestResult> TestResults { get; set; }

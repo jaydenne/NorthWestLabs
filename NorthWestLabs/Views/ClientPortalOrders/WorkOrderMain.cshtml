@@ -7,7 +7,7 @@
 <hr />
 
 @Html.ActionLink("Add Another Compound to Order", "ClientNewWorkOrder", "ClientPortalOrders", new { workorderid = Model.workOrder.WorkOrderID }, new { @class = "btn btn-primary btn default" })
-@Html.ActionLink("Submit Order", "Index", "Client",null, new { @class = "btn btn-primary btn default", style="float:right" })
+@Html.ActionLink("Submit Order", "SubmitOrder", "ClientPortalOrders", new { workorderid = Model.workOrder.WorkOrderID }, new { @class = "btn btn-primary btn default", style="float:right" })
 
 @using (Html.BeginForm())
 {
