@@ -461,6 +461,9 @@
     <Content Include="Views\EmployeeBankInfoes\Edit.cshtml" />
     <Content Include="Views\EmployeeBankInfoes\Index.cshtml" />
     <Content Include="Views\ClientPortalOrders\_NewOrderPartial.cshtml" />
+    <Content Include="Views\Home\EditBankInfo.cshtml" />
+    <Content Include="Views\Home\EditPersonalInfo.cshtml" />
+    <Content Include="Views\Home\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
