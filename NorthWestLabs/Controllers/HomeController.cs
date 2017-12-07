@@ -12,7 +12,34 @@ namespace NorthWestLabs.Controllers
     public class HomeController : Controller
     {
         private NorthwestLabsContext db = new NorthwestLabsContext();
-        
+
+        public int GetEmployeeID()
+        {
+            int EmployeeID = 0;
+            IEnumerable<Employee> EmployeeList = db.Employees.ToList();
+            foreach (Employee myEmployee in EmployeeList)
+            {
+                if (User.Identity.Name == myEmployee.UserName)
+                {
+                    EmployeeID = myEmployee.EmployeeID;
+                }
+            }
+
+            return EmployeeID;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
         public ActionResult Login()
         {
 
@@ -122,8 +149,37 @@ namespace NorthWestLabs.Controllers
         public ActionResult  EmployeeAccount()
         {
 
-            return View();
+            int EmployeeID = GetEmployeeID();
+            AllEmployeeInfo AllInfo = new AllEmployeeInfo();
+            AllInfo.Employee = db.Employees.Find(EmployeeID);
+            IEnumerable<EmployeeBankInfo> AllBankInfo = db.EmployeeBankInfoes.ToList();
+            foreach(EmployeeBankInfo item in AllBankInfo)
+            {
+                if(item.EmployeeID==EmployeeID)
+                {
+                    AllInfo.BankInfo = item;
+                }
+            }
+            IEnumerable<EmployeeWageInfo> AllWageInfo = db.EmployeeWageInfoes.ToList();
+            foreach (EmployeeWageInfo item in AllWageInfo)
+            {
+                if (item.EmployeeID == EmployeeID)
+                {
+                    AllInfo.WageInfo = item;
+                }
+            }
+
+            return View(AllInfo);
         }
 
+        public ActionResult EditBankInfo()
+        {
+            return View()
+        }
+        [HttpPost]
+        public ActionResult EditBankInfo(int placeholder)
+        {
+            return View();
+        }
     }
 }
