@@ -93,9 +93,11 @@ namespace NorthWestLabs.Controllers
             compoundAssayOrder.assayOrder = assayorder;
             compoundAssayOrder.compound = compound;
             newClientOrder.workOrder = workOrder;
+            newClientOrder.compoundAssayOrderList.Add(compoundAssayOrder);
             return RedirectToAction("WorkOrderMain",newClientOrder);
         }
         
+        [HttpGet]
         public ActionResult WorkOrderMain(NewClientOrder newClientOrder)
         {
             return View();
