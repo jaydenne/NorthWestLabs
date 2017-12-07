@@ -140,6 +140,8 @@ namespace NorthWestLabs.Controllers
         // GET: Client
         public ActionResult ClientAccount()
         {
+            decimal AccTotal = 0;
+           
             if (!IsClient())
             {
                 RedirectToAction("Index");
@@ -157,11 +159,17 @@ namespace NorthWestLabs.Controllers
                     acctdata.Invoice = item;
                         foreach(InvioceItem val in ItemList)
                     {
-                        acctdata.invoiceitems.Add(val);
+                        if(val.InvoiceID == item.InvoiceID)
+                        {
+                            acctdata.invoiceitems.Add(val);
+                            AccTotal = AccTotal +  (decimal)val.Amount; 
+                        }
+                        
                     }
                     totalactinvoice.Add(acctdata);
                 }
             }
+            ViewBag.Total = AccTotal;
                return View(totalactinvoice);
         }
         // GET: Client

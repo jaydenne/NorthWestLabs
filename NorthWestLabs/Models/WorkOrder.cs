@@ -12,9 +12,12 @@ namespace NorthWestLabs.Models
     [Table("WorkOrder")]
     public class WorkOrder
     {
-       [Key]   
+       [Key]
+        [DisplayName("Work Order #")]
         public int WorkOrderID { get; set; }
+        [DisplayName("Client #")]
         public int ClientID { get; set; }
+        [DisplayName("Quote #")]
         public Nullable<int> QuoteID { get; set; }
         [DisplayName("Discount Rate")]
         public decimal DiscountRate { get; set; }
@@ -27,10 +30,11 @@ namespace NorthWestLabs.Models
     
        // public virtual ICollection<AssayOrder> { get; set; }
         public virtual Client Client { get; set; }
-       // public virtual ICollection<ConditionalApproval> ConditionalApprovals { get; set; }
-      //  public virtual ICollection<CustomDiscount> CustomDiscounts { get; set; }
-       // public virtual ICollection<InvioceItem> InvioceItems { get; set; }
-       // public virtual ICollection<Invoice> Invoices { get; set; }
+        // public virtual ICollection<ConditionalApproval> ConditionalApprovals { get; set; }
+        //  public virtual ICollection<CustomDiscount> CustomDiscounts { get; set; }
+        // public virtual ICollection<InvioceItem> InvioceItems { get; set; }
+        // public virtual ICollection<Invoice> Invoices { get; set; }
+        [DisplayName("Quote Estimate")]
         public virtual QuoteEstimate QuoteEstimate { get; set; }
         //public virtual ICollection<WorkOrderComment> WorkOrderComments { get; set; }
     }
