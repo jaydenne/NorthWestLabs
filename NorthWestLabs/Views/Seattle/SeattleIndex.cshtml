@@ -5,12 +5,39 @@
 <h2> </h2>
 
 <div class="jumbotron">
-    <h1>Welcome @Model.Name!</h1>
+    <h1 style="text-align:center">Welcome @Model.Name!</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-4 well">
+        <h2>Quote Response</h2>
+        <p>
+            Generate a quote for a specific assay and compound.
+        </p>
+        @Html.ActionLink("Generate a Quote", "EmployeeQuotes", "Seattle", null, new { @class = "btn btn-primary btn default" })
+    </div>
+    
+    <div class="col-md-4 well">
+        <h2>View Client Info</h2>
+        <p>
+            See a list of all current clients and their account information.
+        </p>
+        @Html.ActionLink("See Clients", "ClientIndex", "Seattle", null, new { @class = "btn btn-primary btn default" })
+    </div>
+    
+
+    <div class="col-md-4 well">
+        <h2>My Employee Account</h2>
+        <p>
+            Update your payment information for Employee Wages, change your passwork, and update your contact information.
+        </p>
+        @Html.ActionLink("Update Account", "Billing", "Seattle", null, new { @class = "btn btn-primary btn default" })
+    </div>
 </div>
 
 <div class="row">
 
-    <div class="col-md-5 well">
+    <div class="col-md-4 well">
 
         <h2>Customer Work Orders</h2>
         <p>
@@ -18,21 +45,8 @@
         </p>
         @Html.ActionLink("Edit Order Summaries", "Index", "WorkOrders", null, new { @class = "btn btn-primary btn default" })
     </div>
-    <div class="col-md-1"></div>
 
-    <div class="col-md-5 well">
-        <h2>My Employee Account</h2>
-        <p>
-            Update your payment information for Employee Wages, change your passwork, and update your contact information.
-        </p>
-        @Html.ActionLink("Update Account", "Billing", "Seattle", null, new { @class = "btn btn-primary btn default" })
-    </div>
-
-</div>
-
-<div class="row">
-
-    <div class="col-md-5 well">
+    <div class="col-md-4 well">
         <h2>Test Results</h2>
         <p>
             Access test results.
@@ -40,44 +54,25 @@
         @Html.ActionLink("Test Results", "TestResults", "Singapore", null, new { @class = "btn btn-primary btn default" })
     </div>
 
-    <div class="col-md-1"></div>
-    
-    <div class="col-md-5 well">
-        <h2>Quote Response</h2>
-        <p>
-            Generate a quote for a specific assay and compound.
-        </p>
-        @Html.ActionLink("Generate a Quote", "EmployeeQuotes", "Seattle", null, new { @class = "btn btn-primary btn default" })
-    </div>
-</div>
-
-<div class="row">
-    
-    <div class="col-md-5 well">
+    <div class="col-md-4 well">
         <h2>Management Reports</h2>
         <p>
             Generate management reports.
         </p>
         @Html.ActionLink("Generate a Report", "ManagementReports", "Seattle", null, new { @class = "btn btn-primary btn default" })
     </div>
-
-    <div class="col-md-1"></div>
     
-    <div class="col-md-5 well">
-        <h2>View Client Info</h2>
-        <p>
-            See a list of all current clients and their account information.
-        </p>
-        @Html.ActionLink("See Clients", "ClientIndex", "Seattle", null, new { @class = "btn btn-primary btn default" })
-    </div>
-
-    <div class="col-md-5 well">
-        <h2>Billing Module</h2>
-        <p>
-            Access current account balances and customer details.
-        </p>
-        @Html.ActionLink("Create Invoices", "Billing", "Seattle", null, new { @class = "btn btn-primary btn default" })
-    </div>
 </div>
+
+<div class="row">
+    <div class="col-md-4"></div>
+        <div class="col-md-4 well">
+            <h2>Billing Module</h2>
+            <p>
+                Access current account balances and customer details.
+            </p>
+            @Html.ActionLink("Create Invoices", "Billing", "Seattle", null, new { @class = "btn btn-primary btn default" })
+        </div>
+    </div>
 
 

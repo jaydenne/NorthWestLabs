@@ -56,7 +56,7 @@
     <button class="accordion"><h3>Assay @assayorder.AssayOrder.AssayID ID:@assayorder.AssayOrder.AssayOrderID </h3><p>@assayorder.AssayOrder.ProtocolNotebook.AssayName</p></button>
     <div class="panel">
 
-        <div style="padding-top:10px; float:right">@Html.ActionLink("Edit Assay Order", "Edit", "AssayOrder", new { id = assayorder.AssayOrder.AssayOrderID }, new { @class = "btn btn-primary btn default" })</div>
+        <div style="padding-top:10px; float:right">@Html.ActionLink("Edit Assay Order", "Edit", "AssayOrder", new { id = assayorder.AssayOrder.AssayOrderID, WorkOrderID = Model.workOrder.WorkOrderID}, new { @class = "btn btn-primary btn default" })</div>
         <strong>Assay Name</strong> @assayorder.AssayOrder.ProtocolNotebook.AssayName<br />
         <strong>Assay Description</strong> @assayorder.AssayOrder.ProtocolNotebook.Description<br />
         <strong>Priority Level</strong> @assayorder.AssayOrder.PriorityLevel<br />
