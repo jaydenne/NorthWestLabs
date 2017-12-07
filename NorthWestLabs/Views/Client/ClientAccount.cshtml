@@ -1,96 +1,59 @@
-﻿
+﻿@model IEnumerable<NorthWestLabs.Models.AccountInvoiceData>
 @{
-    ViewBag.Title = "ClientAccount";
+    ViewBag.Title = "Client Account";
 }
 
 <h2>Client Account</h2>
 <hr />
-@Html.ActionLink("Back to Client Portal", "Index", "Client", null, new { @class = "btn btn-primary btn default" })
+@Html.ActionLink("Back to Client Portal", "Index", "Client", null, new { @class = "btn btn-primary btn default" })<br />
 <div class="row">
-    <div class="well">
+    <div class="well col-md-4">
         <h3>Account Balance</h3>
     </div>
-    <div class="well">
+    <div class="well col-md-4">
         <h3>Unpaid Charges</h3>
+    </div>
+    <div class="well col-md-4">
+        <h3>Payments</h3>
+        @Html.ActionLink("Make A Payment", "Index", "Client", null, new { @class = "btn btn-primary btn default" })
     </div>
 
 </div>
 <div>
-    foreach (NorthWestLabs.Models.AssayOrderWithTestResults assayorder in Model)
+    @foreach (NorthWestLabs.Models.AccountInvoiceData invoice in Model)
     {
-        <button class="accordion"><h3>Assay assayorder.AssayOrder.AssayID ID:assayorder.AssayOrder.AssayOrderID </h3><p>assayorder.AssayOrder.ProtocolNotebook.AssayName</p></button>
+        <button class="accordion"><h2>Invoice @invoice.Invoice.InvoiceID </h2>
+        <h4>@invoice.Invoice.InvoiceDate</h4>
+        <p>invoice.Invoice.Term.DiscountDays | invoice.Invoice.Term.DiscountRate | invoice.Invoice.Term.FullAmountDays</p></button>
         <div class="panel">
 
-            <strong>Assay Name</strong> assayorder.AssayOrder.ProtocolNotebook.AssayName<br />
-            <strong>Assay Description</strong> assayorder.AssayOrder.ProtocolNotebook.Description<br />
-            <strong>Priority Level</strong> assayorder.AssayOrder.PriorityLevel<br />
-
-
-
-            <table class="table">
+             <table class="table">
                 <tr>
                     <th>
-                        LTNumber
+                        Invoice Item ID
                     </th>
                     <th>
-                        Test.Name
+                        Assay ID
                     </th>
                     <th>
-                        RunNumber
+                        Charge
                     </th>
-                    <th>
-                        RunAgain
-                    </th>
+                 </tr>
 
-                    <th>
-                        ScheduleStart
-                    </th>
-                    <th>
-                        Status
-                    </th>
-                    <th>
-                        StatusUpdatedDate
-                    </th>
-                    <th>
-                        TestTube.
-                    </th>
-                    <th>
-                        Results
-                    </th>
-
-                </tr>
-
-                {foreach (NorthWestLabs.Models.TestResult item in assayorder.testResults)
+                @{foreach (NorthWestLabs.Models.InvioceItem item in invoice.invoiceitems)
                 {
                         <tr>
                             <td>
-                                //item.LTNumber -
-                                //item.TestID
+                                @item.InvoiceItemID
+                            </td>
+                            <td>
+                                @item.AssayID
                             </td>
 
                             <td>
-                                //item.Test.Name
+                               @item.Amount
                             </td>
-                            <td>
-                                //item.RunNumber
-                            </td>
-                            <td>
-                              //item.RunAgain
-                            </td>
-                            <td>
-                                //item.ScheduleStart
-                            </td>
-                            <td>
-                                //item.Status
-                            </td>
-                            <td>
-                                //item.StatusUpdatedDate
-                            </td>
-
-
-                            <td>
-                                item.TestTube.
-                            </td>
+                           
 
                         </tr>
 
@@ -110,3 +73,26 @@
                     }
 
 </div>
+
+
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function () {
+            /* Toggle between adding and removing the "active" class,
+            to highlight the button that controls the panel */
+            this.classList.toggle("active");
+
+            /* Toggle between hiding and showing the active panel */
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        }
+    }
+</script>
