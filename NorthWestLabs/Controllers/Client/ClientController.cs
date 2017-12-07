@@ -108,7 +108,8 @@ namespace NorthWestLabs.Controllers
         // GET: Client
         public ActionResult ClientAccount()
         {
-            
+            decimal AccTotal = 0;
+           
             List<AccountInvoiceData> totalactinvoice = new List<AccountInvoiceData>(); 
             IEnumerable<Invoice> AllInvoices = db.Invoices.ToList();
             IEnumerable<InvioceItem> ItemList = db.InvoiceItems.ToList();
@@ -120,11 +121,17 @@ namespace NorthWestLabs.Controllers
                     acctdata.Invoice = item;
                         foreach(InvioceItem val in ItemList)
                     {
-                        acctdata.invoiceitems.Add(val);
+                        if(val.InvoiceID == item.InvoiceID)
+                        {
+                            acctdata.invoiceitems.Add(val);
+                            AccTotal = AccTotal +  (decimal)val.Amount; 
+                        }
+                        
                     }
                     totalactinvoice.Add(acctdata);
                 }
             }
+            ViewBag.Total = AccTotal;
                return View(totalactinvoice);
         }
         // GET: Client
