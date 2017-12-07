@@ -55,24 +55,32 @@ namespace NorthWestLabs.Controllers
         // POST: WorkOrders/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ClientNewWorkOrder(
+        public ActionResult ClientNewWorkOrder(FormCollection form, int? workorderid,
             [Bind(Include = "LTNumber,SequenceCode,CompoundName,Quantity,DateArrived,ReceivedBy,DateDue,Appearance,Weight,MolecularMass,ConfirmationDate,MaxTotalDose,ActualWeight,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] Compound compound,
             [Bind(Include = "AssayOrderID,WorkOrderID,PriorityLevelID,AssayID,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate,CompoundID")] AssayOrder assayorder)
         {
+            ViewBag.workorderid = workorderid;
             ViewBag.PriorityLevelID = new SelectList(db.PriorityLevels, "PriorityLevelID", "WorkDaysProcessing");
             ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName");
-
             WorkOrder workOrder = new WorkOrder();
+            if (workorderid == null) { 
+
             workOrder.ClientID = GetClientID();
-            workOrder.CreatedBy = "Client "+GetClientID();
-            workOrder.ModifiedBy = "Client "+GetClientID();
+            workOrder.CreatedBy = "Client " + GetClientID();
+            workOrder.ModifiedBy = "Client " + GetClientID();
             workOrder.DateTime = DateTime.Now;
             workOrder.CreatedDate = DateTime.Now;
             workOrder.ModifiedDate = DateTime.Now;
             workOrder.DiscountRate = 0; //calculate discount for customer if it applies here
             db.WorkOrders.Add(workOrder);
             db.SaveChanges();
+        }
+            else
+            {
+                workOrder = db.WorkOrders.Find(workorderid);
+            }
 
+            compound.CompoundName = form["CompoundName"];
             compound.LTNumber = db.Compounds.Max(t => t.LTNumber) + 1;
             compound.SequenceCode = 1;
             compound.ModifiedBy = "Client " + GetClientID();
@@ -92,19 +100,40 @@ namespace NorthWestLabs.Controllers
             db.SaveChanges();
 
             NewClientOrder newClientOrder = new NewClientOrder();
+            IEnumerable<AssayOrder> allAssay = db.AssayOrders.ToList();
+            foreach (AssayOrder item in allAssay)
+            {
+                if(item.WorkOrderID==workorderid)
+                {
+                    CompoundAssayOrder myCompoundAssayOrder = new CompoundAssayOrder();
+                    myCompoundAssayOrder.assayOrder = item;
+                    myCompoundAssayOrder.compound = db.Compounds.Find(item.CompoundID);
+                    newClientOrder.compoundAssayOrderList.Add(myCompoundAssayOrder);
+                }
+            }
+            
+
             CompoundAssayOrder compoundAssayOrder = new CompoundAssayOrder();
             compoundAssayOrder.assayOrder = assayorder;
             compoundAssayOrder.compound = compound;
             newClientOrder.workOrder = workOrder;
             newClientOrder.compoundAssayOrderList.Add(compoundAssayOrder);
-
+            foreach (var item in newClientOrder.compoundAssayOrderList)
+            {
+                item.assayOrder.ProtocolNotebook = db.ProtocolNotebooks.Find(item.assayOrder.AssayID);
+                item.assayOrder.PriorityLevel = db.PriorityLevels.Find(item.assayOrder.PriorityLevelID);
+            }
             return View("WorkOrderMain",newClientOrder);
         }
         
-        [HttpGet]
+        [HttpPost]
         public ActionResult WorkOrderMain(NewClientOrder newClientOrder)
         {
-            return View();
+           foreach(var item in newClientOrder.compoundAssayOrderList)
+            {
+                item.assayOrder.ProtocolNotebook = db.ProtocolNotebooks.Find(item.assayOrder.AssayID);
+            }
+            return View(newClientOrder);
         }
 
 
