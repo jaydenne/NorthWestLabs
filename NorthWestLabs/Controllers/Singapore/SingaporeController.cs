@@ -32,7 +32,25 @@ namespace NorthWestLabs.Controllers
             Employee myEmployee = db.Employees.Find(GetEmployeeID());
             return View(myEmployee);
         }
-
-
+        public ActionResult ReceiveCompound()
+        {
+            return View();
+        }
+        public ActionResult UnassignedTests()
+        {
+            return View();
+        }
+        public ActionResult AssignedTests()
+        {
+            return View();
+        }
+        public ActionResult PendingTests()
+        {
+            return View();
+        }
+        public ActionResult UploadResults()
+        {
+            return View();
+        }
     }
 }

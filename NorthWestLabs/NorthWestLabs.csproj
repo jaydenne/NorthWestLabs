@@ -465,6 +465,12 @@
     <Content Include="Views\Home\EditBankInfo.cshtml" />
     <Content Include="Views\Home\EditPersonalInfo.cshtml" />
     <Content Include="Views\Home\ChangePassword.cshtml" />
+    <Content Include="Views\Singapore\ReceiveCompound.cshtml" />
+    <Content Include="Views\Singapore\UnassignedTests.cshtml" />
+    <Content Include="Views\Singapore\AssignedTests.cshtml" />
+    <Content Include="Views\Singapore\PendingTests.cshtml" />
+    <Content Include="Views\Singapore\UploadResults.cshtml" />
+    <Content Include="Views\Seattle\DownloadResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

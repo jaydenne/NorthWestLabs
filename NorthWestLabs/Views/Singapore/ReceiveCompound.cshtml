@@ -1,13 +1,23 @@
-﻿@{
-    ViewBag.Title = "EmployeeQuotes";
+﻿
+@{
+    ViewBag.Title = "ReceiveCompound";
 }
-<div style="padding-bottom:10px; float:right">@Html.ActionLink("Return to Employee Portal", "SeattleIndex", "Seattle", null, new { @class = "btn btn-primary btn default" })</div>
 
-<h2>Generate a Quote</h2>
+<div style="padding-bottom:10px; float:right">@Html.ActionLink("Return to Employee Portal", "Index", "Singapore", null, new { @class = "btn btn-primary btn default" })</div>
+
+<h2>Received Compound Information</h2>
+
 <br />
 <dl class="dl-horizontal" style="text-align:left">
     <dt>
-        Number of Assays:
+        Date Received:
+    </dt>
+    <dd>
+        @Html.TextBox("Hey")
+    </dd>
+    <br />
+    <dt>
+        Company Name:
     </dt>
     <dd>
         @Html.TextBox("Hey")
@@ -40,14 +50,8 @@
     <dd>
         @Html.TextBox("Hey")
     </dd>
-    <br />
-    <dt>
-        Priority Level:
-    </dt>
-    <dd>
-        @Html.TextBox("Hey")
-    </dd>
     
+
 </dl>
 <div class="form-group">
     <div class="col-md-offset-2 col-md-10">
