@@ -67,8 +67,9 @@ namespace NorthWestLabs.Controllers
         }
 
         // GET: AssayOrder/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, int? WorkOrderID)
         {
+            ViewBag.WorkOrderID = WorkOrderID;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -80,7 +81,7 @@ namespace NorthWestLabs.Controllers
             }
             ViewBag.PriorityLevelID = new SelectList(db.PriorityLevels, "PriorityLevelID", "ModifiedBy", assayOrder.PriorityLevelID);
             ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName", assayOrder.AssayID);
-            ViewBag.WorkOrderID = new SelectList(db.WorkOrders, "WorkOrderID", "ModifiedBy", assayOrder.WorkOrderID);
+            
             return View(assayOrder);
         }
 
@@ -89,17 +90,18 @@ namespace NorthWestLabs.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AssayOrderID,WorkOrderID,PriorityLevelID,AssayID,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate,CompoundID")] AssayOrder assayOrder)
+        public ActionResult Edit([Bind(Include = "AssayOrderID,WorkOrderID,PriorityLevelID,AssayID,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate,CompoundID")] AssayOrder assayOrder, int? WorkOrderID)
         {
+            ViewBag.WorkOrderID = WorkOrderID;
             if (ModelState.IsValid)
             {
                 db.Entry(assayOrder).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details","WorkOrders", new { id=assayOrder.WorkOrderID});
             }
             ViewBag.PriorityLevelID = new SelectList(db.PriorityLevels, "PriorityLevelID", "ModifiedBy", assayOrder.PriorityLevelID);
             ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName", assayOrder.AssayID);
-            ViewBag.WorkOrderID = new SelectList(db.WorkOrders, "WorkOrderID", "ModifiedBy", assayOrder.WorkOrderID);
+            
             return View(assayOrder);
         }
 
