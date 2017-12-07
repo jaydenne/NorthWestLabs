@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace NorthWestLabs.Models
     {
         [Key]
         public int TestResultsID { get; set; }
+        [DisplayName("Test ID")]
         public int TestID { get; set; }
         public int AssayOrderID { get; set; }
         public int TestTubeID { get; set; }
