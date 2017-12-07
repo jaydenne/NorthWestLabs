@@ -29,7 +29,7 @@
     <div class="col-md-4 well">
         <h2>My Employee Account</h2>
         <p>
-            Update your payment information for Employee Wages, change your passwork, and update your contact information.
+            Update your payment information for Employee Wages, change your password, and update your contact information.
         </p>
         @Html.ActionLink("Update Account", "EmployeeAccount", "Home", null, new { @class = "btn btn-primary btn default" })
     </div>
@@ -51,7 +51,7 @@
         <p>
             Access test results.
         </p>
-        @Html.ActionLink("Test Results", "TestResults", "Singapore", null, new { @class = "btn btn-primary btn default" })
+        @Html.ActionLink("Test Results", "DownloadResults", "Seattle", null, new { @class = "btn btn-primary btn default" })
     </div>
 
     <div class="col-md-4 well">
@@ -64,15 +64,5 @@
     
 </div>
 
-<div class="row">
-    <div class="col-md-4"></div>
-        <div class="col-md-4 well">
-            <h2>Billing Module</h2>
-            <p>
-                Access current account balances and customer details.
-            </p>
-            @Html.ActionLink("Create Invoices", "Billing", "Seattle", null, new { @class = "btn btn-primary btn default" })
-        </div>
-    </div>
 
 
