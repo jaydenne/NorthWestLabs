@@ -301,5 +301,12 @@ namespace NorthWestLabs.Controllers
             
         }
 
+        public ActionResult RequestQuote()
+        {
+
+
+            return View();
+        }
+
     }
 }
