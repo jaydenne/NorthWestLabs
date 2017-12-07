@@ -53,3 +53,14 @@ div.panel {
 }
 
 .well {text-align:center;}
+
+
+
+* {
+    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#fancyFont *{
+    font-family: 'Kaushan Script' !important;
+}
+
