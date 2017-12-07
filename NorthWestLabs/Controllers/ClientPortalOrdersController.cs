@@ -113,7 +113,11 @@ namespace NorthWestLabs.Controllers
         // GET: Client
         public ActionResult OrderAddAssayOrder()
         {
-            
+            ViewBag.PriorityLevelID = new SelectList(db.PriorityLevels, "PriorityLevelID", "WorkDaysProcessing");
+            ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName");
+            ViewBag.WorkOrderID = new SelectList(db.WorkOrders, "WorkOrderID", "ModifiedBy");
+            ViewBag.CompoundID = new SelectList(db.Compounds, "CompoundID", "CompoundName");
+            ViewBag.hello = db.PriorityLevels.ToList();
 
             return View();
         }
