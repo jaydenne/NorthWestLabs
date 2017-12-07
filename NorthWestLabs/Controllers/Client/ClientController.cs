@@ -50,7 +50,7 @@ namespace NorthWestLabs.Controllers
         {
             if (!IsClient())
             {
-                RedirectToAction("Index");
+                RedirectToAction("Index","Home");
             }
 
             Client myClient = db.Clients.Find(GetClientID());
@@ -198,11 +198,7 @@ namespace NorthWestLabs.Controllers
             {
                 RedirectToAction("Index");
             }
-            if (GetClientID() == null)
-            {
 
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Client client = db.Clients.Find(GetClientID());
             if (client == null)
             {
