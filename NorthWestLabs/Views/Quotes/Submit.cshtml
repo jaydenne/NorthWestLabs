@@ -1,0 +1,36 @@
+﻿@model NorthWestLabs.Models.QuoteEstimate
+@{
+    ViewBag.Title = "Submit";
+    int iCount = 0;
+}
+
+<h3>Quote @Model.QuoteID</h3>
+@Html.ActionLink("Back to Client Portal", "Index", "Client", null, new { style="float:right;",@class = "btn btn-primary btn default"})
+<h4>Northwest Labs</h4>
+<p>Quote prepared for <b>@Model.Client.CompanyName</b></p>
+<h4>@Model.QuoteDate</h4>
+
+<table class="table">
+    <tr>
+        <th></th>
+        <th>Assay Name</th>
+        <th>Description</th>
+        <th>Estimated Price</th>
+
+    </tr>
+    
+    @foreach (var item in Model.QuoteItems)
+            {
+                iCount++;
+        <tr>
+            <td>@iCount</td>
+            <td>@item.ProtocolNotebook.AssayName</td>
+            <td>@item.ProtocolNotebook.Description</td>
+            <td>$@item.Cost (Does not include conditional tests)</td>
+        </tr>
+
+    }
+</table>
+
+<p> A copy of this quote has been emailed to: <b>@Model.Client.Email</b>.</p>
+

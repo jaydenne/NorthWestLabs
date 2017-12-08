@@ -10,7 +10,7 @@ using System.Net;
 
 namespace NorthWestLabs.Controllers
 {
-    
+    [Authorize]
     public class QuotesController : Controller
     {
         // GET: Quotes
@@ -54,16 +54,19 @@ namespace NorthWestLabs.Controllers
 
         public ActionResult NewQuote()
         {
-            QuoteEstimate MyQuote = new QuoteEstimate();
+            ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName");
+            QuoteEstimateWithItemTemplate myModel = new QuoteEstimateWithItemTemplate();
+            myModel.Quote = new QuoteEstimate();
+            myModel.Quote.QuoteID=0;
 
-            return View();
+            return View(myModel);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult NewQuote(int? QuoteID, [Bind(Include = "QuoteID,AssayID")] QuoteItem quoteItem)
         {
             QuoteEstimate MyQuote = new QuoteEstimate();
-            if(QuoteID == null)
+            if(QuoteID == null||QuoteID==0)
             {
                 MyQuote.ClientID = GetClientID();
                 MyQuote.CreatedBy = "Client " + GetClientID();
@@ -74,7 +77,10 @@ namespace NorthWestLabs.Controllers
                 db.QuoteEstimates.Add(MyQuote);
                 db.SaveChanges();
             }
-
+            else
+            {
+                MyQuote.QuoteID = (int)QuoteID;
+            }
             QuoteItem MyItem = new QuoteItem();
             MyItem.QuoteID = MyQuote.QuoteID;
             MyItem.AssayID = quoteItem.AssayID;
@@ -94,17 +100,100 @@ namespace NorthWestLabs.Controllers
             db.QuoteItems.Add(MyItem);
             db.SaveChanges();
             IEnumerable<QuoteItem> items = db.QuoteItems.ToList();
+            MyQuote.QuoteItems = new List<QuoteItem>();
             foreach (QuoteItem item in items)
             {
                 if (item.QuoteID == MyQuote.QuoteID)
                 {
+                    item.ProtocolNotebook = db.ProtocolNotebooks.Find(item.AssayID);
                     MyQuote.QuoteItems.Add(item);
                 }
             }
-            return View(MyQuote);
+
+                ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName", quoteItem.AssayID);
+
+            QuoteEstimateWithItemTemplate myModel = new QuoteEstimateWithItemTemplate();
+            myModel.Quote = MyQuote;
+
+            return View(myModel);
         }
 
+        public async System.Threading.Tasks.Task<ActionResult> Submit(int QuoteID)
+        {
+            QuoteEstimate MyQuote = db.QuoteEstimates.Find(QuoteID);
+            IEnumerable<QuoteItem> items = db.QuoteItems.ToList();
+            MyQuote.QuoteItems = new List<QuoteItem>();
+            foreach (QuoteItem item in items)
+            {
+                if (item.QuoteID == MyQuote.QuoteID)
+                {
+                    item.ProtocolNotebook = db.ProtocolNotebooks.Find(item.AssayID);
+                    MyQuote.QuoteItems.Add(item);
 
+                }
+            }
+            MyQuote.Client = db.Clients.Find(MyQuote.ClientID);
+            int iCount = 0;
+            var body ="<h3>Quote "+MyQuote.QuoteID+"</h3>"+
+                "<h4>Northwest Labs</h4>"+
+                "<p>Quote prepared for <b>"+MyQuote.Client.CompanyName+"</b></p>"+
+                "<h4>"+MyQuote.QuoteDate+"</h4>"+
+                "<table class='table'>"+
+                    "<tr>" +
+                     "<th></th>" +
+                      "<th>Assay Name</th>" +
+                       "<th>Description</th>"+
+                        "<th>Estimated Price</th>"+
+                    "</tr>";
+                    foreach (var item in MyQuote.QuoteItems)
+                            {
+                                iCount++;
+                body += "<tr>" +
+                    "<td>" + iCount + "</td>" +
+                    "<td>" + item.ProtocolNotebook.AssayName + "</td>" +
+                    "<td>" + item.ProtocolNotebook.Description + "</td>" +
+                    "<td>$" + item.Cost + " (Does not include conditional tests)</td>" +
+                "</tr>";
+                    }
+            body += "</table>";
+
+            var message = new MailMessage();
+            message.To.Add(new MailAddress(db.Clients.Find(GetClientID()).Email));  // replace with valid value 
+            message.From = new MailAddress("J.nelson55@gmail.com", "Northwest Labs");  // replace with valid value
+            message.Subject = "Northwest Labs - Quote Request";
+            message.Body = string.Format(body);
+            message.IsBodyHtml = true;
+            //message.Attachments() add attachments
+
+            using (var smtp = new SmtpClient())
+            {
+                var credential = new NetworkCredential
+                {
+                    UserName = "J.nelson55@gmail.com",  // replace with valid value
+                    Password = "********"  // replace with valid value
+                };
+                smtp.Credentials = credential;
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                await smtp.SendMailAsync(message);
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            return View(MyQuote);
+        }
 
 
 
@@ -348,7 +437,7 @@ namespace NorthWestLabs.Controllers
 
 
             var message = new MailMessage();
-            message.To.Add(new MailAddress("Avery.Awerkamp@gmail.com"/*db.Clients.Find(GetClientID()).Email)*/));  // replace with valid value 
+            message.To.Add(new MailAddress(db.Clients.Find(GetClientID()).Email));  // replace with valid value 
             message.From = new MailAddress("J.nelson55@gmail.com", "Northwest Labs");  // replace with valid value
             message.Subject = "Northwest Labs - Order Confirmation";
             message.Body = string.Format(body);
@@ -360,7 +449,7 @@ namespace NorthWestLabs.Controllers
                 var credential = new NetworkCredential
                 {
                     UserName = "J.nelson55@gmail.com",  // replace with valid value
-                    Password = "LOCKDOWN"  // replace with valid value
+                    Password = "*******"  // replace with valid value
                 };
                 smtp.Credentials = credential;
                 smtp.Host = "smtp.gmail.com";

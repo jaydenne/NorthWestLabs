@@ -208,6 +208,7 @@
     <Compile Include="Models\Protocol.cs" />
     <Compile Include="Models\ProtocolNotebook.cs" />
     <Compile Include="Models\QuoteEstimate.cs" />
+    <Compile Include="Models\QuoteEstimateWithItemTemplate.cs" />
     <Compile Include="Models\QuoteItem.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\Status.cs" />
@@ -484,6 +485,7 @@
     <Content Include="Views\QuoteItems\Edit.cshtml" />
     <Content Include="Views\QuoteItems\Index.cshtml" />
     <Content Include="Views\Quotes\NewQuote.cshtml" />
+    <Content Include="Views\Quotes\Submit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
