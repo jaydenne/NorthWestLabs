@@ -296,7 +296,7 @@ namespace NorthWestLabs.Controllers
 
             var message = new MailMessage();
             message.To.Add(new MailAddress(db.Clients.Find(GetClientID()).Email));  // replace with valid value 
-            message.From = new MailAddress("J.nelson55@gmail.com","Northwest Labs");  // replace with valid value
+            message.From = new MailAddress("@gmail.com","Northwest Labs");  // replace with valid value
             message.Subject = "Northwest Labs - Order Confirmation";
             message.Body = string.Format(body);
             message.IsBodyHtml = true;
@@ -306,7 +306,7 @@ namespace NorthWestLabs.Controllers
             {
                 var credential = new NetworkCredential
                 {
-                    UserName = "J.nelson55@gmail.com",  // replace with valid value
+                    UserName = "@gmail.com",  // replace with valid value
                     Password = "*****"  // replace with valid value
                 };
                 smtp.Credentials = credential;

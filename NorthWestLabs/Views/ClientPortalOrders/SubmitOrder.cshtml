@@ -4,7 +4,7 @@
 }
 
 <h3>Work Order @Model.workOrder.WorkOrderID</h3>
-@Html.ActionLink("Return to Client Portal", "Index", "ClientPortalOrders", new { workorderid = Model.workOrder.WorkOrderID }, new { @class = "btn btn-primary btn default", style = "float:right" })
+@Html.ActionLink("Return to Client Portal", "Index", "Client", new { workorderid = Model.workOrder.WorkOrderID }, new { @class = "btn btn-primary btn default", style = "float:right" })
 
 <h2>Order Confirmed</h2>
 <p>Order Date:@Model.workOrder.DateTime</p>

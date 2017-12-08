@@ -8,83 +8,151 @@
 <div>
     @Html.ActionLink("Back to Client Portal", "Index", "Client", null, new { @class = "btn btn-primary btn default" })
 </div>
-@{ 
-    int? workorderid;
-    if(Model.workOrder==null)
-    {
-        workorderid = 0;
+
+    @{
+        int? workorderid;
+        if (Model.workOrder == null)
+        {
+            workorderid = 0;
+        }
+        else
+        {
+            workorderid = Model.workOrder.WorkOrderID;
+        }
     }
-    else
+<div >
+    @using (Html.BeginForm("ClientNewWorkOrder", "ClientPortalOrders", new { workorderid = workorderid }))
     {
-        workorderid = Model.workOrder.WorkOrderID;
-    }
-}
+        @Html.AntiForgeryToken()
 
-@using (Html.BeginForm("ClientNewWorkOrder", "ClientPortalOrders",new { workorderid = workorderid }))
-{
-    @Html.AntiForgeryToken()
-    
 
-        
-  
-    <div id="What">
-        <h3>Enter Compound Details</h3>
-        <div class="form-group">
-            @Html.LabelFor(model => Model.compoundAssayOrderTemplate.compound.CompoundName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-              <input type="text" name="CompoundName" />  
-            </div>
-        </div>
-        
-        <div class="form-group">
-            @Html.LabelFor(model => Model.compoundAssayOrderTemplate.compound.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="text" name="Quantity" />  
-            </div>
-        </div>
+        <div class="col-md-12">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.compoundAssayOrderTemplate.compound.Appearance, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="text" name="Quantity" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.compoundAssayOrderTemplate.compound.Weight, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="number" name="Weight" />
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.compoundAssayOrderTemplate.compound.MolecularMass, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="number" name="MolecularMass" />
-            </div>
-        </div>
-        <div>
-            <h3>Enter Assay</h3>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.compoundAssayOrderTemplate.assayOrder.AssayID, "Assay Name", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("AssayID", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.compoundAssayOrderTemplate.assayOrder.AssayID, "", new { @class = "text-danger" })
+            <div>
+                <h3>Enter Compound Details</h3>
+                <div class="form-group">
+                    @Html.LabelFor(model => Model.compoundAssayOrderTemplate.compound.CompoundName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="text" name="CompoundName" />
+                    </div>
                 </div>
-            </div>
-            
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.compoundAssayOrderTemplate.assayOrder.PriorityLevelID, "Work Days Processing", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("PriorityLevelID", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.compoundAssayOrderTemplate.assayOrder.PriorityLevelID, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => Model.compoundAssayOrderTemplate.compound.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="text" name="Quantity" />
+                    </div>
                 </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.compoundAssayOrderTemplate.compound.Appearance, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="text" name="Quantity" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.compoundAssayOrderTemplate.compound.Weight, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="text" name="Weight" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.compoundAssayOrderTemplate.compound.MolecularMass, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="text" name="MolecularMass" />
+                    </div>
+                </div>
+                <div>
+                    <h3>Enter Assay</h3>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.compoundAssayOrderTemplate.assayOrder.AssayID, "Assay Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("AssayID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.compoundAssayOrderTemplate.assayOrder.AssayID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.compoundAssayOrderTemplate.assayOrder.PriorityLevelID, "Work Days Processing", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("PriorityLevelID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.compoundAssayOrderTemplate.assayOrder.PriorityLevelID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                </div>
+            </d
+
+        </div>
+       
+            <div class="col-md-4">
+                <p>
+                    <br />
+                    **The Work Days Processing includes the time from recieving compound samples in our Singapore lab to beginning testing.
+                    There is a standard amount of days for testing and
+                    reporting which varies by compound on top of the work days processing.
+                </p>
+                <p>**The Priority Rate determines the Priority Level Fee which is the priority rate percentage of the total cost. </p>
             </div>
 
-            
-        </div>
-    </div>
+            <div class="col-md-4">
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            Work Days to Processing
+                        </th>
+                        <th>
+                            Priority Rate
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            15
+                        </td>
+                        <td>
+                            0.00
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            11
+                        </td>
+                        <td>
+                            0.10
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            7
+                        </td>
+                        <td>
+                            0.20
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            3
+                        </td>
+                        <td>
+                            0.30
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="col-md-4">
+
+            </div>
+
+
+
+            <div class="col-md-12">
+
                 <div class="form-horizontal">
 
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -92,8 +160,7 @@
                         <input type="submit" value="Add Compound to Order" class="btn btn-default" />
                     </div>
                 </div>
-           
-    
-}
+            </div>
 
+    }</div>
 

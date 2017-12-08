@@ -11,12 +11,12 @@
 <h2>Order Number @ViewBag.ordernumber</h2>
 @foreach (NorthWestLabs.Models.AssayOrderWithTestResults assayorder in Model)
 {
-    <button class="accordion"><h3>Assay @assayorder.AssayOrder.AssayID ID:@assayorder.AssayOrder.AssayOrderID </h3><p>@assayorder.AssayOrder.ProtocolNotebook.AssayName</p></button>
+    <button class="accordion"><h3>Assay @assayorder.AssayOrder.AssayID ID:@assayorder.AssayOrder.AssayOrderID @assayorder.AssayOrder.Compound.CompoundName </h3><p>@assayorder.AssayOrder.ProtocolNotebook.AssayName </p></button>
     <div class="panel">
 
         <strong>Assay Name</strong> @assayorder.AssayOrder.ProtocolNotebook.AssayName<br />
         <strong>Assay Description</strong> @assayorder.AssayOrder.ProtocolNotebook.Description<br />
-        <strong>Priority Level</strong> @assayorder.AssayOrder.PriorityLevel<br />
+        <strong>Priority Rate</strong> @assayorder.AssayOrder.PriorityLevel.PriorityRate <strong> Days Processing</strong> @assayorder.AssayOrder.PriorityLevel.WorkDaysProcessing<br />
 
        
 

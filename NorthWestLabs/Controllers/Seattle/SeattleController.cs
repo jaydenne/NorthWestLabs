@@ -103,9 +103,15 @@ namespace NorthWestLabs.Controllers
         {
             if (ModelState.IsValid)
             {
+                client.CreatedBy = User.Identity.Name;
+                client.CreatedDate = DateTime.Now;
+                client.ModifiedBy = User.Identity.Name;
+                client.ModifiedDate = DateTime.Now;
+                
+
                 db.Clients.Add(client);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("SeattleIndex");
             }
 
             return View(client);
