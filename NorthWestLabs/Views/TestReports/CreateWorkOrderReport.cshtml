@@ -10,10 +10,10 @@
     <div>
         <p><b>Client Name:</b> @Model.workOrder.Client.CompanyName</p>
         <p><b>Address Line 1:</b> @Model.workOrder.Client.Address1</p>
-        <p><b>Address Line 1:</b> @Model.workOrder.Client.Address2</p>
-        <p><b>Contact Name:</b></p>@Model.workOrder.Client.ContactFirstName @Model.workOrder.Client.ContactLastName
-        <p><b>Phone:</b> </p>@Model.workOrder.Client.Phone
-        <p><b>Email:</b> </p>@Model.workOrder.Client.Email
+        <p><b>Address Line 2:</b> @Model.workOrder.Client.Address2</p>
+        <p><b>Contact Name:</b>@Model.workOrder.Client.ContactFirstName @Model.workOrder.Client.ContactLastName</p>
+        <p><b>Phone:</b> @Model.workOrder.Client.Phone</p>
+        <p><b>Email:</b> @Model.workOrder.Client.Email</p>
     </div>
     <div>
         @{ 

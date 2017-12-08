@@ -26,9 +26,7 @@
         @Html.AntiForgeryToken()
 
 
-        <div class="col-md-12">
 
-            <div>
                 <h3>Enter Compound Details</h3>
                 <div class="form-group">
                     @Html.LabelFor(model => Model.compoundAssayOrderTemplate.compound.CompoundName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -85,73 +83,12 @@
 
 
                 </div>
-                </div>
 
-            </div>
        
-            <div class="col-md-4">
-                <p>
-                    <br />
-                    **The Work Days Processing includes the time from recieving compound samples in our Singapore lab to beginning testing.
-                    There is a standard amount of days for testing and
-                    reporting which varies by compound on top of the work days processing.
-                </p>
-                <p>**The Priority Rate determines the Priority Level Fee which is the priority rate percentage of the total cost. </p>
-            </div>
-
-            <div class="col-md-4">
-
-                <table class="table">
-                    <tr>
-                        <th>
-                            Work Days to Processing
-                        </th>
-                        <th>
-                            Priority Rate
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>
-                            15
-                        </td>
-                        <td>
-                            0.00
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            11
-                        </td>
-                        <td>
-                            0.10
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            7
-                        </td>
-                        <td>
-                            0.20
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            3
-                        </td>
-                        <td>
-                            0.30
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="col-md-4">
-
-            </div>
+            
 
 
 
-            <div class="col-md-12">
 
                 <div class="form-horizontal">
 
@@ -160,10 +97,68 @@
                         <input type="submit" value="Add Compound to Order" class="btn btn-default" />
                     </div>
                 </div>
-            </div>
 
     }
 </div>
+<div class="row">
+    <div class="col-md-4">
+        <p>
+            <br />
+            **The Work Days Processing includes the time from recieving compound samples in our Singapore lab to beginning testing.
+            There is a standard amount of days for testing and
+            reporting which varies by compound on top of the work days processing.
+        </p>
+        <p>**The Priority Rate determines the Priority Level Fee which is the priority rate percentage of the total cost. </p>
+    </div>
 
+    <div class="col-md-4">
 
+        <table class="table">
+            <tr>
+                <th>
+                    Work Days to Processing
+                </th>
+                <th>
+                    Priority Rate
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    15
+                </td>
+                <td>
+                    0.00
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    11
+                </td>
+                <td>
+                    0.10
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    7
+                </td>
+                <td>
+                    0.20
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    3
+                </td>
+                <td>
+                    0.30
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="col-md-4">
+
+    </div>
+</div>
 

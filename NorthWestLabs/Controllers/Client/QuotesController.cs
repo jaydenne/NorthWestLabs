@@ -170,7 +170,7 @@ namespace NorthWestLabs.Controllers
                 var credential = new NetworkCredential
                 {
                     UserName = "J.nelson55@gmail.com",  // replace with valid value
-                    Password = "********"  // replace with valid value
+                    Password = "insertpasswordhere"  // replace with valid value
                 };
                 smtp.Credentials = credential;
                 smtp.Host = "smtp.gmail.com";
@@ -205,7 +205,7 @@ namespace NorthWestLabs.Controllers
                     }
                 }
             }
-            return View(QuoteList);
+            return View(ClientQuote);
         }
     }
 }

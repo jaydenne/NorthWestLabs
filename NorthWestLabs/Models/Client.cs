@@ -32,7 +32,7 @@ namespace NorthWestLabs.Models
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Username { get; set; }
-        [DisplayName("Password Hash")]
+        [DisplayName("Password")]
         public string PasswordHash { get; set; }
         [DisplayName("Modified By")]
         public string ModifiedBy { get; set; }
