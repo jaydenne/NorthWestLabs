@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "CustomReport";
+}
+
+<h2>Custom Report</h2>
+
+@model NorthWestLabs.Models.RichTextEditorViewModel
+@{
+
+}
+
+
+    @using (Html.BeginForm("CustomReport", "TestReports", FormMethod.Post))
+    {
+        @Html.LabelFor(m => m.Message)<br />
+        @Html.TextAreaFor(m => m.Message)
+        @Html.ValidationMessageFor(m => m.Message, "", new { @class = "error" })
+        <br /><br />
+        <input type="submit" value="Submit" />
+        <br />
+        <span>@Html.Raw(Model.Message)</span>
+    }
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript" src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+    <script type="text/javascript">
+        tinymce.init({ selector: 'textarea'});
+    </script>
+
