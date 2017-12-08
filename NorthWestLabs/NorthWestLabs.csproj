@@ -489,6 +489,8 @@
     <Content Include="Views\Quotes\Submit.cshtml" />
     <Content Include="Views\Quotes\Summary.cshtml" />
     <Content Include="Views\ManageInvoices\NewInvoice.cshtml" />
+    <Content Include="Views\ManageInvoices\AddInvoice.cshtml" />
+    <Content Include="Views\ManageInvoices\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

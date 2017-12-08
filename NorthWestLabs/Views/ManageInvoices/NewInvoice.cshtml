@@ -39,7 +39,7 @@
                 @item.Client.ContactFirstName @item.Client.ContactLastName
             </td>
             <td>
-                @Html.ActionLink("Create Invoice from Order","AddInvoice","Invoices",new {workorderid=item.WorkOrderID}, new { @class = "btn btn-primary btn default" })
+                @Html.ActionLink("Create Invoice from Order","AddInvoice","ManageInvoices",new {workorderid=item.WorkOrderID}, new { @class = "btn btn-primary btn default" })
             </td>
         </tr>
 

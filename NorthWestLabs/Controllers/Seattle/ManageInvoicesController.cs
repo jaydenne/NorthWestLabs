@@ -44,7 +44,42 @@ namespace NorthWestLabs.Controllers.Seattle
         }
         public ActionResult AddInvoice(int workorderid)
         {
-            return View();
+            IEnumerable<Test> testList = db.Tests.ToList();
+            IEnumerable<AssayOrder> assayOrderList = db.AssayOrders.ToList();           
+            Invoice myInvoice = new Invoice();
+            WorkOrder myWorkOrder = db.WorkOrders.Find(workorderid);
+            myInvoice.InvoiceDate = DateTime.Now;
+            myInvoice.ClientID = myWorkOrder.ClientID;
+            myInvoice.WorkOrderID = myWorkOrder.WorkOrderID;
+            myInvoice.InvoiceDate = DateTime.Now;
+            myInvoice.ModifiedDate = DateTime.Now;
+            myInvoice.TermsID = 2;//Set function to allow user to change terms
+            db.Invoices.Add(myInvoice);
+
+            foreach(AssayOrder item in assayOrderList)
+            {
+                if(item.WorkOrderID==myInvoice.WorkOrderID)
+                {
+                    InvioceItem myItem = new InvioceItem();
+                    myItem.WorkOrderID = item.WorkOrderID;
+                    myItem.InvoiceID = myInvoice.InvoiceID;
+                    myItem.AssayID = item.AssayID;
+                    myItem.Amount = 0;
+                    myItem.CreatedDate = DateTime.Now;
+                    myItem.ModifiedDate = DateTime.Now;
+                    foreach(Test myTest in testList)
+                    {
+                        if(myTest.AssayID==myItem.AssayID)
+                        {
+                            myItem.Amount+=(myTest.BasePrice+(myTest.Hours*40));
+                        }
+                    }
+                    db.InvoiceItems.Add(myItem);
+                }
+            }
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
 
