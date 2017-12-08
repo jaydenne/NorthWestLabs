@@ -166,6 +166,7 @@ namespace NorthWestLabs.Controllers
                         }
                         
                     }
+                    acctdata.Invoice.Term = db.Terms.Find(acctdata.Invoice.TermsID);
                     totalactinvoice.Add(acctdata);
                 }
             }
