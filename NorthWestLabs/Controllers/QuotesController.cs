@@ -1,23 +1,32 @@
-﻿using NorthWestLabs.DAL;
-using NorthWestLabs.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
-
-
+using NorthWestLabs.DAL;
+using NorthWestLabs.Models;
 
 namespace NorthWestLabs.Controllers
 {
-    [Authorize]
-    public class ClientPortalOrdersController : Controller
+    
+    public class QuotesController : Controller
     {
+        // GET: Quotes
+        NorthwestLabsContext db = new NorthwestLabsContext();
+        public Boolean IsClient()
+        {
+            Boolean client = false;
+            IEnumerable<Client> ClientList = db.Clients.ToList();
+            foreach (Client item in ClientList)
+            {
+                if (User.Identity.Name == item.Username)
+                {
+                    client = true;
+                }
+            }
 
-        private NorthwestLabsContext db = new NorthwestLabsContext();
+            return client;
+        }
 
         public int GetClientID()
         {
@@ -30,31 +39,72 @@ namespace NorthWestLabs.Controllers
                     ClientID = myClient.ClientID;
                 }
             }
+
             return ClientID;
         }
 
 
-        // GET: ClientPortalOrders
+
         public ActionResult Index()
         {
             return View();
         }
 
-
-        // GET: Client
-        public ActionResult ClientNewWorkOrder(int? workorderid)
+        public ActionResult NewQuote()
         {
+            QuoteEstimate MyQuote = new QuoteEstimate();
 
-            ViewBag.PriorityLevelID = new SelectList(db.PriorityLevels, "PriorityLevelID", "WorkDaysProcessing");
-            ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName");
-            ViewBag.WorkOrderID = new SelectList(db.WorkOrders, "WorkOrderID", "ModifiedBy");
-            ViewBag.CompoundID = new SelectList(db.Compounds, "CompoundID", "CompoundName");
-            NewClientOrder newClientOrder = new NewClientOrder();
-            if (workorderid != null || workorderid != 0) {
-                newClientOrder.workOrder = db.WorkOrders.Find(workorderid);
-                    }
-            return View(newClientOrder);
+            return View();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult NewQuote(int? QuoteID, [Bind(Include = "QuoteID,AssayID,Cost,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] QuoteItem quoteItem)
+        {
+            QuoteEstimate MyQuote = new QuoteEstimate();
+            if(QuoteID == null)
+            {
+                MyQuote.ClientID = GetClientID();
+                MyQuote.CreatedBy = "Client " + GetClientID();
+                MyQuote.CreatedDate = DateTime.Now;
+                MyQuote.ModifiedBy = "Client " + GetClientID();
+                MyQuote.ModifiedDate = DateTime.Now;
+                MyQuote.QuoteDate = DateTime.Now;
+                db.QuoteEstimates.Add(MyQuote);
+                db.SaveChanges();
+            }
+
+            QuoteItem MyItem = new QuoteItem();
+            MyItem.QuoteID = MyQuote.QuoteID;
+            MyItem.AssayID = quoteItem.AssayID;
+            MyItem.CreatedBy = "Client " + GetClientID();
+            MyItem.CreatedDate = DateTime.Now;
+            MyItem.ModifiedBy = "Client " + GetClientID();
+            MyItem.ModifiedDate = DateTime.Now;
+            MyItem.Cost = 0;
+            IEnumerable<Test> testList = db.Tests.ToList();
+            foreach (Test test in testList)
+            {
+                if(test.AssayID==MyItem.AssayID)
+                {
+                   MyItem.Cost += (test.BasePrice + (test.Hours * 40));
+                }
+            }
+            db.QuoteItems.Add(MyItem);
+            db.SaveChanges();
+            IEnumerable<QuoteItem> items = db.QuoteItems.ToList();
+            foreach (QuoteItem item in items)
+            {
+                if (item.QuoteID == MyQuote.QuoteID)
+                {
+                    MyQuote.QuoteItems.Add(item);
+                }
+            }
+            return View(MyQuote);
+        }
+
+
+
+
 
         // POST: WorkOrders/Create
         [HttpPost]
@@ -66,18 +116,19 @@ namespace NorthWestLabs.Controllers
             ViewBag.PriorityLevelID = new SelectList(db.PriorityLevels, "PriorityLevelID", "WorkDaysProcessing");
             ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName");
             WorkOrder workOrder = new WorkOrder();
-            if (workorderid == null ||workorderid==0) { 
+            if (workorderid == null || workorderid == 0)
+            {
 
-            workOrder.ClientID = GetClientID();
-            workOrder.CreatedBy = "Client " + GetClientID();
-            workOrder.ModifiedBy = "Client " + GetClientID();
-            workOrder.DateTime = DateTime.Now;
-            workOrder.CreatedDate = DateTime.Now;
-            workOrder.ModifiedDate = DateTime.Now;
-            workOrder.DiscountRate = 0; //calculate discount for customer if it applies here
-            db.WorkOrders.Add(workOrder);
-            db.SaveChanges();
-        }
+                workOrder.ClientID = GetClientID();
+                workOrder.CreatedBy = "Client " + GetClientID();
+                workOrder.ModifiedBy = "Client " + GetClientID();
+                workOrder.DateTime = DateTime.Now;
+                workOrder.CreatedDate = DateTime.Now;
+                workOrder.ModifiedDate = DateTime.Now;
+                workOrder.DiscountRate = 0; //calculate discount for customer if it applies here
+                db.WorkOrders.Add(workOrder);
+                db.SaveChanges();
+            }
             else
             {
                 workOrder = db.WorkOrders.Find(workorderid);
@@ -106,7 +157,7 @@ namespace NorthWestLabs.Controllers
             IEnumerable<AssayOrder> allAssay = db.AssayOrders.ToList();
             foreach (AssayOrder item in allAssay)
             {
-                if(item.WorkOrderID== workOrder.WorkOrderID)
+                if (item.WorkOrderID == workOrder.WorkOrderID)
                 {
                     CompoundAssayOrder myCompoundAssayOrder = new CompoundAssayOrder();
                     myCompoundAssayOrder.assayOrder = item;
@@ -114,7 +165,7 @@ namespace NorthWestLabs.Controllers
                     newClientOrder.compoundAssayOrderList.Add(myCompoundAssayOrder);
                 }
             }
-            
+
 
             newClientOrder.workOrder = workOrder;
             foreach (var item in newClientOrder.compoundAssayOrderList)
@@ -122,13 +173,13 @@ namespace NorthWestLabs.Controllers
                 item.assayOrder.ProtocolNotebook = db.ProtocolNotebooks.Find(item.assayOrder.AssayID);
                 item.assayOrder.PriorityLevel = db.PriorityLevels.Find(item.assayOrder.PriorityLevelID);
             }
-            return View("WorkOrderMain",newClientOrder);
+            return View("WorkOrderMain", newClientOrder);
         }
-        
+
         [HttpPost]
         public ActionResult WorkOrderMain(NewClientOrder newClientOrder)
         {
-           foreach(var item in newClientOrder.compoundAssayOrderList)
+            foreach (var item in newClientOrder.compoundAssayOrderList)
             {
                 item.assayOrder.ProtocolNotebook = db.ProtocolNotebooks.Find(item.assayOrder.AssayID);
             }
@@ -151,11 +202,11 @@ namespace NorthWestLabs.Controllers
             ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName");
             Compound compound = new Compound();
             IEnumerable<Compound> compoundList = db.Compounds.ToList();
-            foreach(Compound item in compoundList)
+            foreach (Compound item in compoundList)
             {
-                if(item.LTNumber==LTNumber)
+                if (item.LTNumber == LTNumber)
                 {
-                    compound.CompoundName=item.CompoundName;
+                    compound.CompoundName = item.CompoundName;
 
                 }
             }
@@ -204,70 +255,70 @@ namespace NorthWestLabs.Controllers
 
         public async System.Threading.Tasks.Task<ActionResult> SubmitOrder(int workorderid)
         {
-                ViewBag.PriorityLevelID = new SelectList(db.PriorityLevels, "PriorityLevelID", "WorkDaysProcessing");
-                ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName");
-                WorkOrder workOrder = db.WorkOrders.Find(workorderid);
-                NewClientOrder newClientOrder = new NewClientOrder();
-                IEnumerable<AssayOrder> allAssay = db.AssayOrders.ToList();
-                foreach (AssayOrder item in allAssay)
+            ViewBag.PriorityLevelID = new SelectList(db.PriorityLevels, "PriorityLevelID", "WorkDaysProcessing");
+            ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName");
+            WorkOrder workOrder = db.WorkOrders.Find(workorderid);
+            NewClientOrder newClientOrder = new NewClientOrder();
+            IEnumerable<AssayOrder> allAssay = db.AssayOrders.ToList();
+            foreach (AssayOrder item in allAssay)
+            {
+                if (item.WorkOrderID == workOrder.WorkOrderID)
                 {
-                    if (item.WorkOrderID == workOrder.WorkOrderID)
-                    {
-                        CompoundAssayOrder myCompoundAssayOrder = new CompoundAssayOrder();
-                        myCompoundAssayOrder.assayOrder = item;
-                        myCompoundAssayOrder.compound = db.Compounds.Find(item.CompoundID);
-                        newClientOrder.compoundAssayOrderList.Add(myCompoundAssayOrder);
-                    }
+                    CompoundAssayOrder myCompoundAssayOrder = new CompoundAssayOrder();
+                    myCompoundAssayOrder.assayOrder = item;
+                    myCompoundAssayOrder.compound = db.Compounds.Find(item.CompoundID);
+                    newClientOrder.compoundAssayOrderList.Add(myCompoundAssayOrder);
                 }
-                newClientOrder.workOrder = workOrder;
-                IEnumerable<Test> TestList = db.Tests.ToList();
-                foreach (var item in newClientOrder.compoundAssayOrderList)
+            }
+            newClientOrder.workOrder = workOrder;
+            IEnumerable<Test> TestList = db.Tests.ToList();
+            foreach (var item in newClientOrder.compoundAssayOrderList)
+            {
+                item.assayOrder.ProtocolNotebook = db.ProtocolNotebooks.Find(item.assayOrder.AssayID);
+                item.assayOrder.PriorityLevel = db.PriorityLevels.Find(item.assayOrder.PriorityLevelID);
+                foreach (var test in TestList)
                 {
-                    item.assayOrder.ProtocolNotebook = db.ProtocolNotebooks.Find(item.assayOrder.AssayID);
-                    item.assayOrder.PriorityLevel = db.PriorityLevels.Find(item.assayOrder.PriorityLevelID);
-                    foreach (var test in TestList)
+                    if (test.AssayID == item.assayOrder.AssayID)
                     {
-                        if(test.AssayID==item.assayOrder.AssayID)
-                        {
-                            TestResult newresult = new TestResult();
-                            newresult.AssayOrderID = item.assayOrder.AssayOrderID;
-                            newresult.CompoundID = item.compound.CompoundID;
-                            newresult.TestID = test.TestID;
-                            newresult.CreatedBy = "Client " + GetClientID();
-                            newresult.CreatedDate = DateTime.Now;
-                            newresult.ModifedBy = "Client " + GetClientID();
-                            newresult.ModifiedDate = DateTime.Now;
-                            newresult.StatusID = 1; //set status to Work Order Received
-                            newresult.StatusUpdatedDate = DateTime.Now;
-                            TestTube mytube = new TestTube();
-                            mytube.CompoundID = item.compound.CompoundID;
-                            mytube.CreatedBy = "System";
-                            mytube.CreatedDate = DateTime.Now;
-                            db.TestTubes.Add(mytube);
-                        
-                            newresult.TestTubeID = mytube.TestTubeID;
-                            db.TestResults.Add(newresult);
-                            db.SaveChanges();
-                        }
-                    }
+                        TestResult newresult = new TestResult();
+                        newresult.AssayOrderID = item.assayOrder.AssayOrderID;
+                        newresult.CompoundID = item.compound.CompoundID;
+                        newresult.TestID = test.TestID;
+                        newresult.CreatedBy = "Client " + GetClientID();
+                        newresult.CreatedDate = DateTime.Now;
+                        newresult.ModifedBy = "Client " + GetClientID();
+                        newresult.ModifiedDate = DateTime.Now;
+                        newresult.StatusID = 1; //set status to Work Order Received
+                        newresult.StatusUpdatedDate = DateTime.Now;
+                        TestTube mytube = new TestTube();
+                        mytube.CompoundID = item.compound.CompoundID;
+                        mytube.CreatedBy = "System";
+                        mytube.CreatedDate = DateTime.Now;
+                        db.TestTubes.Add(mytube);
 
+                        newresult.TestTubeID = mytube.TestTubeID;
+                        db.TestResults.Add(newresult);
+                        db.SaveChanges();
+                    }
                 }
+
+            }
             //Function to send email
 
             var body = "<h2>Order Confirmed</h2>" +
             "<p>Order Date:" + newClientOrder.workOrder.DateTime + "</p>" +
             "<br />";
-                         Dictionary<int, NorthWestLabs.Models.Compound> LTNumberList = new Dictionary<int, NorthWestLabs.Models.Compound>();
-                         foreach (NorthWestLabs.Models.CompoundAssayOrder item in newClientOrder.compoundAssayOrderList)
-                         {
-                             if (!LTNumberList.ContainsKey(item.compound.LTNumber))
-                             {
-                                 LTNumberList.Add(item.compound.LTNumber, item.compound);
-                             }
-                         }
+            Dictionary<int, NorthWestLabs.Models.Compound> LTNumberList = new Dictionary<int, NorthWestLabs.Models.Compound>();
+            foreach (NorthWestLabs.Models.CompoundAssayOrder item in newClientOrder.compoundAssayOrderList)
+            {
+                if (!LTNumberList.ContainsKey(item.compound.LTNumber))
+                {
+                    LTNumberList.Add(item.compound.LTNumber, item.compound);
+                }
+            }
 
-                         foreach (var LtNumber in LTNumberList)
-                         {
+            foreach (var LtNumber in LTNumberList)
+            {
                 //<!--Display of compound and assay details-->
                 body += "<h3>Compound" + LtNumber.Key + " | " + LtNumber.Value.CompoundName + "</h3>" +
                 "<table class='table'>" +
@@ -276,32 +327,32 @@ namespace NorthWestLabs.Controllers
                         "<th>LTNumber</th>" +
                     "</tr>";
 
-                                foreach (NorthWestLabs.Models.CompoundAssayOrder item in newClientOrder.compoundAssayOrderList)
-                                {
-                                    if (item.assayOrder.Compound.LTNumber == LtNumber.Key)
-                                    {
+                foreach (NorthWestLabs.Models.CompoundAssayOrder item in newClientOrder.compoundAssayOrderList)
+                {
+                    if (item.assayOrder.Compound.LTNumber == LtNumber.Key)
+                    {
                         body += "<tr>" +
                             "<td>" + item.assayOrder.ProtocolNotebook.AssayName + "</td>" +
                             "<td>" + LtNumber.Key + "-" + item.compound.SequenceCode + "</td>" +
                         "</tr>";
-                                    }
-                                }
+                    }
+                }
                 body += "</table>";
-                             }
-                         
-                    
+            }
+
+
 
 
 
 
             var message = new MailMessage();
             message.To.Add(new MailAddress("Avery.Awerkamp@gmail.com"/*db.Clients.Find(GetClientID()).Email)*/));  // replace with valid value 
-            message.From = new MailAddress("J.nelson55@gmail.com","Northwest Labs");  // replace with valid value
+            message.From = new MailAddress("J.nelson55@gmail.com", "Northwest Labs");  // replace with valid value
             message.Subject = "Northwest Labs - Order Confirmation";
             message.Body = string.Format(body);
             message.IsBodyHtml = true;
             //message.Attachments() add attachments
-            
+
             using (var smtp = new SmtpClient())
             {
                 var credential = new NetworkCredential
@@ -320,10 +371,36 @@ namespace NorthWestLabs.Controllers
 
 
 
-             return View(newClientOrder);
-               }
-
-
-
+            return View(newClientOrder);
         }
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
 }
