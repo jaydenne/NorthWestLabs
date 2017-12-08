@@ -1,0 +1,50 @@
+﻿@model NorthWestLabs.Models.NewClientOrder
+@{
+    ViewBag.Title = "SubmitOrder";
+}
+
+<h3>Work Order @Model.workOrder.WorkOrderID</h3>
+@Html.ActionLink("Return to Client Portal", "Index", "ClientPortalOrders", new { workorderid = Model.workOrder.WorkOrderID }, new { @class = "btn btn-primary btn default", style = "float:right" })
+
+<h2>Order Confirmed</h2>
+<p>Order Date:@Model.workOrder.DateTime</p>
+<br />
+
+ @{
+
+     Dictionary<int, NorthWestLabs.Models.Compound> LTNumberList = new Dictionary<int, NorthWestLabs.Models.Compound>();
+     foreach (NorthWestLabs.Models.CompoundAssayOrder item in Model.compoundAssayOrderList)
+     {
+         if (!LTNumberList.ContainsKey(item.compound.LTNumber))
+         {
+             LTNumberList.Add(item.compound.LTNumber, item.compound);
+         }
+     }
+
+     foreach (var LtNumber in LTNumberList)
+     {
+        <!--Display of compound and assay details-->
+        <h3>Compound @LtNumber.Key | @LtNumber.Value.CompoundName</h3>
+        <table class="table">
+            <tr>
+                <th>Assay Name</th>
+                <th>LTNumber</th>
+                <th>Work Days Processing</th>
+                <th>Priority Rate</th>
+            </tr>
+
+            @foreach (NorthWestLabs.Models.CompoundAssayOrder item in Model.compoundAssayOrderList)
+            {
+                if (item.assayOrder.Compound.LTNumber == LtNumber.Key)
+                {
+                    <tr>
+                        <td>@item.assayOrder.ProtocolNotebook.AssayName </td>
+                        <td>@LtNumber.Key-@item.compound.SequenceCode</td>
+                        <td>@item.assayOrder.PriorityLevel.WorkDaysProcessing</td>
+                        <td>@item.assayOrder.PriorityLevel.PriorityRate</td>
+                    </tr>
+                }
+            }
+        </table>
+         }
+     }

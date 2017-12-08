@@ -161,6 +161,9 @@
     <Compile Include="Controllers\EmployeeBankInfoesController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\EmployeeWageInfoesController.cs" />
+    <Compile Include="Controllers\QuoteEstimatesController.cs" />
+    <Compile Include="Controllers\QuoteItemsController.cs" />
+    <Compile Include="Controllers\QuotesController.cs" />
     <Compile Include="Controllers\Seattle\TestsController.cs" />
     <Compile Include="Controllers\Singapore\CompoundsController.cs" />
     <Compile Include="Controllers\Client\Clients2Controller.cs" />
@@ -205,6 +208,7 @@
     <Compile Include="Models\Protocol.cs" />
     <Compile Include="Models\ProtocolNotebook.cs" />
     <Compile Include="Models\QuoteEstimate.cs" />
+    <Compile Include="Models\QuoteEstimateWithItemTemplate.cs" />
     <Compile Include="Models\QuoteItem.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\Status.cs" />
@@ -296,6 +300,8 @@
     <Content Include="LICENSE" />
     <Content Include="package-lock.json" />
     <Content Include="package.json" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -398,11 +404,6 @@
     <Content Include="Views\Seattle\CreateClient.cshtml" />
     <Content Include="Views\Seattle\DeleteClients.cshtml" />
     <Content Include="Views\Seattle\EditClients.cshtml" />
-    <Content Include="Views\Clients2\Create.cshtml" />
-    <Content Include="Views\Clients2\Delete.cshtml" />
-    <Content Include="Views\Clients2\Details.cshtml" />
-    <Content Include="Views\Clients2\Edit.cshtml" />
-    <Content Include="Views\Clients2\Index.cshtml" />
     <Content Include="Views\WorkOrders\Create.cshtml" />
     <Content Include="Views\WorkOrders\Delete.cshtml" />
     <Content Include="Views\WorkOrders\Details.cshtml" />
@@ -428,24 +429,12 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_NavbarPartial.cshtml" />
     <Content Include="Views\Seattle\SeattleIndex.cshtml" />
-    <Content Include="Views\Seattle\OrderSummary.cshtml" />
     <Content Include="Views\Client\ClientAccount.cshtml" />
-    <Content Include="Views\Client\ClientNewWorkOrder.cshtml" />
     <Content Include="Views\AssayOrder\Create.cshtml" />
     <Content Include="Views\AssayOrder\Delete.cshtml" />
     <Content Include="Views\AssayOrder\Details.cshtml" />
     <Content Include="Views\AssayOrder\Edit.cshtml" />
     <Content Include="Views\AssayOrder\Index.cshtml" />
-    <Content Include="Views\AssayOrder23\Create.cshtml" />
-    <Content Include="Views\AssayOrder23\Delete.cshtml" />
-    <Content Include="Views\AssayOrder23\Details.cshtml" />
-    <Content Include="Views\AssayOrder23\Edit.cshtml" />
-    <Content Include="Views\AssayOrder23\Index.cshtml" />
-    <Content Include="Views\Compounds2\Create.cshtml" />
-    <Content Include="Views\Compounds2\Delete.cshtml" />
-    <Content Include="Views\Compounds2\Details.cshtml" />
-    <Content Include="Views\Compounds2\Edit.cshtml" />
-    <Content Include="Views\Compounds2\Index.cshtml" />
     <Content Include="Views\ClientPortalOrders\ClientNewWorkOrder.cshtml" />
     <Content Include="Views\ClientPortalOrders\OrderAddCompound.cshtml" />
     <Content Include="Views\ClientPortalOrders\WorkOrderMain.cshtml" />
@@ -484,6 +473,19 @@
     <Content Include="Views\Client\UpdateContactInfo.cshtml" />
     <Content Include="Views\Client\ChangePassword.cshtml" />
     <Content Include="Views\Home\RequestQuote.cshtml" />
+    <Content Include="Views\ClientPortalOrders\SubmitOrder.cshtml" />
+    <Content Include="Views\QuoteEstimates\Create.cshtml" />
+    <Content Include="Views\QuoteEstimates\Delete.cshtml" />
+    <Content Include="Views\QuoteEstimates\Details.cshtml" />
+    <Content Include="Views\QuoteEstimates\Edit.cshtml" />
+    <Content Include="Views\QuoteEstimates\Index.cshtml" />
+    <Content Include="Views\QuoteItems\Create.cshtml" />
+    <Content Include="Views\QuoteItems\Delete.cshtml" />
+    <Content Include="Views\QuoteItems\Details.cshtml" />
+    <Content Include="Views\QuoteItems\Edit.cshtml" />
+    <Content Include="Views\QuoteItems\Index.cshtml" />
+    <Content Include="Views\Quotes\NewQuote.cshtml" />
+    <Content Include="Views\Quotes\Submit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

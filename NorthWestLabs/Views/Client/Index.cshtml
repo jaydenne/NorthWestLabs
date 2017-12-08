@@ -41,7 +41,7 @@
         <p>
             Review past quotes.
         </p>
-        @Html.ActionLink("Quote Summary", "ClientPortalQuotes", "Client", null, new { @class = "btn btn-primary btn default" })
+        @Html.ActionLink("Quote Summary", "QuoteSummary", "Client", null, new { @class = "btn btn-primary btn default" })
     </div>
     <div class="col-md-4 well align-content-center text-center">
         <h2>Create New Work Order</h2>
@@ -57,7 +57,7 @@
         <p>
            Request a quote for a specific assay and compound. 
         </p>
-        @Html.ActionLink("Request a Quote", "ClientPortalQuotes", "Client", null, new { @class = "btn btn-primary btn default" })
+        @Html.ActionLink("Request a Quote", "NewQuote", "Quotes", null, new { @class = "btn btn-primary btn default" })
     </div>
    
 </div>

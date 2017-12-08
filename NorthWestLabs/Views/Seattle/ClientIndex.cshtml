@@ -32,18 +32,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Username)
         </th>
-        <th>
-            Modified By
-        </th>
-        <th>
-            Modified Date
-        </th>
-        <th>
-            Created By
-        </th>
-        <th>
-            Created Date
-        </th>
+        
         <th></th>
     </tr>
 
@@ -68,18 +57,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Username)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
+            
             <td>
                 @Html.ActionLink("Edit", "EditClients", new { id = item.ClientID }) |
                 @Html.ActionLink("Details", "ClientDetails", new { id = item.ClientID }) |

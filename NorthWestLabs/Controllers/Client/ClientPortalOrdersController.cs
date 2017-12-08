@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -201,7 +202,7 @@ namespace NorthWestLabs.Controllers
             return View("WorkOrderMain", newClientOrder);
         }
 
-        public ActionResult SubmitOrder(int workorderid)
+        public async System.Threading.Tasks.Task<ActionResult> SubmitOrder(int workorderid)
         {
                 ViewBag.PriorityLevelID = new SelectList(db.PriorityLevels, "PriorityLevelID", "WorkDaysProcessing");
                 ViewBag.AssayID = new SelectList(db.ProtocolNotebooks, "AssayID", "AssayName");
@@ -229,33 +230,99 @@ namespace NorthWestLabs.Controllers
                         if(test.AssayID==item.assayOrder.AssayID)
                         {
                             TestResult newresult = new TestResult();
-                        newresult.AssayOrderID = item.assayOrder.AssayOrderID;
-                        newresult.CompoundID = item.compound.CompoundID;
-                        newresult.TestID = test.TestID;
-                        newresult.CreatedBy = "Client " + GetClientID();
-                        newresult.CreatedDate = DateTime.Now;
-                        newresult.ModifedBy = "Client " + GetClientID();
-                        newresult.ModifiedDate = DateTime.Now;
-                        newresult.StatusID = 1;
-                        newresult.StatusUpdatedDate = DateTime.Now;
-                        TestTube mytube = new TestTube();
-                        mytube.CompoundID = item.compound.CompoundID;
-                        mytube.CreatedBy = "System";
-                        mytube.CreatedDate = DateTime.Now;
-                        db.TestTubes.Add(mytube);
-
-                        newresult.TestTubeID = mytube.TestTubeID;
-                        db.TestResults.Add(newresult);
-                        db.SaveChanges();
+                            newresult.AssayOrderID = item.assayOrder.AssayOrderID;
+                            newresult.CompoundID = item.compound.CompoundID;
+                            newresult.TestID = test.TestID;
+                            newresult.CreatedBy = "Client " + GetClientID();
+                            newresult.CreatedDate = DateTime.Now;
+                            newresult.ModifedBy = "Client " + GetClientID();
+                            newresult.ModifiedDate = DateTime.Now;
+                            newresult.StatusID = 1; //set status to Work Order Received
+                            newresult.StatusUpdatedDate = DateTime.Now;
+                            TestTube mytube = new TestTube();
+                            mytube.CompoundID = item.compound.CompoundID;
+                            mytube.CreatedBy = "System";
+                            mytube.CreatedDate = DateTime.Now;
+                            db.TestTubes.Add(mytube);
+                        
+                            newresult.TestTubeID = mytube.TestTubeID;
+                            db.TestResults.Add(newresult);
+                            db.SaveChanges();
                         }
                     }
 
                 }
-                return RedirectToAction("Index","Client");
+            //Function to send email
+
+            var body = "<h2>Order Confirmed</h2>" +
+            "<p>Order Date:" + newClientOrder.workOrder.DateTime + "</p>" +
+            "<br />";
+                         Dictionary<int, NorthWestLabs.Models.Compound> LTNumberList = new Dictionary<int, NorthWestLabs.Models.Compound>();
+                         foreach (NorthWestLabs.Models.CompoundAssayOrder item in newClientOrder.compoundAssayOrderList)
+                         {
+                             if (!LTNumberList.ContainsKey(item.compound.LTNumber))
+                             {
+                                 LTNumberList.Add(item.compound.LTNumber, item.compound);
+                             }
+                         }
+
+                         foreach (var LtNumber in LTNumberList)
+                         {
+                //<!--Display of compound and assay details-->
+                body += "<h3>Compound" + LtNumber.Key + " | " + LtNumber.Value.CompoundName + "</h3>" +
+                "<table class='table'>" +
+                    "<tr>" +
+                        "<th>Assay Name</th>" +
+                        "<th>LTNumber</th>" +
+                    "</tr>";
+
+                                foreach (NorthWestLabs.Models.CompoundAssayOrder item in newClientOrder.compoundAssayOrderList)
+                                {
+                                    if (item.assayOrder.Compound.LTNumber == LtNumber.Key)
+                                    {
+                        body += "<tr>" +
+                            "<td>" + item.assayOrder.ProtocolNotebook.AssayName + "</td>" +
+                            "<td>" + LtNumber.Key + "-" + item.compound.SequenceCode + "</td>" +
+                        "</tr>";
+                                    }
+                                }
+                body += "</table>";
+                             }
+                         
+                    
+
+
+
+
+            var message = new MailMessage();
+            message.To.Add(new MailAddress(db.Clients.Find(GetClientID()).Email));  // replace with valid value 
+            message.From = new MailAddress("J.nelson55@gmail.com","Northwest Labs");  // replace with valid value
+            message.Subject = "Northwest Labs - Order Confirmation";
+            message.Body = string.Format(body);
+            message.IsBodyHtml = true;
+            //message.Attachments() add attachments
             
+            using (var smtp = new SmtpClient())
+            {
+                var credential = new NetworkCredential
+                {
+                    UserName = "J.nelson55@gmail.com",  // replace with valid value
+                    Password = "*****"  // replace with valid value
+                };
+                smtp.Credentials = credential;
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                await smtp.SendMailAsync(message);
+            }
 
 
-        }
+
+
+
+             return View(newClientOrder);
+               }
+
 
 
         }

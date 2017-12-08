@@ -24,8 +24,8 @@ namespace NorthWestLabs.Models
     
         public virtual Client Client { get; set; }
         
-        //public virtual ICollection<QuoteItem> QuoteItems { get; set; }
+        public virtual ICollection<QuoteItem> QuoteItems { get; set; }
         
-        //public virtual ICollection<WorkOrder> WorkOrders { get; set; }
+        public virtual ICollection<WorkOrder> WorkOrders { get; set; }
     }
 }

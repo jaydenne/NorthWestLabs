@@ -43,5 +43,7 @@ namespace NorthWestLabs.DAL
         public System.Data.Entity.DbSet<NorthWestLabs.Models.EmployeeWageInfo> EmployeeWageInfoes { get; set; }
 
         public System.Data.Entity.DbSet<NorthWestLabs.Models.EmployeeBankInfo> EmployeeBankInfoes { get; set; }
+
+        public System.Data.Entity.DbSet<NorthWestLabs.Models.QuoteItem> QuoteItems { get; set; }
     }
 }
