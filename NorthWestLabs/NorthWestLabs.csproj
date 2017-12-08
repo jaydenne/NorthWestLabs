@@ -163,7 +163,9 @@
     <Compile Include="Controllers\EmployeeWageInfoesController.cs" />
     <Compile Include="Controllers\QuoteEstimatesController.cs" />
     <Compile Include="Controllers\QuoteItemsController.cs" />
-    <Compile Include="Controllers\QuotesController.cs" />
+    <Compile Include="Controllers\Client\QuotesController.cs" />
+    <Compile Include="Controllers\Seattle\ManageInvoicesController.cs" />
+    <Compile Include="Controllers\Seattle\TestReportsController.cs" />
     <Compile Include="Controllers\Seattle\TestsController.cs" />
     <Compile Include="Controllers\Singapore\CompoundsController.cs" />
     <Compile Include="Controllers\Client\Clients2Controller.cs" />
@@ -210,6 +212,7 @@
     <Compile Include="Models\QuoteEstimate.cs" />
     <Compile Include="Models\QuoteEstimateWithItemTemplate.cs" />
     <Compile Include="Models\QuoteItem.cs" />
+    <Compile Include="Models\RichTextEditorViewModel.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\Status.cs" />
     <Compile Include="Models\Term.cs" />
@@ -314,6 +317,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\script-custom-editor.js" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-reboot.css" />
@@ -486,6 +490,15 @@
     <Content Include="Views\QuoteItems\Index.cshtml" />
     <Content Include="Views\Quotes\NewQuote.cshtml" />
     <Content Include="Views\Quotes\Submit.cshtml" />
+    <Content Include="Views\Quotes\Summary.cshtml" />
+    <Content Include="Views\ManageInvoices\NewInvoice.cshtml" />
+    <Content Include="Views\ManageInvoices\AddInvoice.cshtml" />
+    <Content Include="Views\ManageInvoices\Index.cshtml" />
+    <Content Include="Views\TestReports\Index.cshtml" />
+    <Content Include="Views\TestReports\CustomReport.cshtml" />
+    <Content Include="Views\TestReports\CustomReportPrint.cshtml" />
+    <Content Include="Views\TestReports\WorkOrderReport.cshtml" />
+    <Content Include="Views\TestReports\CreateWorkOrderReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

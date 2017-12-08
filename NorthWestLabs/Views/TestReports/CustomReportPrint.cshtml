@@ -1,0 +1,20 @@
+﻿@model NorthWestLabs.Models.RichTextEditorViewModel
+@{
+    ViewBag.Title = "CustomReportPrint";
+}
+<div style="width:800px;margin-left:auto; margin-right:auto;">
+    <div style="text-align:center;">
+        <h2> Northwest Labs</h2>
+        <h3> Order Number: OrderNumber</h3>
+    </div>
+    <div>
+        <p><b>Client Name:</b> name</p>
+        <p><b>Address:</b> stre name</p>
+        <p><b>Phone:</b> ##3</p>
+    </div>
+    <div>
+        @Html.Raw(Model.Message)
+    </div>
+    <div>
+    </div>
+</div>

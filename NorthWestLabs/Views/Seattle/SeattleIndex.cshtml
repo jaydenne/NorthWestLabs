@@ -10,11 +10,12 @@
 
 <div class="row">
     <div class="col-md-4 well">
-        <h2>Quote Response</h2>
+
+        <h2>Customer Work Orders</h2>
         <p>
-            Generate a quote for a specific assay and compound.
+            View past and current orders including test status.
         </p>
-        @Html.ActionLink("Generate a Quote", "EmployeeQuotes", "Seattle", null, new { @class = "btn btn-primary btn default" })
+        @Html.ActionLink("Edit Order Summaries", "Index", "WorkOrders", null, new { @class = "btn btn-primary btn default" })
     </div>
     
     <div class="col-md-4 well">
@@ -38,28 +39,26 @@
 <div class="row">
 
     <div class="col-md-4 well">
-
-        <h2>Customer Work Orders</h2>
-        <p>
-            View past and current orders including test status.
-        </p>
-        @Html.ActionLink("Edit Order Summaries", "Index", "WorkOrders", null, new { @class = "btn btn-primary btn default" })
-    </div>
-
-    <div class="col-md-4 well">
         <h2>Test Results and Reports</h2>
         <p>
             Access test results.
         </p>
-        @Html.ActionLink("Test Results and Reports", "DownloadResults", "Seattle", null, new { @class = "btn btn-primary btn default" })
+        @Html.ActionLink("Test Results and Reports", "Index", "TestReports", null, new { @class = "btn btn-primary btn default" })
     </div>
-
+    
     <div class="col-md-4 well">
         <h2>Management Reports</h2>
         <p>
             Generate management reports.
         </p>
         @Html.ActionLink("Generate a Report", "ManagementReports", "Seattle", null, new { @class = "btn btn-primary btn default" })
+    </div>
+    <div class="col-md-4 well">
+        <h2>Invoicing and Billing</h2>
+        <p>
+            Create, manage, and delete client invoices.
+        </p>
+        @Html.ActionLink("Manage Invoies", "Index", "ManageInvoices", null, new { @class = "btn btn-primary btn default" })
     </div>
     
 </div>

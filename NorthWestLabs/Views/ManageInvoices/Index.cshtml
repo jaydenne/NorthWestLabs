@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@Html.ActionLink("Return to Employee Portal", "SeattleIndex", "Seattle", null, new { @class = "btn btn-primary btn default", style="float:right"})
+<h2>Manage Invoices</h2>
+
+<div class="row">
+    <div class="col-md-4 well">
+        <h2>Create an Invoice</h2>
+        <p>
+            View a list of work orders that have not yet been billed and select a order to generate a new invoice.
+        </p>
+        @Html.ActionLink("Create Invoice", "NewInvoice", "ManageInvoices", null, new { @class = "btn btn-primary btn default" })
+    </div>
+
+    <div class="col-md-4 well">
+        <h2>Submit New Payment</h2>
+        <p>
+            View a list of invoices that are outstanding and select one in order to mark it as paid.
+        </p>
+        @Html.ActionLink("Submit Payment", "PayInvoice", "ManageInvoices", null, new { @class = "btn btn-primary btn default" })
+    </div>
+
+
+    <div class="col-md-4 well">
+        <h2>Edit an Invoice</h2>
+        <p>
+            View a List of Invoices and select one in order to update it.
+        </p>
+        @Html.ActionLink("Update Invoice", "UpdateInvoice", "ManageInvoices", null, new { @class = "btn btn-primary btn default" })
+    </div>
+</div>
+

@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@Html.ActionLink("Return to Employee Portal", "SeattleIndex", "Seattle", null, new { @class = "btn btn-primary btn default", style = "float:right" })
+<h2>Create Reports</h2>
+
+<div class="row">
+    <div class="col-md-4 well">
+        <h2>Create Custom Reports</h2>
+        <p>
+           Inpiut your own data to create a printable report.
+        </p>
+        @Html.ActionLink("Custom Report", "CustomReport", "TestReports", null, new { @class = "btn btn-primary btn default" })
+    </div>
+
+    <div class="col-md-4 well">
+        <h2>Create a Work Order Report</h2>
+        <p>
+            View a list of work orders and select one to generate a printable report.
+        </p>
+        @Html.ActionLink("Work Order Report", "WorkOrderReport", "TestReports", null, new { @class = "btn btn-primary btn default" })
+    </div>
+
+</div>
+
+

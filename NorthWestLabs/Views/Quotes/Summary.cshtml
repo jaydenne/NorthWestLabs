@@ -1,0 +1,65 @@
+﻿@model IEnumerable<NorthWestLabs.Models.QuoteEstimate>
+@{
+    ViewBag.Title = "Summary";
+}
+@Html.ActionLink("Back to Client Portal", "Index", "Client", null, new { @class = "btn btn-primary btn default", style = "float:right" })
+
+<h2>Summary of Quotes</h2>
+
+
+@foreach (NorthWestLabs.Models.QuoteEstimate quote in Model)
+{
+    <button class="accordion"><h3>Quote: @quote.QuoteID</h3><p style="float:right"><h4>@quote.QuoteDate.Value.ToShortDateString()</h4></p></button>
+    <div class="panel">
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>Assay Name</th>
+                <th>Description</th>
+                <th>Estimated Price</th>
+
+            </tr>
+
+            @{foreach (NorthWestLabs.Models.QuoteItem item in quote.QuoteItems)
+                {
+                    int iCount = 0;
+                    {
+                        iCount++;
+                        <tr>
+                            <td>@iCount</td>
+                            <td>@item.ProtocolNotebook.AssayName</td>
+                            <td>@item.ProtocolNotebook.Description</td>
+                            <td>$@item.Cost (Does not include conditional tests)</td>
+                        </tr>
+                        }
+                    }
+              }
+
+        </table>
+
+
+        <br />
+    </div>
+
+                }
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function () {
+            /* Toggle between adding and removing the "active" class,
+            to highlight the button that controls the panel */
+            this.classList.toggle("active");
+
+            /* Toggle between hiding and showing the active panel */
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        }
+    }
+</script>

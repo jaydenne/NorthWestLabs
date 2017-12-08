@@ -1,0 +1,40 @@
+﻿@model NorthWestLabs.Models.WorkOrderWithDetails
+@{
+    ViewBag.Title = "WorkOrderReport";
+}
+<div style="width:800px;margin-left:auto; margin-right:auto;">
+    <div style="text-align:center;">
+        <h2> Northwest Labs</h2>
+        <h3> Order Number: @Model.workOrder.WorkOrderID</h3>
+    </div>
+    <div>
+        <p><b>Client Name:</b> @Model.workOrder.Client.CompanyName</p>
+        <p><b>Address Line 1:</b> @Model.workOrder.Client.Address1</p>
+        <p><b>Address Line 1:</b> @Model.workOrder.Client.Address2</p>
+        <p><b>Contact Name:</b></p>@Model.workOrder.Client.ContactFirstName @Model.workOrder.Client.ContactLastName
+        <p><b>Phone:</b> </p>@Model.workOrder.Client.Phone
+        <p><b>Email:</b> </p>@Model.workOrder.Client.Email
+    </div>
+    <div>
+        @{ 
+            foreach(NorthWestLabs.Models.AssayOrderWithTestResults item in Model.assayOrderWithTestResultsList)
+            {
+                <h3>Compound ID:</h3>@item.AssayOrder.CompoundID
+                <div>
+                @foreach (NorthWestLabs.Models.TestResult result in item.testResults)
+                {
+                    <ul>
+                        <li>Status: @result.Status.StatusName</li>
+                        <li>Test Tube: @result.TestTubeID</li>
+                        <li>Test ID:  @result.TestID</li>
+                    </ul>
+
+                }
+                </div>
+                <br />
+            }
+        }
+    </div>
+    <div>
+    </div>
+</div>
