@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using NorthWestLabs.DAL;
 using NorthWestLabs.Models;
+using System.Net.Mail;
+using System.Net;
 
 namespace NorthWestLabs.Controllers
 {
@@ -58,7 +60,7 @@ namespace NorthWestLabs.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult NewQuote(int? QuoteID, [Bind(Include = "QuoteID,AssayID,Cost,ModifiedBy,ModifiedDate,CreatedBy,CreatedDate")] QuoteItem quoteItem)
+        public ActionResult NewQuote(int? QuoteID, [Bind(Include = "QuoteID,AssayID")] QuoteItem quoteItem)
         {
             QuoteEstimate MyQuote = new QuoteEstimate();
             if(QuoteID == null)
@@ -402,5 +404,4 @@ namespace NorthWestLabs.Controllers
 
 
 
-}
 }
